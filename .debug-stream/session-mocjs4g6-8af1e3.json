@@ -1,0 +1,2497 @@
+{
+  "sessionId": "session-mocjs4g6-8af1e3",
+  "updatedAt": "2026-04-24T06:47:26.368Z",
+  "events": [
+    {
+      "at": 1777013208987,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.wakeup",
+        "data": {
+          "agentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "reason": "group_message"
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.wakeup",
+        "data": {
+          "agentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "reason": "group_message"
+        }
+      }
+    },
+    {
+      "at": 1777013215783,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "agent_status",
+          "delta": "RunStarted",
+          "metadata": {
+            "created_at": 1777013209,
+            "event": "RunStarted",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "model": "qwen3.5-397B-fp8",
+            "model_provider": "OpenAI"
+          },
+          "event": "RunStarted",
+          "reasoning_content": "",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "agent_status",
+          "delta": "RunStarted",
+          "metadata": {
+            "created_at": 1777013209,
+            "event": "RunStarted",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "model": "qwen3.5-397B-fp8",
+            "model_provider": "OpenAI"
+          },
+          "event": "RunStarted",
+          "reasoning_content": "",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013215871,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "agent_status",
+          "delta": "ModelRequestStarted",
+          "metadata": {
+            "created_at": 1777013209,
+            "event": "ModelRequestStarted",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "model": "qwen3.5-397B-fp8",
+            "model_provider": "OpenAI"
+          },
+          "event": "ModelRequestStarted",
+          "reasoning_content": "",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "agent_status",
+          "delta": "ModelRequestStarted",
+          "metadata": {
+            "created_at": 1777013209,
+            "event": "ModelRequestStarted",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "model": "qwen3.5-397B-fp8",
+            "model_provider": "OpenAI"
+          },
+          "event": "ModelRequestStarted",
+          "reasoning_content": "",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013216058,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "用户",
+          "metadata": {
+            "created_at": 1777013215,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "用户"
+          },
+          "event": "RunContent",
+          "reasoning_content": "用户",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "用户",
+          "metadata": {
+            "created_at": 1777013215,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "用户"
+          },
+          "event": "RunContent",
+          "reasoning_content": "用户",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013216157,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "想要测试 coding_assign",
+          "metadata": {
+            "created_at": 1777013215,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "想要测试 coding_assign"
+          },
+          "event": "RunContent",
+          "reasoning_content": "想要测试 coding_assign",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "想要测试 coding_assign",
+          "metadata": {
+            "created_at": 1777013215,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "想要测试 coding_assign"
+          },
+          "event": "RunContent",
+          "reasoning_content": "想要测试 coding_assign",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013216257,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "_task 工具",
+          "metadata": {
+            "created_at": 1777013215,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "_task 工具"
+          },
+          "event": "RunContent",
+          "reasoning_content": "_task 工具",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "_task 工具",
+          "metadata": {
+            "created_at": 1777013215,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "_task 工具"
+          },
+          "event": "RunContent",
+          "reasoning_content": "_task 工具",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013216347,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "。这是一个",
+          "metadata": {
+            "created_at": 1777013215,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "。这是一个"
+          },
+          "event": "RunContent",
+          "reasoning_content": "。这是一个",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "。这是一个",
+          "metadata": {
+            "created_at": 1777013215,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "。这是一个"
+          },
+          "event": "RunContent",
+          "reasoning_content": "。这是一个",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013216439,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "异步",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "异步"
+          },
+          "event": "RunContent",
+          "reasoning_content": "异步",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "异步",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "异步"
+          },
+          "event": "RunContent",
+          "reasoning_content": "异步",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013216538,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "执行",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "执行"
+          },
+          "event": "RunContent",
+          "reasoning_content": "执行",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "执行",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "执行"
+          },
+          "event": "RunContent",
+          "reasoning_content": "执行",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013216620,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "编程任务的",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "编程任务的"
+          },
+          "event": "RunContent",
+          "reasoning_content": "编程任务的",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "编程任务的",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "编程任务的"
+          },
+          "event": "RunContent",
+          "reasoning_content": "编程任务的",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013216722,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "工具。我需要",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "工具。我需要"
+          },
+          "event": "RunContent",
+          "reasoning_content": "工具。我需要",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "工具。我需要",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "工具。我需要"
+          },
+          "event": "RunContent",
+          "reasoning_content": "工具。我需要",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013216815,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "创建一个简单的",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "创建一个简单的"
+          },
+          "event": "RunContent",
+          "reasoning_content": "创建一个简单的",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "创建一个简单的",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "创建一个简单的"
+          },
+          "event": "RunContent",
+          "reasoning_content": "创建一个简单的",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013216909,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "编程",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "编程"
+          },
+          "event": "RunContent",
+          "reasoning_content": "编程",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "编程",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "编程"
+          },
+          "event": "RunContent",
+          "reasoning_content": "编程",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013217071,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "任务来测试",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "任务来测试"
+          },
+          "event": "RunContent",
+          "reasoning_content": "任务来测试",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "任务来测试",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "任务来测试"
+          },
+          "event": "RunContent",
+          "reasoning_content": "任务来测试",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013217179,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "这个功能",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "这个功能"
+          },
+          "event": "RunContent",
+          "reasoning_content": "这个功能",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "这个功能",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "这个功能"
+          },
+          "event": "RunContent",
+          "reasoning_content": "这个功能",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013217254,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "。\n\n让我创建一个",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "。\n\n让我创建一个"
+          },
+          "event": "RunContent",
+          "reasoning_content": "。\n\n让我创建一个",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "。\n\n让我创建一个",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "。\n\n让我创建一个"
+          },
+          "event": "RunContent",
+          "reasoning_content": "。\n\n让我创建一个",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013217356,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "简单的任务",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "简单的任务"
+          },
+          "event": "RunContent",
+          "reasoning_content": "简单的任务",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "简单的任务",
+          "metadata": {
+            "created_at": 1777013216,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "简单的任务"
+          },
+          "event": "RunContent",
+          "reasoning_content": "简单的任务",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013217465,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "来",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "来"
+          },
+          "event": "RunContent",
+          "reasoning_content": "来",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "来",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "来"
+          },
+          "event": "RunContent",
+          "reasoning_content": "来",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013217540,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "演示",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "演示"
+          },
+          "event": "RunContent",
+          "reasoning_content": "演示",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "演示",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "演示"
+          },
+          "event": "RunContent",
+          "reasoning_content": "演示",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013217637,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": " coding",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": " coding"
+          },
+          "event": "RunContent",
+          "reasoning_content": " coding",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": " coding",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": " coding"
+          },
+          "event": "RunContent",
+          "reasoning_content": " coding",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013217740,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "_assign_task 的使用",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "_assign_task 的使用"
+          },
+          "event": "RunContent",
+          "reasoning_content": "_assign_task 的使用",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "reasoning",
+          "delta": "_assign_task 的使用",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "_assign_task 的使用"
+          },
+          "event": "RunContent",
+          "reasoning_content": "_assign_task 的使用",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013217824,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "\n\n",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "\n\n",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "chatcmpl-96e2bce2d2a89735"
+            }
+          },
+          "event": "RunContent",
+          "content": "\n\n",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "\n\n",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "\n\n",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "chatcmpl-96e2bce2d2a89735"
+            }
+          },
+          "event": "RunContent",
+          "content": "\n\n",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013217923,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "我来帮你",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "我来帮你",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "chatcmpl-96e2bce2d2a89735"
+            }
+          },
+          "event": "RunContent",
+          "content": "我来帮你",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "我来帮你",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "我来帮你",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "chatcmpl-96e2bce2d2a89735"
+            }
+          },
+          "event": "RunContent",
+          "content": "我来帮你",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013218021,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "测试 `coding_assign",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "测试 `coding_assign",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "chatcmpl-96e2bce2d2a89735"
+            }
+          },
+          "event": "RunContent",
+          "content": "测试 `coding_assign",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "测试 `coding_assign",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "测试 `coding_assign",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "chatcmpl-96e2bce2d2a89735"
+            }
+          },
+          "event": "RunContent",
+          "content": "测试 `coding_assign",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013218115,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "_task` 工具",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "_task` 工具",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "chatcmpl-96e2bce2d2a89735"
+            }
+          },
+          "event": "RunContent",
+          "content": "_task` 工具",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "_task` 工具",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "_task` 工具",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "chatcmpl-96e2bce2d2a89735"
+            }
+          },
+          "event": "RunContent",
+          "content": "_task` 工具",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013221739,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "。让我",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "。让我",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "chatcmpl-96e2bce2d2a89735"
+            }
+          },
+          "event": "RunContent",
+          "content": "。让我",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "。让我",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "。让我",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "chatcmpl-96e2bce2d2a89735"
+            }
+          },
+          "event": "RunContent",
+          "content": "。让我",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013221755,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "创建一个简单的编程任务",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "创建一个简单的编程任务",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "chatcmpl-96e2bce2d2a89735"
+            }
+          },
+          "event": "RunContent",
+          "content": "创建一个简单的编程任务",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "创建一个简单的编程任务",
+          "metadata": {
+            "created_at": 1777013217,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "创建一个简单的编程任务",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "chatcmpl-96e2bce2d2a89735"
+            }
+          },
+          "event": "RunContent",
+          "content": "创建一个简单的编程任务",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013221755,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "来演示其",
+          "metadata": {
+            "created_at": 1777013218,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "来演示其",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "chatcmpl-96e2bce2d2a89735"
+            }
+          },
+          "event": "RunContent",
+          "content": "来演示其",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "来演示其",
+          "metadata": {
+            "created_at": 1777013218,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "来演示其",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "chatcmpl-96e2bce2d2a89735"
+            }
+          },
+          "event": "RunContent",
+          "content": "来演示其",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013223776,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "功能。\n\n",
+          "metadata": {
+            "created_at": 1777013218,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "功能。\n\n",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "chatcmpl-96e2bce2d2a89735"
+            }
+          },
+          "event": "RunContent",
+          "content": "功能。\n\n",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "功能。\n\n",
+          "metadata": {
+            "created_at": 1777013218,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "功能。\n\n",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "chatcmpl-96e2bce2d2a89735"
+            }
+          },
+          "event": "RunContent",
+          "content": "功能。\n\n",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013235233,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "tool_calls",
+          "delta": "{\"state\":\"started\",\"tool_call_id\":\"call_57bc55ce9d26421c9ec02456\",\"tool_name\":\"coding_assign_task\"}",
+          "metadata": {
+            "created_at": 1777013221,
+            "event": "ToolCallStarted",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "tool": {
+              "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+              "tool_name": "coding_assign_task",
+              "tool_args": {
+                "task_name": "test_hello_world",
+                "prompt": "请创建一个简单的 Python 程序，要求：\n1. 创建一个名为 hello_world.py 的文件\n2. 程序打印 \"Hello, World!\" 消息\n3. 添加一个简单的函数 greet(name)，接受名字参数并返回问候语\n4. 在文件末尾添加测试代码，调用该函数",
+                "auto_decide": false,
+                "use_resume": false
+              },
+              "tool_call_error": null,
+              "result": null,
+              "metrics": null,
+              "child_run_id": null,
+              "stop_after_tool_call": false,
+              "created_at": 1777013221,
+              "requires_confirmation": null,
+              "confirmed": null,
+              "confirmation_note": null,
+              "requires_user_input": null,
+              "user_input_schema": null,
+              "user_feedback_schema": null,
+              "answered": null,
+              "external_execution_required": null,
+              "external_execution_silent": null,
+              "approval_type": null,
+              "approval_id": null
+            }
+          },
+          "event": "ToolCallStarted",
+          "reasoning_content": "",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "tool_call_name": "coding_assign_task",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "tool_calls",
+          "delta": "{\"state\":\"started\",\"tool_call_id\":\"call_57bc55ce9d26421c9ec02456\",\"tool_name\":\"coding_assign_task\"}",
+          "metadata": {
+            "created_at": 1777013221,
+            "event": "ToolCallStarted",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "tool": {
+              "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+              "tool_name": "coding_assign_task",
+              "tool_args": {
+                "task_name": "test_hello_world",
+                "prompt": "请创建一个简单的 Python 程序，要求：\n1. 创建一个名为 hello_world.py 的文件\n2. 程序打印 \"Hello, World!\" 消息\n3. 添加一个简单的函数 greet(name)，接受名字参数并返回问候语\n4. 在文件末尾添加测试代码，调用该函数",
+                "auto_decide": false,
+                "use_resume": false
+              },
+              "tool_call_error": null,
+              "result": null,
+              "metrics": null,
+              "child_run_id": null,
+              "stop_after_tool_call": false,
+              "created_at": 1777013221,
+              "requires_confirmation": null,
+              "confirmed": null,
+              "confirmation_note": null,
+              "requires_user_input": null,
+              "user_input_schema": null,
+              "user_feedback_schema": null,
+              "answered": null,
+              "external_execution_required": null,
+              "external_execution_silent": null,
+              "approval_type": null,
+              "approval_id": null
+            }
+          },
+          "event": "ToolCallStarted",
+          "reasoning_content": "",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "tool_call_name": "coding_assign_task",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013235279,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "agent_status",
+          "delta": "ModelRequestCompleted",
+          "metadata": {
+            "created_at": 1777013221,
+            "event": "ModelRequestCompleted",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "model": "qwen3.5-397B-fp8",
+            "model_provider": "OpenAI",
+            "input_tokens": 6980,
+            "output_tokens": 197,
+            "total_tokens": 7177,
+            "time_to_first_token": 6.124849699990591,
+            "reasoning_tokens": 0,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": 0
+          },
+          "event": "ModelRequestCompleted",
+          "reasoning_content": "",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "agent_status",
+          "delta": "ModelRequestCompleted",
+          "metadata": {
+            "created_at": 1777013221,
+            "event": "ModelRequestCompleted",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "model": "qwen3.5-397B-fp8",
+            "model_provider": "OpenAI",
+            "input_tokens": 6980,
+            "output_tokens": 197,
+            "total_tokens": 7177,
+            "time_to_first_token": 6.124849699990591,
+            "reasoning_tokens": 0,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": 0
+          },
+          "event": "ModelRequestCompleted",
+          "reasoning_content": "",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013235281,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "document",
+          "delta": "请创建一个简单的 Python 程序，要求：\n1. 创建一个名为 hello_world.py 的文件\n2. 程序打印 \"Hello, World!\" 消息\n3. 添加一个简单的函数 greet(name)，接受名字参数并返回问候语\n4. 在文件末尾添加测试代码，调用该函数",
+          "metadata": {
+            "created_at": 1777013223,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "请创建一个简单的 Python 程序，要求：\n1. 创建一个名为 hello_world.py 的文件\n2. 程序打印 \"Hello, World!\" 消息\n3. 添加一个简单的函数 greet(name)，接受名字参数并返回问候语\n4. 在文件末尾添加测试代码，调用该函数",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "document",
+            "metadata": "RunContentEvent(created_at=1777013223, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content={'role': 'assistant', 'content': [{'type': 'text', 'text': '请创建一个简单的 Python 程序，要求：\\n1. 创建一个名为 hello_world.py 的文件\\n2. 程序打印 \"Hello, World!\" 消息\\n3. 添加一个简单的函数 greet(name)，接受名字参数并返回问候语\\n4. 在文件末尾添加测试代码，调用该函数'}], 'part': {'type': 'text', 'text': '请创建一个简单的 Python 程序，要求：\\n1. 创建一个名为 hello_world.py 的文件\\n2. 程序打印 \"Hello, World!\" 消息\\n3. 添加一个简单的函数 greet(name)，接受名字参数并返回问候语\\n4. 在文件末尾添加测试代码，调用该函数', 'messageID': 'msg_dbe3df36e001KRPG1VX0NgplDy', 'sessionID': 'ses_241c210bcffehARuE1gs1hsVon', 'id': 'prt_dbe3df36f001o0cSKdkKmMCkOm'}}, workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "请创建一个简单的 Python 程序，要求：\n1. 创建一个名为 hello_world.py 的文件\n2. 程序打印 \"Hello, World!\" 消息\n3. 添加一个简单的函数 greet(name)，接受名字参数并返回问候语\n4. 在文件末尾添加测试代码，调用该函数",
+          "reasoning_content": "",
+          "type": "document",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "document",
+          "delta": "请创建一个简单的 Python 程序，要求：\n1. 创建一个名为 hello_world.py 的文件\n2. 程序打印 \"Hello, World!\" 消息\n3. 添加一个简单的函数 greet(name)，接受名字参数并返回问候语\n4. 在文件末尾添加测试代码，调用该函数",
+          "metadata": {
+            "created_at": 1777013223,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "请创建一个简单的 Python 程序，要求：\n1. 创建一个名为 hello_world.py 的文件\n2. 程序打印 \"Hello, World!\" 消息\n3. 添加一个简单的函数 greet(name)，接受名字参数并返回问候语\n4. 在文件末尾添加测试代码，调用该函数",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "document",
+            "metadata": "RunContentEvent(created_at=1777013223, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content={'role': 'assistant', 'content': [{'type': 'text', 'text': '请创建一个简单的 Python 程序，要求：\\n1. 创建一个名为 hello_world.py 的文件\\n2. 程序打印 \"Hello, World!\" 消息\\n3. 添加一个简单的函数 greet(name)，接受名字参数并返回问候语\\n4. 在文件末尾添加测试代码，调用该函数'}], 'part': {'type': 'text', 'text': '请创建一个简单的 Python 程序，要求：\\n1. 创建一个名为 hello_world.py 的文件\\n2. 程序打印 \"Hello, World!\" 消息\\n3. 添加一个简单的函数 greet(name)，接受名字参数并返回问候语\\n4. 在文件末尾添加测试代码，调用该函数', 'messageID': 'msg_dbe3df36e001KRPG1VX0NgplDy', 'sessionID': 'ses_241c210bcffehARuE1gs1hsVon', 'id': 'prt_dbe3df36f001o0cSKdkKmMCkOm'}}, workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "请创建一个简单的 Python 程序，要求：\n1. 创建一个名为 hello_world.py 的文件\n2. 程序打印 \"Hello, World!\" 消息\n3. 添加一个简单的函数 greet(name)，接受名字参数并返回问候语\n4. 在文件末尾添加测试代码，调用该函数",
+          "reasoning_content": "",
+          "type": "document",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013235284,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "document",
+          "delta": "The user wants me to create a simple Python program with:\n1. A file named hello_world.py\n2. Print \"Hello, World!\" message\n3. A greet(name) function that takes a name and returns a greeting\n4. Test code at the end that calls the function\n\nThis is a simple task. I'll create the file with the required content.\n",
+          "metadata": {
+            "created_at": 1777013235,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "The user wants me to create a simple Python program with:\n1. A file named hello_world.py\n2. Print \"Hello, World!\" message\n3. A greet(name) function that takes a name and returns a greeting\n4. Test code at the end that calls the function\n\nThis is a simple task. I'll create the file with the required content.\n",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "document",
+            "metadata": "RunContentEvent(created_at=1777013235, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content={'role': 'assistant', 'content': [{'type': 'text', 'text': 'The user wants me to create a simple Python program with:\\n1. A file named hello_world.py\\n2. Print \"Hello, World!\" message\\n3. A greet(name) function that takes a name and returns a greeting\\n4. Test code at the end that calls the function\\n\\nThis is a simple task. I\\'ll create the file with the required content.\\n'}], 'part': {'id': 'prt_dbe3e1a9a0010mlLSl8aCSt5yE', 'messageID': 'msg_dbe3df37a0012zW0e7rd0jS9iK', 'sessionID': 'ses_241c210bcffehARuE1gs1hsVon', 'type': 'reasoning', 'text': 'The user wants me to create a simple Python program with:\\n1. A file named hello_world.py\\n2. Print \"Hello, World!\" message\\n3. A greet(name) function that takes a name and returns a greeting\\n4. Test code at the end that calls the function\\n\\nThis is a simple task. I\\'ll create the file with the required content.\\n', 'time': {'start': 1777013234330, 'end': 1777013235713}, 'metadata': {'anthropic': {'signature': '3a3a2ecaae62ffc954e2a50122d19fb1ec10ff8b51f38d6e6d00681036392c52'}}}}, workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "The user wants me to create a simple Python program with:\n1. A file named hello_world.py\n2. Print \"Hello, World!\" message\n3. A greet(name) function that takes a name and returns a greeting\n4. Test code at the end that calls the function\n\nThis is a simple task. I'll create the file with the required content.\n",
+          "reasoning_content": "",
+          "type": "document",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "document",
+          "delta": "The user wants me to create a simple Python program with:\n1. A file named hello_world.py\n2. Print \"Hello, World!\" message\n3. A greet(name) function that takes a name and returns a greeting\n4. Test code at the end that calls the function\n\nThis is a simple task. I'll create the file with the required content.\n",
+          "metadata": {
+            "created_at": 1777013235,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "The user wants me to create a simple Python program with:\n1. A file named hello_world.py\n2. Print \"Hello, World!\" message\n3. A greet(name) function that takes a name and returns a greeting\n4. Test code at the end that calls the function\n\nThis is a simple task. I'll create the file with the required content.\n",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "document",
+            "metadata": "RunContentEvent(created_at=1777013235, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content={'role': 'assistant', 'content': [{'type': 'text', 'text': 'The user wants me to create a simple Python program with:\\n1. A file named hello_world.py\\n2. Print \"Hello, World!\" message\\n3. A greet(name) function that takes a name and returns a greeting\\n4. Test code at the end that calls the function\\n\\nThis is a simple task. I\\'ll create the file with the required content.\\n'}], 'part': {'id': 'prt_dbe3e1a9a0010mlLSl8aCSt5yE', 'messageID': 'msg_dbe3df37a0012zW0e7rd0jS9iK', 'sessionID': 'ses_241c210bcffehARuE1gs1hsVon', 'type': 'reasoning', 'text': 'The user wants me to create a simple Python program with:\\n1. A file named hello_world.py\\n2. Print \"Hello, World!\" message\\n3. A greet(name) function that takes a name and returns a greeting\\n4. Test code at the end that calls the function\\n\\nThis is a simple task. I\\'ll create the file with the required content.\\n', 'time': {'start': 1777013234330, 'end': 1777013235713}, 'metadata': {'anthropic': {'signature': '3a3a2ecaae62ffc954e2a50122d19fb1ec10ff8b51f38d6e6d00681036392c52'}}}}, workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "The user wants me to create a simple Python program with:\n1. A file named hello_world.py\n2. Print \"Hello, World!\" message\n3. A greet(name) function that takes a name and returns a greeting\n4. Test code at the end that calls the function\n\nThis is a simple task. I'll create the file with the required content.\n",
+          "reasoning_content": "",
+          "type": "document",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013241258,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "{\"part\": {\"id\": \"prt_dbe3e201600133IUcBE2R4fA51\", \"reason\": \"tool-calls\", \"messageID\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"type\": \"step-finish\", \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"cost\": 0}, \"reason\": \"tool-calls\", \"cost\": 0}",
+          "metadata": {
+            "created_at": 1777013235,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "{\"part\": {\"id\": \"prt_dbe3e201600133IUcBE2R4fA51\", \"reason\": \"tool-calls\", \"messageID\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"type\": \"step-finish\", \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"cost\": 0}, \"reason\": \"tool-calls\", \"cost\": 0}",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "content",
+            "metadata": "RunContentEvent(created_at=1777013235, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content='{\"part\": {\"id\": \"prt_dbe3e201600133IUcBE2R4fA51\", \"reason\": \"tool-calls\", \"messageID\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"type\": \"step-finish\", \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"cost\": 0}, \"reason\": \"tool-calls\", \"cost\": 0}', workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "{\"part\": {\"id\": \"prt_dbe3e201600133IUcBE2R4fA51\", \"reason\": \"tool-calls\", \"messageID\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"type\": \"step-finish\", \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"cost\": 0}, \"reason\": \"tool-calls\", \"cost\": 0}",
+          "reasoning_content": "",
+          "type": "content",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "{\"part\": {\"id\": \"prt_dbe3e201600133IUcBE2R4fA51\", \"reason\": \"tool-calls\", \"messageID\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"type\": \"step-finish\", \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"cost\": 0}, \"reason\": \"tool-calls\", \"cost\": 0}",
+          "metadata": {
+            "created_at": 1777013235,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "{\"part\": {\"id\": \"prt_dbe3e201600133IUcBE2R4fA51\", \"reason\": \"tool-calls\", \"messageID\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"type\": \"step-finish\", \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"cost\": 0}, \"reason\": \"tool-calls\", \"cost\": 0}",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "content",
+            "metadata": "RunContentEvent(created_at=1777013235, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content='{\"part\": {\"id\": \"prt_dbe3e201600133IUcBE2R4fA51\", \"reason\": \"tool-calls\", \"messageID\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"type\": \"step-finish\", \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"cost\": 0}, \"reason\": \"tool-calls\", \"cost\": 0}', workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "{\"part\": {\"id\": \"prt_dbe3e201600133IUcBE2R4fA51\", \"reason\": \"tool-calls\", \"messageID\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"type\": \"step-finish\", \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"cost\": 0}, \"reason\": \"tool-calls\", \"cost\": 0}",
+          "reasoning_content": "",
+          "type": "content",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013241363,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013224314}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+          "metadata": {
+            "created_at": 1777013235,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013224314}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "content",
+            "metadata": "RunContentEvent(created_at=1777013235, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content='{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013224314}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}', workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013224314}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+          "reasoning_content": "",
+          "type": "content",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013224314}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+          "metadata": {
+            "created_at": 1777013235,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013224314}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "content",
+            "metadata": "RunContentEvent(created_at=1777013235, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content='{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013224314}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}', workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013224314}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+          "reasoning_content": "",
+          "type": "content",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013241365,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013224314, \"completed\": 1777013235738}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+          "metadata": {
+            "created_at": 1777013235,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013224314, \"completed\": 1777013235738}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "content",
+            "metadata": "RunContentEvent(created_at=1777013235, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content='{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013224314, \"completed\": 1777013235738}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}', workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013224314, \"completed\": 1777013235738}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+          "reasoning_content": "",
+          "type": "content",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013224314, \"completed\": 1777013235738}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+          "metadata": {
+            "created_at": 1777013235,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013224314, \"completed\": 1777013235738}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "content",
+            "metadata": "RunContentEvent(created_at=1777013235, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content='{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013224314, \"completed\": 1777013235738}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}', workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3df37a0012zW0e7rd0jS9iK\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8941, \"input\": 7003, \"output\": 146, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 1792}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013224314, \"completed\": 1777013235738}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+          "reasoning_content": "",
+          "type": "content",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013241365,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "document",
+          "delta": "The user asked me to create a simple Python program with specific requirements. I've created the file with all the requirements:\n1. Created hello_world.py\n2. Prints \"Hello, World!\"\n3. Added greet(name) function\n4. Added test code at the end\n\nLet me verify it runs correctly.\n",
+          "metadata": {
+            "created_at": 1777013241,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "The user asked me to create a simple Python program with specific requirements. I've created the file with all the requirements:\n1. Created hello_world.py\n2. Prints \"Hello, World!\"\n3. Added greet(name) function\n4. Added test code at the end\n\nLet me verify it runs correctly.\n",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "document",
+            "metadata": "RunContentEvent(created_at=1777013241, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content={'role': 'assistant', 'content': [{'type': 'text', 'text': 'The user asked me to create a simple Python program with specific requirements. I\\'ve created the file with all the requirements:\\n1. Created hello_world.py\\n2. Prints \"Hello, World!\"\\n3. Added greet(name) function\\n4. Added test code at the end\\n\\nLet me verify it runs correctly.\\n'}], 'part': {'id': 'prt_dbe3e32b7001reYfL1z1fZfosq', 'messageID': 'msg_dbe3e201d001a0XWVkFGoo46XV', 'sessionID': 'ses_241c210bcffehARuE1gs1hsVon', 'type': 'reasoning', 'text': 'The user asked me to create a simple Python program with specific requirements. I\\'ve created the file with all the requirements:\\n1. Created hello_world.py\\n2. Prints \"Hello, World!\"\\n3. Added greet(name) function\\n4. Added test code at the end\\n\\nLet me verify it runs correctly.\\n', 'time': {'start': 1777013240503, 'end': 1777013241708}, 'metadata': {'anthropic': {'signature': 'a560a5bc9ab1d1fce6e0f000c71e4174751895b17328924c98eceb4c2fff110f'}}}}, workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "The user asked me to create a simple Python program with specific requirements. I've created the file with all the requirements:\n1. Created hello_world.py\n2. Prints \"Hello, World!\"\n3. Added greet(name) function\n4. Added test code at the end\n\nLet me verify it runs correctly.\n",
+          "reasoning_content": "",
+          "type": "document",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "document",
+          "delta": "The user asked me to create a simple Python program with specific requirements. I've created the file with all the requirements:\n1. Created hello_world.py\n2. Prints \"Hello, World!\"\n3. Added greet(name) function\n4. Added test code at the end\n\nLet me verify it runs correctly.\n",
+          "metadata": {
+            "created_at": 1777013241,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "The user asked me to create a simple Python program with specific requirements. I've created the file with all the requirements:\n1. Created hello_world.py\n2. Prints \"Hello, World!\"\n3. Added greet(name) function\n4. Added test code at the end\n\nLet me verify it runs correctly.\n",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "document",
+            "metadata": "RunContentEvent(created_at=1777013241, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content={'role': 'assistant', 'content': [{'type': 'text', 'text': 'The user asked me to create a simple Python program with specific requirements. I\\'ve created the file with all the requirements:\\n1. Created hello_world.py\\n2. Prints \"Hello, World!\"\\n3. Added greet(name) function\\n4. Added test code at the end\\n\\nLet me verify it runs correctly.\\n'}], 'part': {'id': 'prt_dbe3e32b7001reYfL1z1fZfosq', 'messageID': 'msg_dbe3e201d001a0XWVkFGoo46XV', 'sessionID': 'ses_241c210bcffehARuE1gs1hsVon', 'type': 'reasoning', 'text': 'The user asked me to create a simple Python program with specific requirements. I\\'ve created the file with all the requirements:\\n1. Created hello_world.py\\n2. Prints \"Hello, World!\"\\n3. Added greet(name) function\\n4. Added test code at the end\\n\\nLet me verify it runs correctly.\\n', 'time': {'start': 1777013240503, 'end': 1777013241708}, 'metadata': {'anthropic': {'signature': 'a560a5bc9ab1d1fce6e0f000c71e4174751895b17328924c98eceb4c2fff110f'}}}}, workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "The user asked me to create a simple Python program with specific requirements. I've created the file with all the requirements:\n1. Created hello_world.py\n2. Prints \"Hello, World!\"\n3. Added greet(name) function\n4. Added test code at the end\n\nLet me verify it runs correctly.\n",
+          "reasoning_content": "",
+          "type": "document",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013246107,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "{\"part\": {\"id\": \"prt_dbe3e3807001WRVWg9DqRZ811I\", \"reason\": \"tool-calls\", \"messageID\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"type\": \"step-finish\", \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"cost\": 0}, \"reason\": \"tool-calls\", \"cost\": 0}",
+          "metadata": {
+            "created_at": 1777013241,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "{\"part\": {\"id\": \"prt_dbe3e3807001WRVWg9DqRZ811I\", \"reason\": \"tool-calls\", \"messageID\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"type\": \"step-finish\", \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"cost\": 0}, \"reason\": \"tool-calls\", \"cost\": 0}",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "content",
+            "metadata": "RunContentEvent(created_at=1777013241, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content='{\"part\": {\"id\": \"prt_dbe3e3807001WRVWg9DqRZ811I\", \"reason\": \"tool-calls\", \"messageID\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"type\": \"step-finish\", \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"cost\": 0}, \"reason\": \"tool-calls\", \"cost\": 0}', workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "{\"part\": {\"id\": \"prt_dbe3e3807001WRVWg9DqRZ811I\", \"reason\": \"tool-calls\", \"messageID\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"type\": \"step-finish\", \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"cost\": 0}, \"reason\": \"tool-calls\", \"cost\": 0}",
+          "reasoning_content": "",
+          "type": "content",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "{\"part\": {\"id\": \"prt_dbe3e3807001WRVWg9DqRZ811I\", \"reason\": \"tool-calls\", \"messageID\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"type\": \"step-finish\", \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"cost\": 0}, \"reason\": \"tool-calls\", \"cost\": 0}",
+          "metadata": {
+            "created_at": 1777013241,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "{\"part\": {\"id\": \"prt_dbe3e3807001WRVWg9DqRZ811I\", \"reason\": \"tool-calls\", \"messageID\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"type\": \"step-finish\", \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"cost\": 0}, \"reason\": \"tool-calls\", \"cost\": 0}",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "content",
+            "metadata": "RunContentEvent(created_at=1777013241, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content='{\"part\": {\"id\": \"prt_dbe3e3807001WRVWg9DqRZ811I\", \"reason\": \"tool-calls\", \"messageID\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"type\": \"step-finish\", \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"cost\": 0}, \"reason\": \"tool-calls\", \"cost\": 0}', workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "{\"part\": {\"id\": \"prt_dbe3e3807001WRVWg9DqRZ811I\", \"reason\": \"tool-calls\", \"messageID\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"type\": \"step-finish\", \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"cost\": 0}, \"reason\": \"tool-calls\", \"cost\": 0}",
+          "reasoning_content": "",
+          "type": "content",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013246111,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013235741}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+          "metadata": {
+            "created_at": 1777013241,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013235741}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "content",
+            "metadata": "RunContentEvent(created_at=1777013241, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content='{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013235741}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}', workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013235741}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+          "reasoning_content": "",
+          "type": "content",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013235741}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+          "metadata": {
+            "created_at": 1777013241,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013235741}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "content",
+            "metadata": "RunContentEvent(created_at=1777013241, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content='{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013235741}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}', workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013235741}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+          "reasoning_content": "",
+          "type": "content",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013246114,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013235741, \"completed\": 1777013241866}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+          "metadata": {
+            "created_at": 1777013241,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013235741, \"completed\": 1777013241866}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "content",
+            "metadata": "RunContentEvent(created_at=1777013241, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content='{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013235741, \"completed\": 1777013241866}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}', workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013235741, \"completed\": 1777013241866}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+          "reasoning_content": "",
+          "type": "content",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013235741, \"completed\": 1777013241866}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+          "metadata": {
+            "created_at": 1777013241,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013235741, \"completed\": 1777013241866}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "content",
+            "metadata": "RunContentEvent(created_at=1777013241, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content='{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013235741, \"completed\": 1777013241866}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}', workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "{\"reason\": \"tool-calls\", \"cost\": 0, \"part\": {\"id\": \"msg_dbe3e201d001a0XWVkFGoo46XV\", \"parentID\": \"msg_dbe3df36e001KRPG1VX0NgplDy\", \"role\": \"assistant\", \"mode\": \"general\", \"agent\": \"general\", \"path\": {\"cwd\": \"/home/admin\", \"root\": \"/\"}, \"cost\": 0, \"tokens\": {\"total\": 8991, \"input\": 180, \"output\": 107, \"reasoning\": 0, \"cache\": {\"write\": 0, \"read\": 8704}}, \"modelID\": \"minimax-m2.5-free\", \"providerID\": \"opencode\", \"time\": {\"created\": 1777013235741, \"completed\": 1777013241866}, \"sessionID\": \"ses_241c210bcffehARuE1gs1hsVon\", \"finish\": \"tool-calls\"}}",
+          "reasoning_content": "",
+          "type": "content",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777013246115,
+      "sessionId": "session-mocjs4g6-8af1e3",
+      "streamAgentId": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "document",
+          "delta": "The user asked me to create a simple Python program that:\n1. Creates a file named hello_world.py\n2. Prints \"Hello, World!\"\n3. Adds a greet(name) function that takes a name parameter and returns a greeting\n4. Adds test code at the end to call the function\n\nI've completed all these requirements. The file has been created and tested successfully.\n",
+          "metadata": {
+            "created_at": 1777013245,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "The user asked me to create a simple Python program that:\n1. Creates a file named hello_world.py\n2. Prints \"Hello, World!\"\n3. Adds a greet(name) function that takes a name parameter and returns a greeting\n4. Adds test code at the end to call the function\n\nI've completed all these requirements. The file has been created and tested successfully.\n",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "document",
+            "metadata": "RunContentEvent(created_at=1777013245, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content={'role': 'assistant', 'content': [{'type': 'text', 'text': 'The user asked me to create a simple Python program that:\\n1. Creates a file named hello_world.py\\n2. Prints \"Hello, World!\"\\n3. Adds a greet(name) function that takes a name parameter and returns a greeting\\n4. Adds test code at the end to call the function\\n\\nI\\'ve completed all these requirements. The file has been created and tested successfully.\\n'}], 'part': {'id': 'prt_dbe3e447e001u25AG7wsCJyKsM', 'messageID': 'msg_dbe3e380c001B7JX7tZlQfNDIE', 'sessionID': 'ses_241c210bcffehARuE1gs1hsVon', 'type': 'reasoning', 'text': 'The user asked me to create a simple Python program that:\\n1. Creates a file named hello_world.py\\n2. Prints \"Hello, World!\"\\n3. Adds a greet(name) function that takes a name parameter and returns a greeting\\n4. Adds test code at the end to call the function\\n\\nI\\'ve completed all these requirements. The file has been created and tested successfully.\\n', 'time': {'start': 1777013245054, 'end': 1777013246228}, 'metadata': {'anthropic': {'signature': 'ca0d4b03804c2ce35338cca1ec3fd4b9d20172567bd501a7a73dfabfd8d3fb04'}}}}, workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "The user asked me to create a simple Python program that:\n1. Creates a file named hello_world.py\n2. Prints \"Hello, World!\"\n3. Adds a greet(name) function that takes a name parameter and returns a greeting\n4. Adds test code at the end to call the function\n\nI've completed all these requirements. The file has been created and tested successfully.\n",
+          "reasoning_content": "",
+          "type": "document",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "document",
+          "delta": "The user asked me to create a simple Python program that:\n1. Creates a file named hello_world.py\n2. Prints \"Hello, World!\"\n3. Adds a greet(name) function that takes a name parameter and returns a greeting\n4. Adds test code at the end to call the function\n\nI've completed all these requirements. The file has been created and tested successfully.\n",
+          "metadata": {
+            "created_at": 1777013245,
+            "event": "CustomEvent",
+            "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+            "agent_name": "Orchestrator",
+            "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+            "session_id": "swarm-group-6a343635a9c54819dbe3da90f",
+            "content": "The user asked me to create a simple Python program that:\n1. Creates a file named hello_world.py\n2. Prints \"Hello, World!\"\n3. Adds a greet(name) function that takes a name parameter and returns a greeting\n4. Adds test code at the end to call the function\n\nI've completed all these requirements. The file has been created and tested successfully.\n",
+            "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+            "type": "document",
+            "metadata": "RunContentEvent(created_at=1777013245, event='RunContent', agent_id='swarm-group-6a343635a9c54819dbe3da90f', agent_name='445c7f83-771e-4ee2-8385-77741f55a4ab', run_id='445c7f83-771e-4ee2-8385-77741f55a4ab', parent_run_id=None, session_id='swarm-group-6a343635a9c54819dbe3da90f', workflow_id=None, workflow_run_id=None, step_id=None, step_name=None, step_index=None, tools=None, content={'role': 'assistant', 'content': [{'type': 'text', 'text': 'The user asked me to create a simple Python program that:\\n1. Creates a file named hello_world.py\\n2. Prints \"Hello, World!\"\\n3. Adds a greet(name) function that takes a name parameter and returns a greeting\\n4. Adds test code at the end to call the function\\n\\nI\\'ve completed all these requirements. The file has been created and tested successfully.\\n'}], 'part': {'id': 'prt_dbe3e447e001u25AG7wsCJyKsM', 'messageID': 'msg_dbe3e380c001B7JX7tZlQfNDIE', 'sessionID': 'ses_241c210bcffehARuE1gs1hsVon', 'type': 'reasoning', 'text': 'The user asked me to create a simple Python program that:\\n1. Creates a file named hello_world.py\\n2. Prints \"Hello, World!\"\\n3. Adds a greet(name) function that takes a name parameter and returns a greeting\\n4. Adds test code at the end to call the function\\n\\nI\\'ve completed all these requirements. The file has been created and tested successfully.\\n', 'time': {'start': 1777013245054, 'end': 1777013246228}, 'metadata': {'anthropic': {'signature': 'ca0d4b03804c2ce35338cca1ec3fd4b9d20172567bd501a7a73dfabfd8d3fb04'}}}}, workflow_agent=False, content_type='html', reasoning_content=None, model_provider_data=None, citations=None, response_audio=None, image=None, references=None, additional_input=None, reasoning_steps=None, reasoning_messages=None)"
+          },
+          "event": "CustomEvent",
+          "content": "The user asked me to create a simple Python program that:\n1. Creates a file named hello_world.py\n2. Prints \"Hello, World!\"\n3. Adds a greet(name) function that takes a name parameter and returns a greeting\n4. Adds test code at the end to call the function\n\nI've completed all these requirements. The file has been created and tested successfully.\n",
+          "reasoning_content": "",
+          "type": "document",
+          "run_id": "445c7f83-771e-4ee2-8385-77741f55a4ab",
+          "source": "agent",
+          "agent_id": "orchestrator-c898babb-539d-4745-b874-ff01a425142d",
+          "agent_name": "Orchestrator",
+          "tool_call_id": "call_57bc55ce9d26421c9ec02456",
+          "raw_event": {}
+        }
+      }
+    }
+  ]
+}

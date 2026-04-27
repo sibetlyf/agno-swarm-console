@@ -1,0 +1,4695 @@
+{
+  "sessionId": "session-mogipl2a-adff85",
+  "updatedAt": "2026-04-27T01:30:49.191Z",
+  "events": [
+    {
+      "at": 1777253428164,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "智能",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "智能",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "智能",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "智能",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "智能",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "智能",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428217,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "体",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "体",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "体",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "体",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "体",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "体",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428239,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "专注于",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "专注于",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "专注于",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "专注于",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "专注于",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "专注于",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428284,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "自己的",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "自己的",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "自己的",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "自己的",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "自己的",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "自己的",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428284,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "领域",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "领域",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "领域",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "领域",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "领域",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "领域",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428306,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "3",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "3",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "3",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "3",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "3",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "3",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428325,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "容",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "容",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "容",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "容",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "容",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "容",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428352,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "错",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "错",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "错",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "错",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "错",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "错",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428358,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "性",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "性",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "性",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "性",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "性",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "性",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428383,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "即使",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "即使",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "即使",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "即使",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "即使",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "即使",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428426,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "某个",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "某个",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "某个",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "某个",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "某个",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "某个",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428452,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "任务",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "任务",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "任务",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "任务",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "任务",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "任务",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428491,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "失败",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "失败",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "失败",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "失败",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "失败",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "失败",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428517,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "（",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "（",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "（",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "（",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "（",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "（",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428557,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "如",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "如",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "如",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "如",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "如",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "如",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428557,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "web",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "web",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "web",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "web",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "web",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "web",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428587,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "-search",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "-search",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "-search",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "-search",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "-search",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "-search",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428616,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "er",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "er",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "er",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "er",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "er",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "er",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428645,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "），",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "），",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "），",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "），",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "），",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "），",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428661,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "其他",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "其他",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "其他",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "其他",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "其他",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "其他",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428697,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "仍",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "仍",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "仍",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "仍",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "仍",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "仍",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428820,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "能",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "能",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "能",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "能",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "能",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "能",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428853,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "完成",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "完成",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "完成",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "完成",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "完成",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "完成",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428879,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "4",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "4",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "4",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "4",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "4",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "4",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428879,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "透明",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "透明",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "透明",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "透明",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "透明",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "透明",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428922,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "都",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "都",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "都",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "都",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "都",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "都",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428922,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "清楚",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "清楚",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "清楚",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "清楚",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "清楚",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "清楚",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428958,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "报告",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "报告",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "报告",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "报告",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "报告",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "报告",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253428989,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "执行",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "执行",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "执行",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "执行",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "执行",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "执行",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429016,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "过程",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "过程",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "过程",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "过程",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "过程",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "过程",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429016,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "和",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "和",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "和",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "和",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "和",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "和",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429024,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "结果",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "结果",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "结果",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "结果",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "结果",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "结果",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429062,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "5",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "5",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "5",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "5",
+          "metadata": {
+            "created_at": 1777253428,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "5",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "5",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429062,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": ".",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": ".",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": ".",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": ".",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": ".",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": ".",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429078,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": " **",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": " **",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": " **",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": " **",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": " **",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": " **",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429078,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "协作",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "协作",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "协作",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "协作",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "协作",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "协作",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429078,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "性",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "性",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "性",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "性",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "性",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "性",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429125,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "**",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "**",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "**",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "**",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "**",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "**",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429149,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "：",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "：",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "：",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "：",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "：",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "：",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429172,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "主",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "主",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "主",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "主",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "主",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "主",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429221,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "Agent",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "Agent",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "Agent",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "Agent",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "Agent",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "Agent",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429298,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "负责",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "负责",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "负责",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "负责",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "负责",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "负责",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429306,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "统筹",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "统筹",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "统筹",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "统筹",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "统筹",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "统筹",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429311,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "、",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "、",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "、",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "、",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "、",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "、",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429311,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "分配",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "分配",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "分配",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "分配",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "分配",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "分配",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429372,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "整合",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "整合",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "整合",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "整合",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "整合",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "整合",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429436,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "结果",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "结果",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "结果",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "结果",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "结果",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "结果",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429467,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "\n\n",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "\n\n",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "\n\n",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "\n\n",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "\n\n",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "\n\n",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429475,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "---\n\n",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "---\n\n",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "---\n\n",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "---\n\n",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "---\n\n",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "---\n\n",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429496,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "测试",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "测试",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "测试",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "测试",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "测试",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "测试",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429503,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "结论",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "结论",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "结论",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "结论",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "结论",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "结论",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429543,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "✅",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "✅",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "✅",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "✅",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "✅",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "✅",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429543,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": " 多",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": " 多",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": " 多",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": " 多",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": " 多",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": " 多",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429581,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "智能",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "智能",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "智能",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "智能",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "智能",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "智能",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429605,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "体",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "体",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "体",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "体",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "体",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "体",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429644,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "并发",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "并发",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "并发",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "并发",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "并发",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "并发",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429644,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "调用",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "调用",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "调用",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "调用",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "调用",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "调用",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429670,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "机制",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "机制",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "机制",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "机制",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "机制",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "机制",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429698,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "运行",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "运行",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "运行",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "运行",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "运行",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "运行",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429751,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "正常",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "正常",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "正常",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "正常",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "正常",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "正常",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429775,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "，",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "，",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "，",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "，",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "，",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "，",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429775,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "能够",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "能够",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "能够",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "能够",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "能够",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "能够",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429797,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "高效",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "高效",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "高效",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "高效",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "高效",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "高效",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429797,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "协同",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "协同",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "协同",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "协同",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "协同",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "协同",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429847,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "完成",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "完成",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "完成",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "完成",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "完成",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "完成",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429877,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "复杂",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "复杂",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "复杂",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "复杂",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "复杂",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "复杂",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429878,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "任务",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "任务",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "任务",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "任务",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "任务",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "任务",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253429982,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "！",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "！",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "！",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "content",
+          "delta": "！",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContent",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "content": "！",
+            "workflow_agent": false,
+            "content_type": "str",
+            "reasoning_content": "",
+            "model_provider_data": {
+              "id": "019dcc8f0522b1a23e80cf775294955e"
+            }
+          },
+          "event": "RunContent",
+          "content": "！",
+          "reasoning_content": "",
+          "content_type": "str",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253448403,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "agent_status",
+          "delta": "ModelRequestCompleted",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "ModelRequestCompleted",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "model": "Pro/zai-org/GLM-5",
+            "model_provider": "OpenAI",
+            "input_tokens": 7126947,
+            "output_tokens": 213988,
+            "total_tokens": 7340935,
+            "time_to_first_token": 1.5525397999444976,
+            "reasoning_tokens": 11818,
+            "cache_read_tokens": 6795264,
+            "cache_write_tokens": 0
+          },
+          "event": "ModelRequestCompleted",
+          "reasoning_content": "",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "agent_status",
+          "delta": "ModelRequestCompleted",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "ModelRequestCompleted",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781",
+            "model": "Pro/zai-org/GLM-5",
+            "model_provider": "OpenAI",
+            "input_tokens": 7126947,
+            "output_tokens": 213988,
+            "total_tokens": 7340935,
+            "time_to_first_token": 1.5525397999444976,
+            "reasoning_tokens": 11818,
+            "cache_read_tokens": 6795264,
+            "cache_write_tokens": 0
+          },
+          "event": "ModelRequestCompleted",
+          "reasoning_content": "",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253448403,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "agent_status",
+          "delta": "RunContentCompleted",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContentCompleted",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781"
+          },
+          "event": "RunContentCompleted",
+          "reasoning_content": "",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.stream",
+        "data": {
+          "kind": "agent_status",
+          "delta": "RunContentCompleted",
+          "metadata": {
+            "created_at": 1777253429,
+            "event": "RunContentCompleted",
+            "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+            "agent_name": "Orchestrator",
+            "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+            "session_id": "swarm-group-64abb09a2f596819dcc8cc781"
+          },
+          "event": "RunContentCompleted",
+          "reasoning_content": "",
+          "run_id": "ce742fd3-659f-48c1-a46e-bab304274e4f",
+          "source": "agent",
+          "agent_id": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+          "agent_name": "Orchestrator",
+          "raw_event": {}
+        }
+      }
+    },
+    {
+      "at": 1777253448403,
+      "sessionId": "session-mogipl2a-adff85",
+      "streamAgentId": "orchestrator-c39aa079-834e-48fb-80c5-7c73c25b0ac8",
+      "rawEvent": {
+        "event": "agent.done",
+        "data": {
+          "finishReason": "str"
+        }
+      },
+      "normalizedEvent": {
+        "event": "agent.done",
+        "data": {
+          "finishReason": "str"
+        }
+      }
+    }
+  ]
+}
