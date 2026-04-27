@@ -41,7 +41,6 @@ export async function POST(
     senderId: body.senderId,
     content: body.content,
     contentType: body.contentType ?? "text",
-    reasoningContent: body.reasoningContent,
   });
 
   const memberIds = await store.listGroupMemberIds({ groupId });

@@ -59,6 +59,14 @@ a {
   color: inherit;
 }
 
+.timeline-rich a,
+.chat-feed-bubble a {
+  color: #1d4ed8;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+
 button,
 input,
 textarea {
@@ -69,7 +77,7 @@ textarea {
   height: 100vh;
   width: 100vw;
   display: grid;
-  grid-template-columns: 320px 1fr 420px;
+  grid-template-columns: 320px minmax(0, 1fr) minmax(560px, 40vw);
   min-width: 0;
 }
 
@@ -77,8 +85,57 @@ textarea {
   grid-template-columns: 320px minmax(0, 1fr);
 }
 
+.panel-resizer {
+  position: relative;
+  z-index: 5;
+  user-select: none;
+  touch-action: none;
+}
+
+.panel-resizer.vertical {
+  cursor: col-resize;
+  background: transparent;
+}
+
+.panel-resizer.vertical::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 999px;
+}
+
+.panel-resizer.vertical:hover::before {
+  background: rgba(59, 130, 246, 0.68);
+}
+
+.panel-resizer.horizontal {
+  height: 8px;
+  cursor: row-resize;
+  background: transparent;
+}
+
+.panel-resizer.horizontal::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin-top: 3px;
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 999px;
+}
+
+.panel-resizer.horizontal:hover::before {
+  background: rgba(59, 130, 246, 0.68);
+}
+
 .execution-sidebar {
   border-left-width: 1px;
+  min-width: 560px;
 }
 
 .panel {

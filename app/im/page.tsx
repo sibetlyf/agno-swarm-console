@@ -3,7 +3,6 @@
 import { useSearchParams } from "next/navigation";
 import type { MouseEvent as ReactMouseEvent, PointerEvent as ReactPointerEvent, TouchEvent as ReactTouchEvent } from "react";
 import { Fragment, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { Briefcase, ChevronDown, ChevronLeft, ChevronRight, Code2, Network, User } from "lucide-react";
 import { Streamdown } from "streamdown";
 import { createCodePlugin } from "@streamdown/code";
@@ -21,6 +20,14 @@ const code = createCodePlugin({
 const TIMELINE_DB_NAME = "agno-swarm-console-db";
 const TIMELINE_STORE_NAME = "timeline-snapshots";
 const TIMELINE_DB_VERSION = 1;
+const LEFT_PANEL_MIN_WIDTH = 260;
+const LEFT_PANEL_MAX_WIDTH = 520;
+const RIGHT_PANEL_MIN_WIDTH = 460;
+const RIGHT_PANEL_MAX_WIDTH = 980;
+const CENTER_PANEL_MIN_WIDTH = 520;
+const TASK_FLOW_TOP_MIN_HEIGHT = 120;
+const TASK_FLOW_MIDDLE_MIN_HEIGHT = 220;
+const TASK_FLOW_PREVIEW_MIN_HEIGHT = 180;
 
 type UUID = string;
 
@@ -102,17 +109,117 @@ type RightPanelState = {
   collapsed: boolean;
 };
 
-type ExecutionDrawerTab = "workflow" | "details" | "raw";
+type ArtifactKind = "url" | "file" | "html" | "text";
+
+type ArtifactReference = {
+  id: string;
+  kind: ArtifactKind;
+  label: string;
+  value: string;
+  href: string;
+};
+
+type ArtifactPreviewState = {
+  artifact: ArtifactReference | null;
+  loading: boolean;
+  error: string | null;
+  content: string;
+  contentType: string;
+};
 
 // Streamdown plugins for markdown rendering
 const streamdownPlugins = { code, mermaid };
 
+const WINDOWS_FILE_RE = /(?:^|[\s(])([A-Za-z]:\\[^\s<>"']+?\.(?:html?|md|markdown|txt|json|csv|ts|tsx|js|jsx|py|java|go|rs|css|scss))(?:$|[\s),.!?])/g;
+const UNIX_FILE_RE = /(?:^|[\s(])((?:\.{1,2}\/|\/)[^\s<>"']+?\.(?:html?|md|markdown|txt|json|csv|ts|tsx|js|jsx|py|java|go|rs|css|scss))(?:$|[\s),.!?])/g;
+const BARE_FILE_RE = /(?:^|[\s(])([\w.-]+\.(?:html?|md|markdown|txt|json|csv|ts|tsx|js|jsx|py|java|go|rs|css|scss))(?:$|[\s),.!?])/g;
+const URL_RE = /https?:\/\/[^\s<>"')\]]+/g;
+
+function artifactKindFromValue(value: string): ArtifactKind {
+  if (/^https?:\/\//i.test(value)) return "url";
+  if (/\.html?$/i.test(value)) return "html";
+  if (/\.(md|markdown|txt|json|csv)$/i.test(value)) return "text";
+  return "file";
+}
+
+function buildArtifactHref(kind: ArtifactKind, value: string): string {
+  return `artifact://open?kind=${encodeURIComponent(kind)}&value=${encodeURIComponent(value)}`;
+}
+
+function makeArtifactReference(value: string): ArtifactReference {
+  const trimmed = value.trim();
+  const kind = artifactKindFromValue(trimmed);
+  return {
+    id: `${kind}:${trimmed}`,
+    kind,
+    label: trimmed,
+    value: trimmed,
+    href: buildArtifactHref(kind, trimmed),
+  };
+}
+
+function detectArtifactReferences(content: string): ArtifactReference[] {
+  if (!content) return [];
+  const values = new Set<string>();
+  for (const match of content.matchAll(URL_RE)) {
+    if (match[0]) values.add(match[0]);
+  }
+  for (const match of content.matchAll(WINDOWS_FILE_RE)) {
+    if (match[1]) values.add(match[1]);
+  }
+  for (const match of content.matchAll(UNIX_FILE_RE)) {
+    if (match[1]) values.add(match[1]);
+  }
+  for (const match of content.matchAll(BARE_FILE_RE)) {
+    if (match[1]) values.add(match[1]);
+  }
+  return [...values].map(makeArtifactReference);
+}
+
+function escapeMarkdownLabel(value: string): string {
+  return value.replace(/[\\\[\]()]/g, "\\$&");
+}
+
+function enrichMarkdownArtifacts(content: string): string {
+  if (!content) return content;
+  const replaceUrl = (urlValue: string) => `[${escapeMarkdownLabel(urlValue)}](${buildArtifactHref("url", urlValue)})`;
+  const replaceFilePath = (raw: string, pathValue: string) => raw.replace(pathValue, `[${escapeMarkdownLabel(pathValue)}](${buildArtifactHref(artifactKindFromValue(pathValue), pathValue)})`);
+  let next = content.replace(URL_RE, (urlValue: string) => replaceUrl(urlValue));
+  next = next.replace(WINDOWS_FILE_RE, (full, pathValue: string) => replaceFilePath(full, pathValue));
+  next = next.replace(UNIX_FILE_RE, (full, pathValue: string) => replaceFilePath(full, pathValue));
+  next = next.replace(BARE_FILE_RE, (full, pathValue: string) => replaceFilePath(full, pathValue));
+  return next;
+}
+
+function parseArtifactHref(href: string): ArtifactReference | null {
+  if (!href) return null;
+  if (href.startsWith("artifact://open?")) {
+    const params = new URLSearchParams(href.slice("artifact://open?".length));
+    const kind = params.get("kind");
+    const value = params.get("value");
+    if (!value) return null;
+    return makeArtifactReference(value);
+  }
+  if (/^https?:\/\//i.test(href)) return makeArtifactReference(href);
+  return null;
+}
+
 // Helper component for rendering markdown content
-function MarkdownContent({ content, className = "" }: { content: string; className?: string }) {
+function MarkdownContent({ content, className = "", onArtifactClick }: { content: string; className?: string; onArtifactClick?: (artifact: ArtifactReference) => void }) {
   if (!content) return <span className="muted">—</span>;
   return (
-    <div className={className}>
-      <Streamdown plugins={streamdownPlugins}>{content}</Streamdown>
+    <div
+      className={className}
+      onClick={(event) => {
+        const anchor = (event.target as HTMLElement | null)?.closest("a") as HTMLAnchorElement | null;
+        if (!anchor) return;
+        const artifact = parseArtifactHref(anchor.getAttribute("href") || anchor.href || "");
+        if (!artifact) return;
+        event.preventDefault();
+        onArtifactClick?.(artifact);
+      }}
+    >
+      <Streamdown plugins={streamdownPlugins}>{enrichMarkdownArtifacts(content)}</Streamdown>
     </div>
   );
 }
@@ -145,12 +252,62 @@ function sanitizeHtml(content: string): string {
   return template.innerHTML;
 }
 
-function RichContent({ content, className = "" }: { content: string; className?: string }) {
+function RichContent({ content, className = "", onArtifactClick }: { content: string; className?: string; onArtifactClick?: (artifact: ArtifactReference) => void }) {
   if (!content) return <span className="muted">—</span>;
+  const artifacts = detectArtifactReferences(content);
   if (looksLikeHtml(content)) {
-    return <div className={className} dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }} />;
+    return (
+      <div style={{ display: "grid", gap: 8 }}>
+        <div
+          className={className}
+          onClick={(event) => {
+            const anchor = (event.target as HTMLElement | null)?.closest("a") as HTMLAnchorElement | null;
+            if (!anchor) return;
+            const artifact = parseArtifactHref(anchor.getAttribute("href") || anchor.href || "");
+            if (!artifact) return;
+            event.preventDefault();
+            onArtifactClick?.(artifact);
+          }}
+          dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }}
+        />
+        {artifacts.length > 0 ? (
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            {artifacts.map((artifact) => (
+              <button
+                key={artifact.id}
+                type="button"
+                className="btn"
+                style={{ padding: "3px 8px", fontSize: 12, textDecoration: "underline", textUnderlineOffset: 3 }}
+                onClick={() => onArtifactClick?.(artifact)}
+              >
+                {artifact.label}
+              </button>
+            ))}
+          </div>
+        ) : null}
+      </div>
+    );
   }
-  return <MarkdownContent content={content} className={className} />;
+  return (
+    <div style={{ display: "grid", gap: 8 }}>
+      <MarkdownContent content={content} className={className} onArtifactClick={onArtifactClick} />
+      {artifacts.length > 0 ? (
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {artifacts.map((artifact) => (
+            <button
+              key={artifact.id}
+              type="button"
+              className="btn"
+              style={{ padding: "3px 8px", fontSize: 12, textDecoration: "underline", textUnderlineOffset: 3, color: "#1d4ed8" }}
+              onClick={() => onArtifactClick?.(artifact)}
+            >
+              {artifact.label}
+            </button>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 function formatDebugValue(value: unknown): string {
@@ -661,6 +818,7 @@ type SourceRenderState = {
   reasoning: string;
   toolItems: StreamTimelineItem[];
   timelineItems: StreamTimelineItem[];
+  firstAt: number;
   lastAt: number;
 };
 
@@ -1411,9 +1569,18 @@ function IMPageInner() {
   const [vizDebug, setVizDebug] = useState<VizDebugEntry[]>([]);
   const [vizEventsCollapsed, setVizEventsCollapsed] = useState(false);
   const [showExecutionDrawer, setShowExecutionDrawer] = useState(false);
-  const [executionDrawerTab, setExecutionDrawerTab] = useState<ExecutionDrawerTab>("workflow");
   const [selectedFeedItemId, setSelectedFeedItemId] = useState<string | null>(null);
   const [selectedWorkflowNodeId, setSelectedWorkflowNodeId] = useState<string | null>(null);
+  const [leftPanelWidth, setLeftPanelWidth] = useState(320);
+  const [rightPanelWidth, setRightPanelWidth] = useState(640);
+  const [taskFlowSectionHeights, setTaskFlowSectionHeights] = useState({ top: 180, preview: 260 });
+  const [artifactPreview, setArtifactPreview] = useState<ArtifactPreviewState>({
+    artifact: null,
+    loading: false,
+    error: null,
+    content: "",
+    contentType: "",
+  });
   const [turnWorkflow, setTurnWorkflow] = useState<TurnWorkflowSnapshot>({
     runId: null,
     nodes: [],
@@ -1468,6 +1635,8 @@ function IMPageInner() {
   const vizRef = useRef<HTMLDivElement | null>(null);
   const timelineScrollRef = useRef<HTMLDivElement | null>(null);
   const midStackRef = useRef<HTMLDivElement | null>(null);
+  const taskFlowLayoutRef = useRef<HTMLDivElement | null>(null);
+  const taskFlowCanvasScrollRef = useRef<HTMLDivElement | null>(null);
   const midChatHeightRef = useRef(0);
   const nodeOffsetsRef = useRef<Record<string, { x: number; y: number }>>({});
   const groupsRef = useRef<Group[]>([]);
@@ -1655,6 +1824,83 @@ function IMPageInner() {
     return vizAgents.find((a) => a.id === selectedAgentId)?.role ?? selectedAgentId.slice(0, 8);
   }, [selectedAgentId, vizAgents]);
 
+  const startColumnResize = useCallback((edge: "left" | "right", event: ReactPointerEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    const onMove = (moveEvent: PointerEvent) => {
+      const viewportWidth = window.innerWidth;
+      if (edge === "left") {
+        const max = Math.min(LEFT_PANEL_MAX_WIDTH, viewportWidth - (showExecutionDrawer ? rightPanelWidth : 0) - CENTER_PANEL_MIN_WIDTH);
+        const next = Math.min(Math.max(moveEvent.clientX, LEFT_PANEL_MIN_WIDTH), Math.max(LEFT_PANEL_MIN_WIDTH, max));
+        setLeftPanelWidth(next);
+        return;
+      }
+      const max = Math.min(RIGHT_PANEL_MAX_WIDTH, viewportWidth - leftPanelWidth - CENTER_PANEL_MIN_WIDTH);
+      const next = Math.min(Math.max(viewportWidth - moveEvent.clientX, RIGHT_PANEL_MIN_WIDTH), Math.max(RIGHT_PANEL_MIN_WIDTH, max));
+      setRightPanelWidth(next);
+    };
+    const onUp = () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+    };
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+  }, [leftPanelWidth, rightPanelWidth, showExecutionDrawer]);
+
+  const startTaskFlowRowResize = useCallback((edge: "top" | "bottom", event: ReactPointerEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    const container = taskFlowLayoutRef.current;
+    if (!container) return;
+    const rect = container.getBoundingClientRect();
+    const startTop = taskFlowSectionHeights.top;
+    const startPreview = taskFlowSectionHeights.preview;
+
+    const onMove = (moveEvent: PointerEvent) => {
+      const y = moveEvent.clientY - rect.top;
+      if (edge === "top") {
+        const maxTop = rect.height - TASK_FLOW_MIDDLE_MIN_HEIGHT - taskFlowSectionHeights.preview - 16;
+        const nextTop = Math.min(Math.max(y, TASK_FLOW_TOP_MIN_HEIGHT), Math.max(TASK_FLOW_TOP_MIN_HEIGHT, maxTop));
+        setTaskFlowSectionHeights((prev) => ({ ...prev, top: nextTop }));
+        return;
+      }
+      const previewHeight = Math.max(TASK_FLOW_PREVIEW_MIN_HEIGHT, rect.bottom - moveEvent.clientY);
+      const maxPreview = rect.height - startTop - TASK_FLOW_MIDDLE_MIN_HEIGHT - 16;
+      const nextPreview = Math.min(previewHeight, Math.max(TASK_FLOW_PREVIEW_MIN_HEIGHT, maxPreview));
+      setTaskFlowSectionHeights((prev) => ({ ...prev, preview: nextPreview }));
+    };
+
+    const onUp = () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+    };
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+  }, [taskFlowSectionHeights.preview, taskFlowSectionHeights.top]);
+
+  const startTaskFlowCanvasPan = useCallback((event: ReactPointerEvent<HTMLDivElement>) => {
+    const container = taskFlowCanvasScrollRef.current;
+    if (!container) return;
+    event.preventDefault();
+    const startX = event.clientX;
+    const startY = event.clientY;
+    const startLeft = container.scrollLeft;
+    const startTop = container.scrollTop;
+
+    const onMove = (moveEvent: PointerEvent) => {
+      container.scrollLeft = startLeft - (moveEvent.clientX - startX);
+      container.scrollTop = startTop - (moveEvent.clientY - startY);
+    };
+
+    const onUp = () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      document.body.style.cursor = "";
+    };
+
+    document.body.style.cursor = "grabbing";
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+  }, []);
+
   useEffect(() => {
     if (!activeGraphCardAgentId) return;
     const exists = vizAgents.some((agent) => agent.id === activeGraphCardAgentId);
@@ -1665,29 +1911,29 @@ function IMPageInner() {
     const seq = timelineCounterRef.current++;
     const id = `${input.mergeKey}-${seq}`;
     setStreamTimeline((prev) => {
-      const last = prev[prev.length - 1];
-      if (
-        last &&
-        last.mergeKey === input.mergeKey &&
-        last.lane === input.lane &&
-        last.sourceTag === input.sourceTag
-      ) {
+      const existingIndex = prev.findIndex(
+        (entry) => entry.mergeKey === input.mergeKey && entry.lane === input.lane && entry.sourceTag === input.sourceTag
+      );
+      if (existingIndex >= 0) {
+        const existing = prev[existingIndex]!;
         const merged: StreamTimelineItem = {
-          ...last,
-          at: last.at,
-          title: input.title || last.title,
-          text: `${last.text ?? ""}${input.text ?? ""}`,
-          status: input.status ?? last.status,
-          toolName: input.toolName ?? last.toolName,
-          toolCallId: input.toolCallId ?? last.toolCallId,
-          outerToolCallId: input.outerToolCallId ?? last.outerToolCallId,
-          args: input.args ?? last.args,
-          result: input.result ?? last.result,
-          rawEvent: input.rawEvent ?? last.rawEvent,
-          metrics: input.metrics ?? last.metrics,
-          eventName: input.eventName ?? last.eventName,
+          ...existing,
+          at: Math.min(existing.at, input.at),
+          title: input.title || existing.title,
+          text: `${existing.text ?? ""}${input.text ?? ""}`,
+          status: input.status ?? existing.status,
+          toolName: input.toolName ?? existing.toolName,
+          toolCallId: input.toolCallId ?? existing.toolCallId,
+          outerToolCallId: input.outerToolCallId ?? existing.outerToolCallId,
+          args: input.args ?? existing.args,
+          result: input.result ?? existing.result,
+          rawEvent: input.rawEvent ?? existing.rawEvent,
+          metrics: input.metrics ?? existing.metrics,
+          eventName: input.eventName ?? existing.eventName,
         };
-        return [...prev.slice(0, -1), merged].slice(-800);
+        const next = [...prev];
+        next[existingIndex] = merged;
+        return next.slice(-800);
       }
       return [...prev, { ...input, id, seq }].slice(-800);
     });
@@ -2489,6 +2735,12 @@ function IMPageInner() {
     return merged.filter((item) => item.agentId === selectedAgentId || (!!humanId && item.agentId === humanId));
   }, [agentRoleById, messages, selectedAgentId, session?.humanAgentId, streamTimeline]);
 
+  const timelineItemById = useMemo(() => {
+    const map = new Map<string, StreamTimelineItem>();
+    filteredTimelineItems.forEach((item) => map.set(item.id, item));
+    return map;
+  }, [filteredTimelineItems]);
+
   const sourceRenderStates = useMemo<SourceRenderState[]>(() => {
     const grouped = new Map<string, StreamTimelineItem[]>();
     for (const item of filteredTimelineItems) {
@@ -2517,11 +2769,12 @@ function IMPageInner() {
         reasoning: reasoningBySourceRef.current.get(sourceKey) ?? "",
         toolItems: timelineItems.filter((entry) => entry.lane === "tool_call" || entry.lane === "tool_result"),
         timelineItems,
+        firstAt: timelineItems[0]?.at ?? latest?.at ?? Date.now(),
         lastAt: latest?.at ?? Date.now(),
       });
     }
 
-    return states.sort((a, b) => a.lastAt - b.lastAt);
+    return states.sort((a, b) => a.firstAt - b.firstAt);
   }, [filteredTimelineItems]);
 
   const chatFeedItems = useMemo<ChatFeedItem[]>(() => {
@@ -2558,13 +2811,13 @@ function IMPageInner() {
           compactLabel: `子代理任务｜${state.title}`,
           preview:
             toolCount > 0
-              ? `已记录 ${toolCount} 个工具调用，点击查看子代理执行详情`
+              ? `已记录 ${toolCount} 个工具调用，点击查看任务流`
               : state.content.trim()
-                ? "已生成子代理结果，点击查看详情"
+                ? "已生成子代理结果，点击查看任务流"
                 : state.reasoning.trim()
-                  ? "子代理正在思考，点击查看详情"
-                  : "点击查看子代理执行详情",
-          at: state.lastAt,
+                  ? "子代理正在思考，点击查看任务流"
+                  : "点击查看任务流",
+          at: state.firstAt,
           sourceTag: state.sourceTag,
           agentId: state.agentId,
           rawEvent: state.timelineItems[state.timelineItems.length - 1]?.rawEvent,
@@ -2573,13 +2826,13 @@ function IMPageInner() {
         continue;
       }
 
-      if (state.content.trim()) {
+      if (!state.isSubagent && state.content.trim()) {
         items.push({
           id: `feed-assistant-${state.sourceKey}`,
           kind: "assistant",
           title: state.title,
           content: state.content,
-          at: state.lastAt,
+          at: state.firstAt,
           sourceTag: state.sourceTag,
           agentId: state.agentId,
           rawEvent: state.timelineItems[state.timelineItems.length - 1]?.rawEvent,
@@ -2587,14 +2840,14 @@ function IMPageInner() {
         });
       }
 
-      if (state.reasoning.trim() && !state.content.trim()) {
+      if (!state.isSubagent && state.reasoning.trim()) {
         items.push({
           id: `feed-reasoning-${state.sourceKey}`,
           kind: "compact",
           title: state.title,
           compactLabel: "深度思考",
           preview: "点击查看完整思考过程",
-          at: state.lastAt,
+          at: state.firstAt,
           sourceTag: state.sourceTag,
           agentId: state.agentId,
           rawEvent: state.timelineItems.find((entry) => entry.lane === "reasoning")?.rawEvent,
@@ -2602,7 +2855,7 @@ function IMPageInner() {
         });
       }
 
-      if (lastToolItem && !state.content.trim()) {
+      if (!state.isSubagent && lastToolItem) {
         items.push({
           id: `feed-tool-${state.sourceKey}-${lastToolItem.toolCallId ?? lastToolItem.id}`,
           kind: "compact",
@@ -2641,6 +2894,49 @@ function IMPageInner() {
       return false;
     });
   }, [filteredTimelineItems, selectedFeedItem]);
+
+  const taskFlowStates = useMemo(() => sourceRenderStates.filter((state) => state.isSubagent), [sourceRenderStates]);
+
+  const selectedTaskFlowState = useMemo(() => {
+    if (selectedFeedItemId) {
+      const matched = taskFlowStates.find((state) => `feed-subagent-${state.sourceKey}` === selectedFeedItemId);
+      if (matched) return matched;
+    }
+    return taskFlowStates[0] ?? null;
+  }, [selectedFeedItemId, taskFlowStates]);
+
+  const openArtifactPreview = useCallback(async (artifact: ArtifactReference) => {
+    setShowExecutionDrawer(true);
+    setArtifactPreview({ artifact, loading: artifact.kind !== "url", error: null, content: "", contentType: "" });
+
+    if (artifact.kind === "url") {
+      setArtifactPreview({ artifact, loading: false, error: null, content: artifact.value, contentType: "url" });
+      return;
+    }
+
+    try {
+      const res = await fetch(withBackendOrigin(`/api/file-preview?path=${encodeURIComponent(artifact.value)}`), { cache: "no-store" });
+      const payload = (await res.json()) as { ok?: boolean; content?: string; contentType?: string; error?: string };
+      if (!res.ok || !payload.ok) {
+        throw new Error(payload.error || "Failed to preview artifact");
+      }
+      setArtifactPreview({
+        artifact,
+        loading: false,
+        error: null,
+        content: payload.content || "",
+        contentType: payload.contentType || "text/plain",
+      });
+    } catch (error) {
+      setArtifactPreview({
+        artifact,
+        loading: false,
+        error: error instanceof Error ? error.message : String(error),
+        content: "",
+        contentType: "",
+      });
+    }
+  }, []);
 
   const appendContentFromSource = useCallback(
     (sourceTag: string | undefined, text: string, outerToolCallId?: string) => {
@@ -2928,14 +3224,8 @@ function IMPageInner() {
               normalized.kind === "citation" ||
               normalized.kind === "document"
             ) {
-              const prefix =
-                normalized.kind === "citation"
-                  ? "\n\n[引用]\n"
-                  : normalized.kind === "document"
-                    ? "\n\n[文档]\n"
-                    : "";
               const sanitized = sanitizeDisplayChunk(chunk);
-              appendContentFromSource(normalized.sourceTag, `${prefix}${sanitized}`, outerToolCallId);
+              appendContentFromSource(normalized.sourceTag, sanitized, outerToolCallId);
               if (sanitized) {
                 appendTimelineItem({
                   mergeKey: `${segmentKey}:content`,
@@ -2946,7 +3236,7 @@ function IMPageInner() {
                   outerToolCallId,
                   eventName: streamEvent,
                   title: normalized.sourceTag || "[agent]",
-                  text: `${prefix}${sanitized}`,
+                  text: sanitized,
                 });
                 const lastReasonSeq = lastReasoningSeqRef.current;
                 if (lastReasonSeq != null) {
@@ -4362,6 +4652,14 @@ function IMPageInner() {
     [selectedWorkflowNode]
   );
 
+  const workflowFocusedItems = useMemo(() => {
+    const selectedTaskItems = selectedTaskFlowState?.timelineItems ?? [];
+    if (selectedWorkflowNode) {
+      return selectedTaskItems.filter((item) => isTimelineItemRelatedToSelectedNode(item));
+    }
+    return selectedTaskItems;
+  }, [isTimelineItemRelatedToSelectedNode, selectedTaskFlowState, selectedWorkflowNode]);
+
   useEffect(() => {
     if (!selectedWorkflowNodeId) return;
     const exists = turnWorkflow.nodes.some((node) => node.id === selectedWorkflowNodeId);
@@ -4572,6 +4870,9 @@ function IMPageInner() {
 
   return (
     <IMShell
+      leftWidth={leftPanelWidth}
+      rightWidth={rightPanelWidth}
+      onStartResize={startColumnResize}
       left={
         <CapabilityRail
           headerTitle={session ? "Swarm Overview" : "Workspace"}
@@ -4862,7 +5163,6 @@ function IMPageInner() {
                   className="btn"
                   style={{ padding: "2px 8px", fontSize: 12 }}
                   onClick={() => {
-                    setExecutionDrawerTab("workflow");
                     setShowExecutionDrawer(true);
                   }}
                 >
@@ -4886,9 +5186,33 @@ function IMPageInner() {
                               <span>{item.title}</span>
                               <span className="mono">{new Date(item.at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</span>
                             </div>
-                            <RichContent content={item.content || ""} className="timeline-rich" />
+                            <RichContent content={item.content || ""} className="timeline-rich" onArtifactClick={openArtifactPreview} />
                           </article>
                         </div>
+                      );
+                    }
+
+                    const isSubagentCompact = item.compactLabel?.startsWith("子代理任务") ?? false;
+                    if (!isSubagentCompact) {
+                      const linkedItems = item.linkedTimelineIds
+                        .map((id) => timelineItemById.get(id))
+                        .filter((entry): entry is StreamTimelineItem => !!entry);
+                      const visibleItems = item.compactLabel?.startsWith("深度思考")
+                        ? linkedItems.filter((entry) => entry.lane === "reasoning")
+                        : item.compactLabel?.startsWith("工具调用")
+                          ? linkedItems.filter((entry) => entry.lane === "tool_call" || entry.lane === "tool_result")
+                          : linkedItems;
+
+                      return (
+                        <article key={item.id} className="chat-feed-bubble assistant" style={{ alignSelf: "stretch" }}>
+                          <div className="chat-feed-meta">
+                            <span>{item.compactLabel || item.title}</span>
+                            <span className="mono">{new Date(item.at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</span>
+                          </div>
+                          <div style={{ display: "grid", gap: 10 }}>
+                            {visibleItems.length === 0 ? <span className="muted">—</span> : visibleItems.map((entry) => <TimelineItemView key={`main-detail-${entry.id}`} item={entry} collapseReasoning={false} />)}
+                          </div>
+                        </article>
                       );
                     }
 
@@ -4899,7 +5223,6 @@ function IMPageInner() {
                         className="chat-feed-compact"
                         onClick={() => {
                           setSelectedFeedItemId(item.id);
-                          setExecutionDrawerTab(item.compactLabel?.startsWith("子代理任务") ? "details" : item.compactLabel?.startsWith("工具调用") ? "details" : "raw");
                           setShowExecutionDrawer(true);
                         }}
                       >
@@ -4916,133 +5239,6 @@ function IMPageInner() {
                 )}
               </div>
             </div>
-
-
-            <AnimatePresence>
-              {false && showExecutionDrawer && (
-                <motion.aside
-                  initial={{ opacity: 0, x: 24 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 24 }}
-                  transition={{ duration: 0.18 }}
-                  className="execution-drawer"
-                  style={{
-                    position: "absolute",
-                    top: 12,
-                    right: 12,
-                    bottom: 12,
-                    width: "min(820px, calc(100vw - 24px))",
-                    background: "rgba(255,255,255,0.98)",
-                    border: "1px solid var(--line-soft)",
-                    borderRadius: 18,
-                    boxShadow: "0 24px 50px rgba(15,23,42,0.18)",
-                    display: "flex",
-                    flexDirection: "column",
-                    overflow: "hidden",
-                    zIndex: 140,
-                  }}
-                >
-                  <div className="header" style={{ minHeight: 56, padding: "10px 14px", gap: 12 }}>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                      <div className="eyebrow">Execution Center</div>
-                      <div className="section-title" style={{ fontSize: 18, margin: 0 }}>任务流 / 详情 / 原始事件</div>
-                    </div>
-                    <div style={{ flex: 1 }} />
-                    {(["workflow", "details", "raw"] as ExecutionDrawerTab[]).map((tab) => (
-                      <button
-                        key={tab}
-                        className="btn"
-                        style={{
-                          padding: "4px 10px",
-                          fontSize: 12,
-                          background: executionDrawerTab === tab ? "rgba(59,130,246,0.12)" : "var(--surface-1)",
-                          borderColor: executionDrawerTab === tab ? "rgba(59,130,246,0.32)" : "var(--line-strong)",
-                          color: executionDrawerTab === tab ? "#1d4ed8" : "var(--text-soft)",
-                        }}
-                        onClick={() => setExecutionDrawerTab(tab)}
-                      >
-                        {tab === "workflow" ? "任务流" : tab === "details" ? "执行详情" : "原始事件"}
-                      </button>
-                    ))}
-                    <button className="btn" style={{ padding: "4px 10px", fontSize: 12 }} onClick={() => setShowExecutionDrawer(false)}>关闭</button>
-                  </div>
-
-                  <div style={{ flex: 1, minHeight: 0, overflow: "hidden", background: "linear-gradient(180deg,#f8fafc 0%, #f1f5f9 100%)" }}>
-                    {executionDrawerTab === "workflow" ? (
-                      <div style={{ height: "100%", display: "grid", gridTemplateColumns: "1fr 320px" }}>
-                        <div style={{ overflow: "auto", padding: 12, borderRight: "1px solid var(--line-soft)" }}>
-                          <svg width={turnWorkflowCanvas.width} height={turnWorkflowCanvas.height} style={{ display: "block" }}>
-                            <text x={turnWorkflowCanvas.laneX.run} y={28} fontSize="11" fill="#64748b" className="mono">TURN</text>
-                            <text x={turnWorkflowCanvas.laneX.agent} y={28} fontSize="11" fill="#64748b" className="mono">AGENTS</text>
-                            <text x={turnWorkflowCanvas.laneX.tool} y={28} fontSize="11" fill="#64748b" className="mono">TOOLS</text>
-                            {turnWorkflowCanvas.laneBands.map((lane, idx) => (
-                              <g key={`drawer-lane-${lane.id}`}>
-                                <rect x={250} y={lane.y} width={560} height={lane.height} rx={12} fill={idx % 2 === 0 ? "rgba(148,163,184,0.08)" : "rgba(148,163,184,0.04)"} stroke="rgba(148,163,184,0.14)" strokeWidth={1} />
-                                <text x={258} y={lane.y + 16} fontSize="10" fill="#64748b" className="mono">{lane.label}</text>
-                              </g>
-                            ))}
-                            {turnWorkflow.edges.map((edge) => {
-                              const from = turnWorkflowCanvas.positions.get(edge.from);
-                              const to = turnWorkflowCanvas.positions.get(edge.to);
-                              if (!from || !to) return null;
-                              const fromNode = workflowNodeById.get(edge.from);
-                              const toNode = workflowNodeById.get(edge.to);
-                              const isErrorPath = fromNode?.status === "error" || toNode?.status === "error";
-                              const color = isErrorPath ? "#ef4444" : edge.kind === "invoke" ? "#3b82f6" : "#94a3b8";
-                              return <path key={`drawer-${edge.id}`} d={`M ${from.x + 92} ${from.y + 20} C ${from.x + 176} ${from.y + 20}, ${to.x - 30} ${to.y + 20}, ${to.x} ${to.y + 20}`} stroke={color} strokeWidth={isErrorPath ? 2.1 : 1.5} fill="none" strokeDasharray={edge.kind === "spawn" ? "6 6" : "0"} />;
-                            })}
-                            {turnWorkflow.nodes.map((node) => {
-                              const pos = turnWorkflowCanvas.positions.get(node.id);
-                              if (!pos) return null;
-                              const tone = node.status === "error" ? { bg: "#fee2e2", border: "#ef4444", fg: "#991b1b" } : node.status === "completed" ? { bg: "#dcfce7", border: "#22c55e", fg: "#166534" } : node.status === "running" ? { bg: "#dbeafe", border: "#3b82f6", fg: "#1d4ed8" } : { bg: "#e2e8f0", border: "#94a3b8", fg: "#334155" };
-                              return (
-                                <g key={`drawer-node-${node.id}`} onClick={() => setSelectedWorkflowNodeId(node.id)} style={{ cursor: "pointer" }}>
-                                  <rect x={pos.x} y={pos.y} width={184} height={56} rx={12} fill={tone.bg} stroke={selectedWorkflowNodeId === node.id ? "#0f172a" : tone.border} strokeWidth={selectedWorkflowNodeId === node.id ? 2 : 1.2} />
-                                  <text x={pos.x + 10} y={pos.y + 20} fontSize="11" fill="#334155" style={{ fontWeight: 700 }}>{node.type.toUpperCase()}</text>
-                                  <text x={pos.x + 10} y={pos.y + 36} fontSize="12" fill="#0f172a" style={{ fontWeight: 700 }}>{node.label.slice(0, 22)}</text>
-                                  <text x={pos.x + 10} y={pos.y + 50} fontSize="10" fill={tone.fg}>{node.status}</text>
-                                </g>
-                              );
-                            })}
-                          </svg>
-                        </div>
-                        <aside style={{ padding: 12, overflow: "auto", background: "rgba(255,255,255,0.9)" }}>
-                          {(() => {
-                            const node = selectedWorkflowNode;
-                            if (!node) return <div className="muted">点击节点查看任务流详情。</div>;
-                            const selectedNode = node;
-                            return (
-                              <div style={{ display: "grid", gap: 8 }}>
-                                <div className="card"><div className="card-body"><div style={{ fontWeight: 700 }}>{selectedNode!.label}</div><div className="mono muted" style={{ fontSize: 11, marginTop: 4 }}>{selectedNode!.type} · {selectedNode!.status}</div></div></div>
-                                {selectedNode!.detail ? <div className="card"><div className="card-body">{selectedNode!.detail}</div></div> : null}
-                                <details className="card"><summary className="card-title">Raw Event / RawData</summary><div className="card-body"><pre className="mono" style={{ margin: 0, whiteSpace: "pre-wrap", wordBreak: "break-word" }}>{formatDebugValue(selectedNode!.rawPayload ?? "-")}</pre></div></details>
-                              </div>
-                            );
-                          })()}
-                        </aside>
-                      </div>
-                    ) : executionDrawerTab === "details" ? (
-                      <div style={{ height: "100%", overflow: "auto", padding: 14, display: "grid", gap: 12 }}>
-                        {selectedExecutionItems.length === 0 ? <span className="muted">—</span> : selectedExecutionItems.map((item) => <TimelineItemView key={`drawer-item-${item.id}`} item={item} collapseReasoning={false} />)}
-                      </div>
-                    ) : (
-                      <div style={{ height: "100%", overflow: "auto", padding: 14, display: "grid", gap: 12 }}>
-                        <div className="card">
-                          <div className="card-title">Selected Feed Item</div>
-                          <div className="card-body"><pre className="mono" style={{ margin: 0, whiteSpace: "pre-wrap", wordBreak: "break-word" }}>{formatDebugValue(selectedFeedItem ?? "-")}</pre></div>
-                        </div>
-                        {selectedExecutionItems.map((item) => (
-                          <details key={`raw-${item.id}`} className="card">
-                            <summary className="card-title">{item.title} · {item.eventName ?? item.lane}</summary>
-                            <div className="card-body"><pre className="mono" style={{ margin: 0, whiteSpace: "pre-wrap", wordBreak: "break-word" }}>{formatDebugValue({ rawEvent: item.rawEvent, args: item.args, result: item.result, metrics: item.metrics })}</pre></div>
-                          </details>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </motion.aside>
-              )}
-            </AnimatePresence>
           </div>
 
           {error ? <div className="toast">{error}</div> : null}
@@ -5091,33 +5287,102 @@ function IMPageInner() {
           <div className="header" style={{ minHeight: 56, padding: "10px 14px", gap: 12 }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
               <div className="eyebrow">Execution Center</div>
-              <div className="section-title" style={{ fontSize: 18, margin: 0 }}>任务流 / 详情 / 原始事件</div>
+              <div className="section-title" style={{ fontSize: 18, margin: 0 }}>任务流</div>
             </div>
             <div style={{ flex: 1 }} />
-            {(["workflow", "details", "raw"] as ExecutionDrawerTab[]).map((tab) => (
-              <button
-                key={tab}
-                className="btn"
-                style={{
-                  padding: "4px 10px",
-                  fontSize: 12,
-                  background: executionDrawerTab === tab ? "rgba(59,130,246,0.12)" : "var(--surface-1)",
-                  borderColor: executionDrawerTab === tab ? "rgba(59,130,246,0.32)" : "var(--line-strong)",
-                  color: executionDrawerTab === tab ? "#1d4ed8" : "var(--text-soft)",
-                }}
-                onClick={() => setExecutionDrawerTab(tab)}
-              >
-                {tab === "workflow" ? "任务流" : tab === "details" ? "执行详情" : "原始事件"}
-              </button>
-            ))}
+            <span className="pill mono">tasks {taskFlowStates.length}</span>
             <button className="btn" style={{ padding: "4px 10px", fontSize: 12 }} onClick={() => setShowExecutionDrawer(false)}>关闭</button>
           </div>
 
           <div style={{ flex: 1, minHeight: 0, overflow: "hidden", background: "linear-gradient(180deg,#f8fafc 0%, #f1f5f9 100%)" }}>
-            {executionDrawerTab === "workflow" ? (
-              <div style={{ height: "100%", display: "grid", gridTemplateRows: "1fr auto" }}>
-                <div style={{ overflow: "auto", padding: 12 }}>
-                  <svg width={turnWorkflowCanvas.width} height={turnWorkflowCanvas.height} style={{ display: "block" }}>
+            <div
+              ref={taskFlowLayoutRef}
+              style={{
+                height: "100%",
+                display: "grid",
+                gridTemplateRows: `${taskFlowSectionHeights.top}px 8px minmax(${TASK_FLOW_MIDDLE_MIN_HEIGHT}px, 1fr) 8px ${taskFlowSectionHeights.preview}px`,
+              }}
+            >
+              <div style={{ overflow: "auto", padding: 12, borderBottom: "1px solid var(--line-soft)", background: "rgba(255,255,255,0.78)" }}>
+                <div style={{ display: "grid", gap: 10 }}>
+                  {taskFlowStates.length === 0 ? <div className="muted">暂无子任务流。</div> : taskFlowStates.map((state) => {
+                    const latest = state.timelineItems[state.timelineItems.length - 1];
+                    const status = latest?.status === "error" ? "error" : state.content.trim() ? "completed" : state.reasoning.trim() || state.toolItems.length > 0 ? "running" : "pending";
+                    const isActive = selectedTaskFlowState?.sourceKey === state.sourceKey;
+                    return (
+                      <button
+                        key={`task-flow-${state.sourceKey}`}
+                        type="button"
+                        className="chat-feed-compact"
+                        style={{ width: "100%", textAlign: "left", boxShadow: isActive ? "inset 0 0 0 1px rgba(59,130,246,0.28)" : undefined }}
+                        onClick={() => {
+                          setSelectedFeedItemId(`feed-subagent-${state.sourceKey}`);
+                          setSelectedWorkflowNodeId(null);
+                          setShowExecutionDrawer(true);
+                        }}
+                      >
+                        <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "flex-start" }}>
+                          <div style={{ display: "grid", gap: 4 }}>
+                            <span className="chat-feed-compact-title">{state.title}</span>
+                            <span className="chat-feed-compact-preview">
+                              {state.content.trim()
+                                ? summarizePreview(state.content, 96)
+                                : state.reasoning.trim()
+                                  ? summarizePreview(state.reasoning, 96)
+                                  : state.toolItems.length > 0
+                                    ? `执行了 ${state.toolItems.length} 个工具步骤`
+                                    : "等待任务流事件"}
+                            </span>
+                          </div>
+                          <span className="chat-feed-compact-status">{status === "error" ? "失败" : status === "completed" ? "完成" : status === "running" ? "进行中" : "待开始"}</span>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="panel-resizer horizontal" onPointerDown={(event) => startTaskFlowRowResize("top", event)} />
+
+              <div style={{ overflow: "auto", padding: 12, borderBottom: "1px solid var(--line-soft)" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "minmax(300px, 36%) minmax(0, 1fr)", minHeight: "100%" }}>
+                  <div style={{ paddingRight: 12, borderRight: "1px solid var(--line-soft)", overflow: "auto" }}>
+                    {selectedTaskFlowState ? (
+                      <div style={{ display: "grid", gap: 10 }}>
+                        <div className="card"><div className="card-body"><div style={{ fontWeight: 700 }}>{selectedTaskFlowState.title}</div><div className="mono muted" style={{ fontSize: 11, marginTop: 4 }}>{selectedTaskFlowState.outerToolCallId ?? "[no-task-id]"}</div></div></div>
+                        {selectedTaskFlowState.reasoning.trim() ? <div className="card"><div className="card-title">Reasoning</div><div className="card-body"><RichContent content={selectedTaskFlowState.reasoning} className="timeline-rich" onArtifactClick={openArtifactPreview} /></div></div> : null}
+                        {selectedTaskFlowState.content.trim() ? <div className="card"><div className="card-title">Content</div><div className="card-body"><RichContent content={selectedTaskFlowState.content} className="timeline-rich" onArtifactClick={openArtifactPreview} /></div></div> : null}
+                        {detectArtifactReferences([selectedTaskFlowState.content, selectedTaskFlowState.reasoning, ...selectedTaskFlowState.timelineItems.map((item) => item.text || "")].filter(Boolean).join("\n")).length > 0 ? (
+                          <div className="card">
+                            <div className="card-title">产物链接</div>
+                            <div className="card-body" style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                              {detectArtifactReferences([selectedTaskFlowState.content, selectedTaskFlowState.reasoning, ...selectedTaskFlowState.timelineItems.map((item) => item.text || "")].filter(Boolean).join("\n")).map((artifact) => (
+                                <button
+                                  key={artifact.id}
+                                  type="button"
+                                  className="btn"
+                                  style={{ padding: "3px 8px", fontSize: 12, textDecoration: "underline", textUnderlineOffset: 3 }}
+                                  onClick={() => void openArtifactPreview(artifact)}
+                                >
+                                  {artifact.label}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        ) : null}
+                        <div style={{ display: "grid", gap: 10 }}>
+                          {workflowFocusedItems.length === 0 ? <span className="muted">暂无任务步骤。</span> : workflowFocusedItems.map((item) => <TimelineItemView key={`workflow-item-${item.id}`} item={item} collapseReasoning={true} />)}
+                        </div>
+                      </div>
+                    ) : <div className="muted">点击子代理任务查看消息与任务流详情。</div>}
+                  </div>
+
+                  <div
+                    ref={taskFlowCanvasScrollRef}
+                    style={{ overflow: "auto", paddingLeft: 12, cursor: "grab" }}
+                    onPointerDown={startTaskFlowCanvasPan}
+                  >
+                  <svg width={Math.max(turnWorkflowCanvas.width, 1600)} height={Math.max(turnWorkflowCanvas.height, 960)} style={{ display: "block" }}>
                     <text x={turnWorkflowCanvas.laneX.run} y={28} fontSize="11" fill="#64748b" className="mono">TURN</text>
                     <text x={turnWorkflowCanvas.laneX.agent} y={28} fontSize="11" fill="#64748b" className="mono">AGENTS</text>
                     <text x={turnWorkflowCanvas.laneX.tool} y={28} fontSize="11" fill="#64748b" className="mono">TOOLS</text>
@@ -5148,32 +5413,35 @@ function IMPageInner() {
                           <text x={pos.x + 10} y={pos.y + 36} fontSize="12" fill="#0f172a" style={{ fontWeight: 700 }}>{node.label.slice(0, 22)}</text>
                           <text x={pos.x + 10} y={pos.y + 50} fontSize="10" fill={tone.fg}>{node.status}</text>
                         </g>
-                      );
-                    })}
+                        );
+                      })}
                   </svg>
-                </div>
-                <div style={{ borderTop: "1px solid var(--line-soft)", padding: 10, background: "rgba(255,255,255,0.9)" }}>
-                  {selectedWorkflowNode ? <div className="mono" style={{ fontSize: 12 }}>{selectedWorkflowNode.label} · {selectedWorkflowNode.status}</div> : <div className="muted" style={{ fontSize: 12 }}>点击节点查看详情</div>}
+                  </div>
                 </div>
               </div>
-            ) : executionDrawerTab === "details" ? (
-              <div style={{ height: "100%", overflow: "auto", padding: 14, display: "grid", gap: 12 }}>
-                {selectedExecutionItems.length === 0 ? <span className="muted">—</span> : selectedExecutionItems.map((item) => <TimelineItemView key={`sidebar-item-${item.id}`} item={item} collapseReasoning={false} />)}
+
+              <div className="panel-resizer horizontal" onPointerDown={(event) => startTaskFlowRowResize("bottom", event)} />
+
+              <div style={{ overflow: "auto", padding: 12, background: "rgba(255,255,255,0.92)" }}>
+                <div className="eyebrow" style={{ marginBottom: 8 }}>Artifact Preview</div>
+                {!artifactPreview.artifact ? (
+                  <div className="muted">点击 URL、HTML、文本地址或文件路径后在这里预览。</div>
+                ) : artifactPreview.loading ? (
+                  <div className="muted">正在加载 {artifactPreview.artifact.label}...</div>
+                ) : artifactPreview.error ? (
+                  <div className="muted" style={{ color: "#b91c1c" }}>{artifactPreview.error}</div>
+                ) : artifactPreview.artifact.kind === "url" ? (
+                  <div style={{ display: "grid", gap: 8 }}>
+                    <a href={artifactPreview.content} target="_blank" rel="noreferrer" style={{ color: "#1d4ed8", textDecoration: "underline" }}>{artifactPreview.content}</a>
+                    <iframe src={artifactPreview.content} title={artifactPreview.artifact.label} style={{ width: "100%", minHeight: 300, border: "1px solid var(--line-soft)", borderRadius: 12, background: "#fff" }} sandbox="allow-scripts allow-same-origin allow-forms allow-popups" />
+                  </div>
+                ) : /html/i.test(artifactPreview.contentType) ? (
+                  <RichContent content={artifactPreview.content} className="timeline-rich" onArtifactClick={openArtifactPreview} />
+                ) : (
+                  <RichContent content={artifactPreview.content} className="timeline-rich" onArtifactClick={openArtifactPreview} />
+                )}
               </div>
-            ) : (
-              <div style={{ height: "100%", overflow: "auto", padding: 14, display: "grid", gap: 12 }}>
-                <div className="card">
-                  <div className="card-title">Selected Feed Item</div>
-                  <div className="card-body"><pre className="mono" style={{ margin: 0, whiteSpace: "pre-wrap", wordBreak: "break-word" }}>{formatDebugValue(selectedFeedItem ?? "-")}</pre></div>
-                </div>
-                {selectedExecutionItems.map((item) => (
-                  <details key={`sidebar-raw-${item.id}`} className="card">
-                    <summary className="card-title">{item.title} · {item.eventName ?? item.lane}</summary>
-                    <div className="card-body"><pre className="mono" style={{ margin: 0, whiteSpace: "pre-wrap", wordBreak: "break-word" }}>{formatDebugValue({ rawEvent: item.rawEvent, args: item.args, result: item.result, metrics: item.metrics })}</pre></div>
-                  </details>
-                ))}
-              </div>
-            )}
+            </div>
           </div>
         </section>
       ) : null}
