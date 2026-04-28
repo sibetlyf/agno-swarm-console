@@ -355,6 +355,36 @@ function makeSourceBufferKey(sourceTag: string | undefined, outerToolCallId?: st
   return outerToolCallId ? `${base}::${outerToolCallId}` : base;
 }
 
+function makeBlockScopedBufferKey(
+  sourceTag: string | undefined,
+  outerToolCallId: string | undefined,
+  kind: "content" | "reasoning",
+  blockIndex: number
+): string {
+  return `${makeSourceBufferKey(sourceTag, outerToolCallId)}@@${kind}:${blockIndex}`;
+}
+
+function parseBlockScopedBufferKey(bufferKey: string): { sourceKey: string; kind?: "content" | "reasoning"; blockIndex?: number } {
+  const [sourceKey, suffix] = bufferKey.split("@@");
+  if (!suffix) return { sourceKey };
+  const match = suffix.match(/^(content|reasoning):(\d+)$/);
+  if (!match) return { sourceKey };
+  return {
+    sourceKey,
+    kind: match[1] as "content" | "reasoning",
+    blockIndex: Number(match[2]),
+  };
+}
+
+function collectBlockScopedBuffer(map: Map<string, string>, sourceKey: string, kind: "content" | "reasoning"): string {
+  const chunks = [...map.entries()]
+    .map(([key, text]) => ({ parsed: parseBlockScopedBufferKey(key), text }))
+    .filter(({ parsed, text }) => parsed.sourceKey === sourceKey && parsed.kind === kind && text.trim().length > 0)
+    .sort((a, b) => (a.parsed.blockIndex ?? 0) - (b.parsed.blockIndex ?? 0))
+    .map(({ text }) => text);
+  return chunks.join("\n\n");
+}
+
 function parseSourceBufferKey(bufferKey: string): { sourceTag: string; outerToolCallId?: string } {
   const marker = "::";
   const index = bufferKey.indexOf(marker);
@@ -383,10 +413,30 @@ function taskIdFromSourceTag(sourceTag: string): string | null {
 function extractAssignedSubagentName(args: unknown, rawEvent?: Record<string, unknown>): string | null {
   const argRecord = args && typeof args === "object" && !Array.isArray(args) ? (args as Record<string, unknown>) : null;
   const rawRecord = rawEvent && typeof rawEvent === "object" ? rawEvent : null;
+  
   const rawSubagent = rawRecord?.subagent_name;
   if (typeof rawSubagent === "string" && rawSubagent.trim()) return rawSubagent.trim();
+  
   const argSubagent = argRecord?.subagent_name;
   if (typeof argSubagent === "string" && argSubagent.trim()) return argSubagent.trim();
+  
+  return null;
+}
+
+function extractSubagentNameFromEventData(
+  data: Record<string, unknown>,
+  metadata?: Record<string, unknown>,
+  rawEvent?: Record<string, unknown>
+): string | null {
+  const fromData = typeof data.subagent_name === "string" ? data.subagent_name as string : null;
+  if (fromData?.trim()) return fromData.trim();
+  
+  const fromMeta = metadata && typeof metadata.subagent_name === "string" ? metadata.subagent_name as string : null;
+  if (fromMeta?.trim()) return fromMeta.trim();
+  
+  const fromRawEvent = rawEvent && typeof rawEvent.subagent_name === "string" ? rawEvent.subagent_name as string : null;
+  if (fromRawEvent?.trim()) return fromRawEvent.trim();
+  
   return null;
 }
 
@@ -699,9 +749,10 @@ function canonicalizeWorkflowEvent(input: {
   const rawEvent = rawFromMetadata ?? rawFromPayload ?? rawDataNestedEvent ?? {};
   const rawTool = asObject(rawEvent.tool) ?? asObject(rawDataEnvelope?.tool);
   const metaTool = asObject(metadata.tool);
+  const explicitSubagent = metadata.source === "subagent";
 
   const eventName = pickString(data.event, metadata.event, rawEvent.event, (input.rawPayload as Record<string, unknown>).event) ?? "CustomEvent";
-  const source = pickSource(data.source) ?? pickSource(metadata.source) ?? pickSource(rawEvent.source);
+  const source = explicitSubagent ? "subagent" : pickSource(data.source) ?? pickSource(metadata.source) ?? pickSource(rawEvent.source);
   const runId = pickString(data.run_id, metadata.run_id, rawEvent.run_id, (input.rawPayload as Record<string, unknown>).run_id);
   const parentRunId = pickString(data.parent_run_id, metadata.parent_run_id, rawEvent.parent_run_id);
   const agentId = pickString(data.agent_id, metadata.agent_id, rawEvent.agent_id, (input.rawPayload as Record<string, unknown>).agent_id);
@@ -724,8 +775,12 @@ function canonicalizeWorkflowEvent(input: {
     rawTool?.name,
     metaTool?.name
   );
-  const content = pickText(data.content, data.delta, rawEvent.content, rawDataEnvelope?.content);
-  const reasoning = pickText(data.reasoning_content, rawEvent.reasoning_content, rawDataEnvelope?.reasoning_content);
+  const content = explicitSubagent
+    ? pickText(rawEvent.content, rawDataEnvelope?.content, data.content, data.delta)
+    : pickText(data.content, data.delta, rawEvent.content, rawDataEnvelope?.content);
+  const reasoning = explicitSubagent
+    ? pickText(rawEvent.reasoning_content, rawDataEnvelope?.reasoning_content, data.reasoning_content)
+    : pickText(data.reasoning_content, rawEvent.reasoning_content, rawDataEnvelope?.reasoning_content);
   const toolError = pickText(
     rawTool?.error,
     rawTool?.tool_call_error,
@@ -1131,6 +1186,7 @@ function normalizeIncomingAgentSseEvent(raw: RawAgnoEvent): AgentStreamEvent | n
       metadataRawEvent.tool && typeof metadataRawEvent.tool === "object"
         ? (metadataRawEvent.tool as Record<string, unknown>)
         : {};
+    const explicitSubagent = metadata.source === "subagent";
     const actualEvent =
       evt === "CustomEvent"
         ? ((typeof metadata.event === "string" && metadata.event) ||
@@ -1155,13 +1211,15 @@ function normalizeIncomingAgentSseEvent(raw: RawAgnoEvent): AgentStreamEvent | n
       typeof metadataRawDataEvent.reasoning_content === "string"
         ? (metadataRawDataEvent.reasoning_content as string)
         : undefined;
-    const actualReasoning =
-      (typeof raw.reasoning_content === "string" && raw.reasoning_content) ||
-      rawEventReasoning ||
-      rawDataReasoning ||
-      (actualEvent === "RunContent" && rawEventReasoning !== undefined ? topLevelContent : undefined);
-    const actualContent =
-      actualEvent === "RunContent" && rawEventReasoning !== undefined && !rawEventContent
+    const actualReasoning = explicitSubagent
+      ? rawEventReasoning || rawDataReasoning || (typeof raw.reasoning_content === "string" ? raw.reasoning_content : undefined)
+      : (typeof raw.reasoning_content === "string" && raw.reasoning_content) ||
+        rawEventReasoning ||
+        rawDataReasoning ||
+        (actualEvent === "RunContent" && rawEventReasoning !== undefined ? topLevelContent : undefined);
+    const actualContent = explicitSubagent
+      ? rawEventContent || rawDataContent || topLevelContent
+      : actualEvent === "RunContent" && rawEventReasoning !== undefined && !rawEventContent
         ? undefined
         : topLevelContent || rawEventContent || rawDataContent;
     const hasReasoning =
@@ -1191,6 +1249,8 @@ function normalizeIncomingAgentSseEvent(raw: RawAgnoEvent): AgentStreamEvent | n
       kind = "citation" as any;
     } else if (actualContentType === "document" && actualEvent !== "ToolCallCompleted" && actualEvent !== "ToolCallError") {
       kind = "document" as any;
+    } else if (explicitSubagent && typeof rawEventReasoning === "string" && rawEventReasoning.trim().length > 0 && !rawEventContent) {
+      kind = "reasoning" as any;
     } else if (actualEvent === "RunContent" && hasReasoning) {
       kind = "reasoning" as any;
     }
@@ -1227,8 +1287,10 @@ function normalizeIncomingAgentSseEvent(raw: RawAgnoEvent): AgentStreamEvent | n
             ? (raw.response_audio as { transcript?: string })
             : undefined,
         source:
-          (typeof metadata.source === "string" ? (metadata.source as string) : undefined) ??
-          (typeof (raw as any).source === "string" ? (raw as any).source : undefined),
+          explicitSubagent
+            ? "subagent"
+            : (typeof metadata.source === "string" ? (metadata.source as string) : undefined) ??
+              (typeof (raw as any).source === "string" ? (raw as any).source : undefined),
         subagent_name:
           (typeof metadata.subagent_name === "string" ? (metadata.subagent_name as string) : undefined) ??
           (typeof (raw as any).subagent_name === "string" ? (raw as any).subagent_name : undefined),
@@ -1276,6 +1338,7 @@ function parseCustomEventPayload(
     rawData.raw_event && typeof rawData.raw_event === "object"
       ? (rawData.raw_event as Record<string, unknown>)
       : rawData;
+  const explicitSubagent = metadata.source === "subagent";
   const metaTool = metadata.tool && typeof metadata.tool === "object" ? (metadata.tool as Record<string, unknown>) : {};
   const rawTool = rawEvent.tool && typeof rawEvent.tool === "object" ? (rawEvent.tool as Record<string, unknown>) : {};
   const rawDataTool = rawDataEvent.tool && typeof rawDataEvent.tool === "object" ? (rawDataEvent.tool as Record<string, unknown>) : {};
@@ -1286,9 +1349,13 @@ function parseCustomEventPayload(
     (typeof rawDataEvent.event === "string" ? (rawDataEvent.event as string) : "CustomEvent");
 
   const reasoning =
-    (typeof data.reasoning_content === "string" ? data.reasoning_content : "") ||
-    (typeof rawEvent.reasoning_content === "string" ? (rawEvent.reasoning_content as string) : "") ||
-    (typeof rawDataEvent.reasoning_content === "string" ? (rawDataEvent.reasoning_content as string) : "");
+    (explicitSubagent
+      ? (typeof rawEvent.reasoning_content === "string" ? (rawEvent.reasoning_content as string) : "") ||
+        (typeof rawDataEvent.reasoning_content === "string" ? (rawDataEvent.reasoning_content as string) : "") ||
+        (typeof data.reasoning_content === "string" ? data.reasoning_content : "")
+      : (typeof data.reasoning_content === "string" ? data.reasoning_content : "") ||
+        (typeof rawEvent.reasoning_content === "string" ? (rawEvent.reasoning_content as string) : "") ||
+        (typeof rawDataEvent.reasoning_content === "string" ? (rawDataEvent.reasoning_content as string) : ""));
 
   const rawEventContent = typeof rawEvent.content === "string" ? (rawEvent.content as string) : "";
   const rawDataContent = typeof rawDataEvent.content === "string" ? (rawDataEvent.content as string) : "";
@@ -1298,10 +1365,12 @@ function parseCustomEventPayload(
 
   const content = isReasoningOnlyPayload
     ? ""
-    : (typeof data.content === "string" ? data.content : "") ||
-    rawEventContent ||
-    rawDataContent ||
-    (typeof data.delta === "string" ? data.delta : "");
+    : (explicitSubagent
+      ? rawEventContent || rawDataContent || (typeof data.content === "string" ? data.content : "") || (typeof data.delta === "string" ? data.delta : "")
+      : (typeof data.content === "string" ? data.content : "") ||
+        rawEventContent ||
+        rawDataContent ||
+        (typeof data.delta === "string" ? data.delta : ""));
 
   const toolCallId =
     (typeof rawDataTool.tool_call_id === "string" ? (rawDataTool.tool_call_id as string) : undefined) ||
@@ -1613,6 +1682,7 @@ function IMPageInner() {
   const [showExecutionDrawer, setShowExecutionDrawer] = useState(false);
   const [selectedFeedItemId, setSelectedFeedItemId] = useState<string | null>(null);
   const [selectedWorkflowNodeId, setSelectedWorkflowNodeId] = useState<string | null>(null);
+  const [showTaskDetailCard, setShowTaskDetailCard] = useState(false);
   const [leftPanelWidth, setLeftPanelWidth] = useState(320);
   const [rightPanelWidth, setRightPanelWidth] = useState(640);
   const [taskFlowSectionHeights, setTaskFlowSectionHeights] = useState({ top: 180, preview: 260 });
@@ -1674,6 +1744,7 @@ function IMPageInner() {
   const reasoningSegmentKeyRef = useRef<string | null>(null);
   const contentBlockIndexRef = useRef<Map<string, number>>(new Map());
   const reasoningBlockIndexRef = useRef<Map<string, number>>(new Map());
+  const lastProcessedKindByScopeRef = useRef<Map<string, NormalizedAgentStreamChunk["kind"]>>(new Map());
   const modelRequestSeqByRunRef = useRef<Map<string, number>>(new Map());
   const uiEsRef = useRef<EventSource | null>(null);
   const llmHistoryReqIdRef = useRef(0);
@@ -2713,7 +2784,8 @@ function IMPageInner() {
     if (entries.length === 0) return "";
     return entries
       .map(([source, text]) => {
-        const parsed = parseSourceBufferKey(source);
+        const parsedKey = parseBlockScopedBufferKey(source);
+        const parsed = parseSourceBufferKey(parsedKey.sourceKey);
         const heading = parsed.outerToolCallId
           ? `${parsed.sourceTag} (task: ${parsed.outerToolCallId.slice(0, 8)})`
           : parsed.sourceTag;
@@ -2726,7 +2798,8 @@ function IMPageInner() {
     if (!selectedAgentId) return contentStream;
     const filtered = new Map<string, string>();
     for (const [source, text] of contentBySourceRef.current.entries()) {
-      const parsed = parseSourceBufferKey(source);
+      const parsedKey = parseBlockScopedBufferKey(source);
+      const parsed = parseSourceBufferKey(parsedKey.sourceKey);
       const agentId = inferAgentIdFromSourceTag(parsed.sourceTag);
       if (agentId === selectedAgentId) filtered.set(source, text);
     }
@@ -2737,7 +2810,8 @@ function IMPageInner() {
     if (!selectedAgentId) return reasoningStream;
     const filtered = new Map<string, string>();
     for (const [source, text] of reasoningBySourceRef.current.entries()) {
-      const parsed = parseSourceBufferKey(source);
+      const parsedKey = parseBlockScopedBufferKey(source);
+      const parsed = parseSourceBufferKey(parsedKey.sourceKey);
       const agentId = inferAgentIdFromSourceTag(parsed.sourceTag);
       if (agentId === selectedAgentId) filtered.set(source, text);
     }
@@ -2834,8 +2908,8 @@ function IMPageInner() {
           (taskScoped && latest?.outerToolCallId ? taskScopedTitles.get(latest.outerToolCallId) ?? `Task ${latest.outerToolCallId.slice(0, 8)}` : parseAgentDisplayLabel(sourceTag, "Assistant")),
         isSubagent: !!subagentName || taskScoped,
         outerToolCallId: latest?.outerToolCallId,
-        content: contentBySourceRef.current.get(sourceKey) ?? "",
-        reasoning: reasoningBySourceRef.current.get(sourceKey) ?? "",
+        content: collectBlockScopedBuffer(contentBySourceRef.current, sourceKey, "content"),
+        reasoning: collectBlockScopedBuffer(reasoningBySourceRef.current, sourceKey, "reasoning"),
         toolItems: timelineItems.filter((entry) => entry.lane === "tool_call" || entry.lane === "tool_result"),
         timelineItems,
         firstAt: timelineItems[0]?.at ?? latest?.at ?? Date.now(),
@@ -3010,7 +3084,9 @@ function IMPageInner() {
   const appendContentFromSource = useCallback(
     (sourceTag: string | undefined, text: string, outerToolCallId?: string) => {
       if (!text) return;
-      const source = makeSourceBufferKey(sourceTag, outerToolCallId);
+      const baseSource = makeSourceBufferKey(sourceTag, outerToolCallId);
+      const blockIndex = contentBlockIndexRef.current.get(baseSource) ?? 0;
+      const source = makeBlockScopedBufferKey(sourceTag, outerToolCallId, "content", blockIndex);
       const prev = contentBySourceRef.current.get(source) ?? "";
       contentBySourceRef.current.set(source, `${prev}${text}`);
       setContentStream(rebuildMergedMarkdown(contentBySourceRef.current));
@@ -3021,7 +3097,9 @@ function IMPageInner() {
   const appendReasoningFromSource = useCallback(
     (sourceTag: string | undefined, text: string, outerToolCallId?: string) => {
       if (!text) return;
-      const source = makeSourceBufferKey(sourceTag, outerToolCallId);
+      const baseSource = makeSourceBufferKey(sourceTag, outerToolCallId);
+      const blockIndex = reasoningBlockIndexRef.current.get(baseSource) ?? 0;
+      const source = makeBlockScopedBufferKey(sourceTag, outerToolCallId, "reasoning", blockIndex);
       const prev = reasoningBySourceRef.current.get(source) ?? "";
       reasoningBySourceRef.current.set(source, `${prev}${text}`);
       setReasoningStream(rebuildMergedMarkdown(reasoningBySourceRef.current));
@@ -3157,13 +3235,15 @@ function IMPageInner() {
           const eventAt = resolveEventTimestamp(rawPayload, payload);
           const source =
             (typeof streamData.source === "string" ? streamData.source : "") ||
-            (typeof streamMeta.source === "string" ? (streamMeta.source as string) : "");
+            (typeof streamMeta.source === "string" ? (streamMeta.source as string) : "") ||
+            (typeof streamRawEvent.source === "string" ? (streamRawEvent.source as string) : "");
           const subagentName =
             (typeof streamData.subagent_name === "string" ? streamData.subagent_name : "") ||
             (typeof streamMeta.subagent_name === "string" ? (streamMeta.subagent_name as string) : "") ||
+            (typeof streamRawEvent.subagent_name === "string" ? (streamRawEvent.subagent_name as string) : "") ||
             (typeof streamData.agent_name === "string" ? streamData.agent_name : "") ||
-            (typeof streamMeta.agent_name === "string" ? (streamMeta.agent_name as string) : "") ||
-            "subagent";
+            (typeof streamMeta.agent_name === "string" ? (streamMeta.agent_name as string) : "");
+          const resolvedSource = source || (subagentName ? "subagent" : "");
           const subagentId =
             (typeof streamData.agent_id === "string" ? streamData.agent_id : "") ||
             (typeof streamMeta.agent_id === "string" ? (streamMeta.agent_id as string) : "") ||
@@ -3181,8 +3261,8 @@ function IMPageInner() {
               : undefined;
           const resolvedAgentId = subagentId || (typeof streamData.agent_id === "string" ? streamData.agent_id : "") || null;
           const effectiveSourceTag =
-            source === "subagent"
-              ? normalized.sourceTag
+            resolvedSource === "subagent"
+              ? (normalized.sourceTag || `[subagent:${subagentName || "unknown"}]`)
               : streamEvent === "CustomEvent" && outerToolCallId
                 ? `[task:${outerToolCallId}]`
                 : normalized.sourceTag;
@@ -3193,7 +3273,7 @@ function IMPageInner() {
           });
           ingestTurnWorkflowEvent(canonicalWorkflow);
 
-          if (source === "subagent" && subagentId) {
+          if (resolvedSource === "subagent" && subagentId) {
             if (normalized.sourceTag) {
               sourceTagAgentIdRef.current.set(normalized.sourceTag, subagentId);
             }
@@ -3298,16 +3378,32 @@ function IMPageInner() {
           }
 
           if (chunk) {
+            const lastProcessedKind = lastProcessedKindByScopeRef.current.get(sourceBufferKey);
+            const currentKind = normalized.kind;
+            const isFromReasoning = lastProcessedKind === "reasoning" || lastProcessedKind === "thinking";
+            const isFromContent = lastProcessedKind === "content" || lastProcessedKind === "citation" || lastProcessedKind === "document";
+            const isToReasoning = currentKind === "reasoning" || currentKind === "thinking";
+            const isToContent = currentKind === "content" || currentKind === "citation" || currentKind === "document";
+            if ((isFromReasoning && isToContent) || (isFromContent && isToReasoning)) {
+              const nextContentBlock = (contentBlockIndexRef.current.get(sourceBufferKey) ?? 0) + 1;
+              const nextReasoningBlock = (reasoningBlockIndexRef.current.get(sourceBufferKey) ?? 0) + 1;
+              contentBlockIndexRef.current.set(sourceBufferKey, nextContentBlock);
+              reasoningBlockIndexRef.current.set(sourceBufferKey, nextReasoningBlock);
+            }
+            lastProcessedKindByScopeRef.current.set(sourceBufferKey, currentKind);
+            const updatedContentBlockIndex = contentBlockIndexRef.current.get(sourceBufferKey) ?? 0;
+            const updatedReasoningBlockIndex = reasoningBlockIndexRef.current.get(sourceBufferKey) ?? 0;
+
             if (
-              normalized.kind === "content" ||
-              normalized.kind === "citation" ||
-              normalized.kind === "document"
+              currentKind === "content" ||
+              currentKind === "citation" ||
+              currentKind === "document"
             ) {
               const sanitized = sanitizeDisplayChunk(chunk);
               appendContentFromSource(effectiveSourceTag, sanitized, outerToolCallId);
               if (sanitized) {
                 appendTimelineItem({
-                  mergeKey: `${segmentKey}:content:${contentBlockIndex}`,
+                  mergeKey: `${segmentKey}:content:${updatedContentBlockIndex}`,
                   at: eventAt,
                   lane: "content",
                   sourceTag: effectiveSourceTag || "[agent]",
@@ -3324,10 +3420,10 @@ function IMPageInner() {
                 }
               }
               contentSegmentKeyRef.current = segmentKey;
-            } else if (normalized.kind === "reasoning" || normalized.kind === "thinking") {
+            } else if (currentKind === "reasoning" || currentKind === "thinking") {
               appendReasoningFromSource(effectiveSourceTag, chunk, outerToolCallId);
               const reasonSeq = appendTimelineItem({
-                mergeKey: `${segmentKey}:reasoning:${reasoningBlockIndex}`,
+                mergeKey: `${segmentKey}:reasoning:${updatedReasoningBlockIndex}`,
                 at: eventAt,
                 lane: "reasoning",
                 sourceTag: effectiveSourceTag || "[agent]",
@@ -3339,7 +3435,7 @@ function IMPageInner() {
               });
               lastReasoningSeqRef.current = reasonSeq;
               reasoningSegmentKeyRef.current = segmentKey;
-            } else if (normalized.kind === "tool_calls" || normalized.kind === "tool_result") {
+            } else if (currentKind === "tool_calls" || currentKind === "tool_result") {
               const name =
                 (payload.data.tool_call_name ?? payload.data.tool_call_id ?? normalized.key ?? "tool_call") as string;
               const sourceTag = effectiveSourceTag || "[agent]";
@@ -3364,19 +3460,29 @@ function IMPageInner() {
               const parsedDelta = parseToolDeltaChunk(chunk);
               const parsedState = parsedDelta.state;
               const status: ToolCardStatus =
-                parsedState ?? (normalized.kind === "tool_calls" ? "started" : "completed");
+                parsedState ?? (currentKind === "tool_calls" ? "started" : "completed");
               const detail =
                 parsedDelta.error ??
                 parsedDelta.content ??
                 (status === "started" ? "running" : chunk);
-              if ((parsedDelta.tool_name ?? name) === "assign_task") {
-                const assignedName = extractAssignedSubagentName(parsedDelta.args ?? streamRawTool.tool_args ?? streamMetaTool.tool_args ?? streamRawEvent.tool_args, parsedDelta.raw ?? streamRawEvent);
+              const toolNameValue = parsedDelta.tool_name ?? name;
+              if (toolNameValue === "assign_task" || toolNameValue === "create_subagent") {
+                const assignedName = extractSubagentNameFromEventData(
+                  streamData,
+                  streamMeta,
+                  streamRawEvent
+                ) ?? extractAssignedSubagentName(
+                  parsedDelta.args ?? streamRawTool.tool_args ?? streamMetaTool.tool_args ?? streamRawEvent.tool_args,
+                  parsedDelta.raw ?? streamRawEvent
+                );
                 if (assignedName && outerToolCallId) {
                   taskAssignmentNameByOuterCallRef.current.set(outerToolCallId, assignedName);
                 }
               }
-              contentBlockIndexRef.current.set(sourceBufferKey, contentBlockIndex + 1);
-              reasoningBlockIndexRef.current.set(sourceBufferKey, reasoningBlockIndex + 1);
+              const toolContentBlock = contentBlockIndexRef.current.get(sourceBufferKey) ?? 0;
+              const toolReasoningBlock = reasoningBlockIndexRef.current.get(sourceBufferKey) ?? 0;
+              contentBlockIndexRef.current.set(sourceBufferKey, toolContentBlock + 1);
+              reasoningBlockIndexRef.current.set(sourceBufferKey, toolReasoningBlock + 1);
               updateToolCard({
                 key,
                 sourceTag,
@@ -3395,9 +3501,9 @@ function IMPageInner() {
                 eventName: streamEvent,
               });
               appendTimelineItem({
-                mergeKey: `${key}:${normalized.kind}`,
+                mergeKey: `${key}:${currentKind}`,
                 at: eventAt,
-                lane: normalized.kind === "tool_calls" ? "tool_call" : "tool_result",
+                lane: currentKind === "tool_calls" ? "tool_call" : "tool_result",
                 sourceTag,
                 agentId: inferAgentIdFromSourceTag(sourceTag) ?? resolvedAgentId,
                 outerToolCallId,
@@ -3416,11 +3522,11 @@ function IMPageInner() {
                   (streamMetaTool.metrics && typeof streamMetaTool.metrics === "object" ? (streamMetaTool.metrics as Record<string, unknown>) : undefined) ??
                   (streamRawEvent.metrics && typeof streamRawEvent.metrics === "object" ? (streamRawEvent.metrics as Record<string, unknown>) : undefined),
               });
-            } else if (normalized.kind === "custom_event_metadata") {
+            } else if (currentKind === "custom_event_metadata") {
               const parsed = parseCustomEventPayload(payload.data);
 
               if (parsed.reasoning) {
-                const reasonSegKey = `${runId}:${seq}:${sourceBufferKey}:custom_reasoning:${reasoningBlockIndex}`;
+                const reasonSegKey = `${runId}:${seq}:${sourceBufferKey}:custom_reasoning:${updatedReasoningBlockIndex}`;
                 appendReasoningFromSource(effectiveSourceTag, parsed.reasoning, outerToolCallId);
                 const reasonSeq = appendTimelineItem({
                   mergeKey: `${reasonSegKey}`,
@@ -3436,10 +3542,11 @@ function IMPageInner() {
                 });
                 lastReasoningSeqRef.current = reasonSeq;
                 reasoningSegmentKeyRef.current = reasonSegKey;
+                lastProcessedKindByScopeRef.current.set(sourceBufferKey, "reasoning");
               }
 
               if (parsed.content) {
-                const contentSegKey = `${runId}:${seq}:${sourceBufferKey}:custom_content:${contentBlockIndex}`;
+                const contentSegKey = `${runId}:${seq}:${sourceBufferKey}:custom_content:${updatedContentBlockIndex}`;
                 appendContentFromSource(effectiveSourceTag, parsed.content, outerToolCallId);
                 appendTimelineItem({
                   mergeKey: `${contentSegKey}`,
@@ -3459,12 +3566,17 @@ function IMPageInner() {
                   lastReasoningSeqRef.current = null;
                 }
                 contentSegmentKeyRef.current = contentSegKey;
+                lastProcessedKindByScopeRef.current.set(sourceBufferKey, "content");
               }
 
               if (parsed.toolState) {
                 const toolName = parsed.toolName ?? parsed.toolCallId ?? "tool_call";
-                if (toolName === "assign_task") {
-                  const assignedName = extractAssignedSubagentName(parsed.args, parsed.rawEvent);
+                if (toolName === "assign_task" || toolName === "create_subagent") {
+                  const assignedName = extractSubagentNameFromEventData(
+                    streamData,
+                    streamMeta,
+                    streamRawEvent
+                  ) ?? extractAssignedSubagentName(parsed.args, parsed.rawEvent);
                   if (assignedName && outerToolCallId) {
                     taskAssignmentNameByOuterCallRef.current.set(outerToolCallId, assignedName);
                   }
@@ -3859,6 +3971,7 @@ function IMPageInner() {
       uiEsRef.current?.close();
       setLlmHistory("");
       clearRealtimeState();
+      rawApiEventLogRef.current = [];
       contentSegmentKeyRef.current = null;
       reasoningSegmentKeyRef.current = null;
       modelRequestSeqByRunRef.current = new Map();
@@ -3890,6 +4003,14 @@ function IMPageInner() {
         setAgentError("test.json 没有可回放事件");
         return;
       }
+
+      rawApiEventLogRef.current = events.map((evt) => {
+        try {
+          return JSON.parse(JSON.stringify(evt)) as RawApiEventSnapshot;
+        } catch {
+          return { raw: stringifyChunk(evt) } as RawApiEventSnapshot;
+        }
+      });
 
       let previousCreatedAt: number | null = null;
       for (const event of events) {
@@ -5436,6 +5557,7 @@ function IMPageInner() {
                         onClick={() => {
                           setSelectedFeedItemId(`feed-subagent-${state.sourceKey}`);
                           setSelectedWorkflowNodeId(null);
+                          setShowTaskDetailCard(true);
                           setShowExecutionDrawer(true);
                         }}
                       >
@@ -5466,42 +5588,10 @@ function IMPageInner() {
 
               <div className="panel-resizer horizontal" onPointerDown={(event) => startTaskFlowRowResize("top", event)} />
 
-              <div style={{ overflow: "auto", padding: 12, borderBottom: "1px solid var(--line-soft)" }}>
-                <div style={{ display: "grid", gridTemplateColumns: "minmax(300px, 36%) minmax(0, 1fr)", minHeight: "100%" }}>
-                  <div style={{ paddingRight: 12, borderRight: "1px solid var(--line-soft)", overflow: "auto" }}>
-                    {selectedTaskFlowState ? (
-                      <div style={{ display: "grid", gap: 10 }}>
-                        <div className="card"><div className="card-body"><div style={{ fontWeight: 700 }}>{selectedTaskFlowState.title}</div><div className="mono muted" style={{ fontSize: 11, marginTop: 4 }}>{selectedTaskFlowState.outerToolCallId ?? "[no-task-id]"}</div></div></div>
-                        {selectedTaskFlowState.reasoning.trim() ? <div className="card"><div className="card-title">Reasoning</div><div className="card-body"><RichContent content={selectedTaskFlowState.reasoning} className="timeline-rich" onArtifactClick={openArtifactPreview} /></div></div> : null}
-                        {selectedTaskFlowState.content.trim() ? <div className="card"><div className="card-title">Content</div><div className="card-body"><RichContent content={selectedTaskFlowState.content} className="timeline-rich" onArtifactClick={openArtifactPreview} /></div></div> : null}
-                        {detectArtifactReferences([selectedTaskFlowState.content, selectedTaskFlowState.reasoning, ...selectedTaskFlowState.timelineItems.map((item) => item.text || "")].filter(Boolean).join("\n")).length > 0 ? (
-                          <div className="card">
-                            <div className="card-title">产物链接</div>
-                            <div className="card-body" style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                              {detectArtifactReferences([selectedTaskFlowState.content, selectedTaskFlowState.reasoning, ...selectedTaskFlowState.timelineItems.map((item) => item.text || "")].filter(Boolean).join("\n")).map((artifact) => (
-                                <button
-                                  key={artifact.id}
-                                  type="button"
-                                  className="btn"
-                                  style={{ padding: "3px 8px", fontSize: 12, textDecoration: "underline", textUnderlineOffset: 3 }}
-                                  onClick={() => void openArtifactPreview(artifact)}
-                                >
-                                  {artifact.label}
-                                </button>
-                              ))}
-                            </div>
-                          </div>
-                        ) : null}
-                        <div style={{ display: "grid", gap: 10 }}>
-                          {workflowFocusedItems.length === 0 ? <span className="muted">暂无任务步骤。</span> : workflowFocusedItems.map((item) => <TimelineItemView key={`workflow-item-${item.id}`} item={item} collapseReasoning={true} />)}
-                        </div>
-                      </div>
-                    ) : <div className="muted">点击子代理任务查看消息与任务流详情。</div>}
-                  </div>
-
+              <div style={{ overflow: "hidden", padding: 12, borderBottom: "1px solid var(--line-soft)", position: "relative" }}>
                   <div
                     ref={taskFlowCanvasScrollRef}
-                    style={{ overflow: "auto", paddingLeft: 12, cursor: "grab" }}
+                    style={{ overflow: "auto", height: "100%", cursor: "grab" }}
                     onPointerDown={startTaskFlowCanvasPan}
                   >
                   <svg width={Math.max(turnWorkflowCanvas.width, 1600)} height={Math.max(turnWorkflowCanvas.height, 960)} style={{ display: "block" }}>
@@ -5529,7 +5619,7 @@ function IMPageInner() {
                       if (!pos) return null;
                       const tone = node.status === "error" ? { bg: "#fee2e2", border: "#ef4444", fg: "#991b1b" } : node.status === "completed" ? { bg: "#dcfce7", border: "#22c55e", fg: "#166534" } : node.status === "running" ? { bg: "#dbeafe", border: "#3b82f6", fg: "#1d4ed8" } : { bg: "#e2e8f0", border: "#94a3b8", fg: "#334155" };
                       return (
-                        <g key={`sidebar-node-${node.id}`} onClick={() => setSelectedWorkflowNodeId(node.id)} style={{ cursor: "pointer" }}>
+                        <g key={`sidebar-node-${node.id}`} onClick={() => { setSelectedWorkflowNodeId(node.id); setShowTaskDetailCard(true); }} style={{ cursor: "pointer" }}>
                           <rect x={pos.x} y={pos.y} width={184} height={56} rx={12} fill={tone.bg} stroke={selectedWorkflowNodeId === node.id ? "#0f172a" : tone.border} strokeWidth={selectedWorkflowNodeId === node.id ? 2 : 1.2} />
                           <text x={pos.x + 10} y={pos.y + 20} fontSize="11" fill="#334155" style={{ fontWeight: 700 }}>{node.type.toUpperCase()}</text>
                           <text x={pos.x + 10} y={pos.y + 36} fontSize="12" fill="#0f172a" style={{ fontWeight: 700 }}>{node.label.slice(0, 22)}</text>
@@ -5539,7 +5629,39 @@ function IMPageInner() {
                       })}
                   </svg>
                   </div>
-                </div>
+                  {showTaskDetailCard && (selectedWorkflowNode || selectedTaskFlowState) ? (
+                    <div style={{ position: "absolute", top: 16, right: 16, width: "min(420px, calc(100% - 32px))", maxHeight: "calc(100% - 32px)", overflow: "auto", display: "grid", gap: 10, padding: 12, borderRadius: 16, background: "rgba(255,255,255,0.96)", border: "1px solid var(--line-soft)", boxShadow: "0 24px 50px rgba(15,23,42,0.16)" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center" }}>
+                        <div className="eyebrow">Task Detail</div>
+                        <button className="btn" style={{ padding: "3px 8px", fontSize: 12 }} onClick={() => setShowTaskDetailCard(false)}>关闭</button>
+                      </div>
+                      {selectedWorkflowNode ? (
+                        <div style={{ display: "grid", gap: 10 }}>
+                          <div className="card"><div className="card-body"><div style={{ fontWeight: 700 }}>{selectedWorkflowNode.label}</div><div className="mono muted" style={{ fontSize: 11, marginTop: 4 }}>{selectedWorkflowNode.type} · {selectedWorkflowNode.status}</div></div></div>
+                          {selectedWorkflowNode.detail ? <div className="card"><div className="card-title">Detail</div><div className="card-body"><RichContent content={selectedWorkflowNode.detail} className="timeline-rich" onArtifactClick={openArtifactPreview} /></div></div> : null}
+                          <div style={{ display: "grid", gap: 10 }}>
+                            {workflowFocusedItems.length === 0 ? <span className="muted">暂无任务步骤。</span> : workflowFocusedItems.map((item) => <TimelineItemView key={`workflow-item-${item.id}`} item={item} collapseReasoning={true} />)}
+                          </div>
+                        </div>
+                      ) : selectedTaskFlowState ? (
+                        <div style={{ display: "grid", gap: 10 }}>
+                          <div className="card"><div className="card-body"><div style={{ fontWeight: 700 }}>{selectedTaskFlowState.title}</div><div className="mono muted" style={{ fontSize: 11, marginTop: 4 }}>{selectedTaskFlowState.outerToolCallId ?? "[no-task-id]"}</div></div></div>
+                          {selectedTaskFlowState.reasoning.trim() ? <div className="card"><div className="card-title">Reasoning</div><div className="card-body"><RichContent content={selectedTaskFlowState.reasoning} className="timeline-rich" onArtifactClick={openArtifactPreview} /></div></div> : null}
+                          {selectedTaskFlowState.content.trim() ? <div className="card"><div className="card-title">Content</div><div className="card-body"><RichContent content={selectedTaskFlowState.content} className="timeline-rich" onArtifactClick={openArtifactPreview} /></div></div> : null}
+                          {detectArtifactReferences([selectedTaskFlowState.content, selectedTaskFlowState.reasoning, ...selectedTaskFlowState.timelineItems.map((item) => item.text || "")].filter(Boolean).join("\n")).length > 0 ? (
+                            <div className="card">
+                              <div className="card-title">产物链接</div>
+                              <div className="card-body" style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                                {detectArtifactReferences([selectedTaskFlowState.content, selectedTaskFlowState.reasoning, ...selectedTaskFlowState.timelineItems.map((item) => item.text || "")].filter(Boolean).join("\n")).map((artifact) => (
+                                  <button key={artifact.id} type="button" className="btn" style={{ padding: "3px 8px", fontSize: 12, textDecoration: "underline", textUnderlineOffset: 3 }} onClick={() => void openArtifactPreview(artifact)}>{artifact.label}</button>
+                                ))}
+                              </div>
+                            </div>
+                          ) : null}
+                        </div>
+                      ) : null}
+                    </div>
+                  ) : null}
               </div>
 
               <div className="panel-resizer horizontal" onPointerDown={(event) => startTaskFlowRowResize("bottom", event)} />
