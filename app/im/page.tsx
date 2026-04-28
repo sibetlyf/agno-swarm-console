@@ -324,6 +324,27 @@ function summarizePreview(content: string, max = 120): string {
   return content.replace(/\s+/g, " ").trim().slice(0, max);
 }
 
+function getTaskFlowStatus(state: SourceRenderState): "pending" | "running" | "completed" | "error" {
+  const latest = state.timelineItems[state.timelineItems.length - 1];
+  if (latest?.status === "error") return "error";
+  if (state.content.trim()) return "completed";
+  if (state.reasoning.trim() || state.toolItems.length > 0) return "running";
+  return "pending";
+}
+
+function getTaskFlowStatusStyles(status: "pending" | "running" | "completed" | "error") {
+  switch (status) {
+    case "completed":
+      return { label: "完成", color: "#166534", bg: "#dcfce7", border: "#86efac" };
+    case "error":
+      return { label: "失败", color: "#991b1b", bg: "#fee2e2", border: "#fca5a5" };
+    case "running":
+      return { label: "进行中", color: "#1d4ed8", bg: "#dbeafe", border: "#93c5fd" };
+    default:
+      return { label: "待开始", color: "#475569", bg: "#e2e8f0", border: "#cbd5e1" };
+  }
+}
+
 function parseSubagentLabel(sourceTag: string): string | null {
   const match = sourceTag.match(/^\[subagent:(.+)\]$/);
   return match?.[1] ?? null;
@@ -348,6 +369,25 @@ function parseAgentDisplayLabel(sourceTag: string, fallback = "Assistant"): stri
   if (sourceTag === "[agent]" || !sourceTag) return fallback;
   const match = sourceTag.match(/^\[[^:]+:(.+)\]$/);
   return match?.[1] ?? fallback;
+}
+
+function isTaskScopedSourceTag(sourceTag: string): boolean {
+  return /^\[task:[^\]]+\]$/.test(sourceTag);
+}
+
+function taskIdFromSourceTag(sourceTag: string): string | null {
+  const match = sourceTag.match(/^\[task:([^\]]+)\]$/);
+  return match?.[1] ?? null;
+}
+
+function extractAssignedSubagentName(args: unknown, rawEvent?: Record<string, unknown>): string | null {
+  const argRecord = args && typeof args === "object" && !Array.isArray(args) ? (args as Record<string, unknown>) : null;
+  const rawRecord = rawEvent && typeof rawEvent === "object" ? rawEvent : null;
+  const rawSubagent = rawRecord?.subagent_name;
+  if (typeof rawSubagent === "string" && rawSubagent.trim()) return rawSubagent.trim();
+  const argSubagent = argRecord?.subagent_name;
+  if (typeof argSubagent === "string" && argSubagent.trim()) return argSubagent.trim();
+  return null;
 }
 
 function TimelineItemView({
@@ -821,6 +861,8 @@ type SourceRenderState = {
   firstAt: number;
   lastAt: number;
 };
+
+type TaskScopedTitleMap = Map<string, string>;
 
 type WorkspaceSubagentCard = {
   name: string;
@@ -1624,11 +1666,14 @@ function IMPageInner() {
   const toolCardMapRef = useRef<Map<string, ToolCard>>(new Map());
   const contentBySourceRef = useRef<Map<string, string>>(new Map());
   const reasoningBySourceRef = useRef<Map<string, string>>(new Map());
+  const taskAssignmentNameByOuterCallRef = useRef<Map<string, string>>(new Map());
   const debugSessionIdRef = useRef<string>("session-client");
   const debugEventBufferRef = useRef<DebugStreamEventEnvelope[]>([]);
   const debugFlushTimerRef = useRef<number | null>(null);
   const contentSegmentKeyRef = useRef<string | null>(null);
   const reasoningSegmentKeyRef = useRef<string | null>(null);
+  const contentBlockIndexRef = useRef<Map<string, number>>(new Map());
+  const reasoningBlockIndexRef = useRef<Map<string, number>>(new Map());
   const modelRequestSeqByRunRef = useRef<Map<string, number>>(new Map());
   const uiEsRef = useRef<EventSource | null>(null);
   const llmHistoryReqIdRef = useRef(0);
@@ -2732,12 +2777,33 @@ function IMPageInner() {
     if (!selectedAgentId) return merged;
 
     const humanId = session?.humanAgentId ?? null;
-    return merged.filter((item) => item.agentId === selectedAgentId || (!!humanId && item.agentId === humanId));
-  }, [agentRoleById, messages, selectedAgentId, session?.humanAgentId, streamTimeline]);
+    const selectedRole = vizAgents.find((agent) => agent.id === selectedAgentId)?.role ?? null;
+    const selectedRoleKey = selectedRole ? normalizeAgentLabel(selectedRole) : null;
+    return merged.filter((item) => {
+      if (item.agentId === selectedAgentId) return true;
+      if (!!humanId && item.agentId === humanId) return true;
+      const taskId = item.outerToolCallId ?? taskIdFromSourceTag(item.sourceTag);
+      if (!taskId || !selectedRoleKey) return false;
+      const mappedName = taskAssignmentNameByOuterCallRef.current.get(taskId);
+      return !!mappedName && normalizeAgentLabel(mappedName) === selectedRoleKey;
+    });
+  }, [agentRoleById, messages, selectedAgentId, session?.humanAgentId, streamTimeline, vizAgents]);
 
   const timelineItemById = useMemo(() => {
     const map = new Map<string, StreamTimelineItem>();
     filteredTimelineItems.forEach((item) => map.set(item.id, item));
+    return map;
+  }, [filteredTimelineItems]);
+
+  const taskScopedTitles = useMemo<TaskScopedTitleMap>(() => {
+    const map: TaskScopedTitleMap = new Map();
+    for (const item of filteredTimelineItems) {
+      if (!item.outerToolCallId) continue;
+      const mappedName = taskAssignmentNameByOuterCallRef.current.get(item.outerToolCallId);
+      if (mappedName) map.set(item.outerToolCallId, mappedName);
+      if (item.toolName) map.set(item.outerToolCallId, item.toolName);
+      else if (item.title && item.title !== "[agent]") map.set(item.outerToolCallId, item.title);
+    }
     return map;
   }, [filteredTimelineItems]);
 
@@ -2757,13 +2823,16 @@ function IMPageInner() {
       const latest = timelineItems[timelineItems.length - 1];
       const sourceTag = latest?.sourceTag || "[agent]";
       const subagentName = parseSubagentLabel(sourceTag);
+      const taskScoped = isTaskScopedSourceTag(sourceTag);
       const sourceKey = makeSourceBufferKey(sourceTag, latest?.outerToolCallId);
       states.push({
         sourceTag,
         sourceKey,
         agentId: latest?.agentId ?? null,
-        title: subagentName ?? parseAgentDisplayLabel(sourceTag, "Assistant"),
-        isSubagent: !!subagentName,
+        title:
+          subagentName ??
+          (taskScoped && latest?.outerToolCallId ? taskScopedTitles.get(latest.outerToolCallId) ?? `Task ${latest.outerToolCallId.slice(0, 8)}` : parseAgentDisplayLabel(sourceTag, "Assistant")),
+        isSubagent: !!subagentName || taskScoped,
         outerToolCallId: latest?.outerToolCallId,
         content: contentBySourceRef.current.get(sourceKey) ?? "",
         reasoning: reasoningBySourceRef.current.get(sourceKey) ?? "",
@@ -2775,7 +2844,7 @@ function IMPageInner() {
     }
 
     return states.sort((a, b) => a.firstAt - b.firstAt);
-  }, [filteredTimelineItems]);
+  }, [filteredTimelineItems, taskScopedTitles]);
 
   const chatFeedItems = useMemo<ChatFeedItem[]>(() => {
     const items: ChatFeedItem[] = [];
@@ -3016,6 +3085,8 @@ function IMPageInner() {
   const resetStreamTextBuffers = useCallback(() => {
     contentBySourceRef.current = new Map();
     reasoningBySourceRef.current = new Map();
+    contentBlockIndexRef.current = new Map();
+    reasoningBlockIndexRef.current = new Map();
     setContentStream("");
     setReasoningStream("");
   }, []);
@@ -3105,10 +3176,16 @@ function IMPageInner() {
             (typeof streamRawEvent.tool_call_id === "string" ? (streamRawEvent.tool_call_id as string) : "") ||
             "[no-call]";
           const outerToolCallId =
-            source === "subagent" && typeof streamData.tool_call_id === "string" && streamData.tool_call_id
+            typeof streamData.tool_call_id === "string" && streamData.tool_call_id
               ? streamData.tool_call_id
               : undefined;
           const resolvedAgentId = subagentId || (typeof streamData.agent_id === "string" ? streamData.agent_id : "") || null;
+          const effectiveSourceTag =
+            source === "subagent"
+              ? normalized.sourceTag
+              : streamEvent === "CustomEvent" && outerToolCallId
+                ? `[task:${outerToolCallId}]`
+                : normalized.sourceTag;
 
           const canonicalWorkflow = canonicalizeWorkflowEvent({
             payloadData: payload.data,
@@ -3185,8 +3262,10 @@ function IMPageInner() {
           }
 
           const seq = modelRequestSeqByRunRef.current.get(runId) ?? 0;
-          const sourceBufferKey = makeSourceBufferKey(normalized.sourceTag, outerToolCallId);
+          const sourceBufferKey = makeSourceBufferKey(effectiveSourceTag, outerToolCallId);
           const segmentKey = `${runId}:${seq}:${sourceBufferKey}`;
+          const contentBlockIndex = contentBlockIndexRef.current.get(sourceBufferKey) ?? 0;
+          const reasoningBlockIndex = reasoningBlockIndexRef.current.get(sourceBufferKey) ?? 0;
 
           if (streamEvent === "RunStarted") {
             resetStreamTextBuffers();
@@ -3198,8 +3277,8 @@ function IMPageInner() {
               mergeKey: `${runId}:boundary:start`,
               at: eventAt,
               lane: "status",
-              sourceTag: normalized.sourceTag || "[agent]",
-              agentId: inferAgentIdFromSourceTag(normalized.sourceTag || "[agent]") ?? resolvedAgentId,
+              sourceTag: effectiveSourceTag || "[agent]",
+              agentId: inferAgentIdFromSourceTag(effectiveSourceTag || "[agent]") ?? resolvedAgentId,
               eventName: streamEvent,
               title: "Run",
               text: "—— 对话开始 ——",
@@ -3225,17 +3304,17 @@ function IMPageInner() {
               normalized.kind === "document"
             ) {
               const sanitized = sanitizeDisplayChunk(chunk);
-              appendContentFromSource(normalized.sourceTag, sanitized, outerToolCallId);
+              appendContentFromSource(effectiveSourceTag, sanitized, outerToolCallId);
               if (sanitized) {
                 appendTimelineItem({
-                  mergeKey: `${segmentKey}:content`,
+                  mergeKey: `${segmentKey}:content:${contentBlockIndex}`,
                   at: eventAt,
                   lane: "content",
-                  sourceTag: normalized.sourceTag || "[agent]",
-                  agentId: inferAgentIdFromSourceTag(normalized.sourceTag || "[agent]") ?? resolvedAgentId,
+                  sourceTag: effectiveSourceTag || "[agent]",
+                  agentId: inferAgentIdFromSourceTag(effectiveSourceTag || "[agent]") ?? resolvedAgentId,
                   outerToolCallId,
                   eventName: streamEvent,
-                  title: normalized.sourceTag || "[agent]",
+                  title: effectiveSourceTag || "[agent]",
                   text: sanitized,
                 });
                 const lastReasonSeq = lastReasoningSeqRef.current;
@@ -3246,16 +3325,16 @@ function IMPageInner() {
               }
               contentSegmentKeyRef.current = segmentKey;
             } else if (normalized.kind === "reasoning" || normalized.kind === "thinking") {
-              appendReasoningFromSource(normalized.sourceTag, chunk, outerToolCallId);
+              appendReasoningFromSource(effectiveSourceTag, chunk, outerToolCallId);
               const reasonSeq = appendTimelineItem({
-                mergeKey: `${segmentKey}:reasoning`,
+                mergeKey: `${segmentKey}:reasoning:${reasoningBlockIndex}`,
                 at: eventAt,
                 lane: "reasoning",
-                sourceTag: normalized.sourceTag || "[agent]",
-                agentId: inferAgentIdFromSourceTag(normalized.sourceTag || "[agent]") ?? resolvedAgentId,
+                sourceTag: effectiveSourceTag || "[agent]",
+                agentId: inferAgentIdFromSourceTag(effectiveSourceTag || "[agent]") ?? resolvedAgentId,
                 outerToolCallId,
                 eventName: streamEvent,
-                title: normalized.sourceTag || "[agent]",
+                title: effectiveSourceTag || "[agent]",
                 text: chunk,
               });
               lastReasoningSeqRef.current = reasonSeq;
@@ -3263,7 +3342,7 @@ function IMPageInner() {
             } else if (normalized.kind === "tool_calls" || normalized.kind === "tool_result") {
               const name =
                 (payload.data.tool_call_name ?? payload.data.tool_call_id ?? normalized.key ?? "tool_call") as string;
-              const sourceTag = normalized.sourceTag || "[agent]";
+              const sourceTag = effectiveSourceTag || "[agent]";
               const sourceBufferKey = makeSourceBufferKey(sourceTag, outerToolCallId);
               const key = `${sourceBufferKey}:${String(payload.data.tool_call_id ?? normalized.key ?? name)}`;
               const buffers =
@@ -3290,6 +3369,14 @@ function IMPageInner() {
                 parsedDelta.error ??
                 parsedDelta.content ??
                 (status === "started" ? "running" : chunk);
+              if ((parsedDelta.tool_name ?? name) === "assign_task") {
+                const assignedName = extractAssignedSubagentName(parsedDelta.args ?? streamRawTool.tool_args ?? streamMetaTool.tool_args ?? streamRawEvent.tool_args, parsedDelta.raw ?? streamRawEvent);
+                if (assignedName && outerToolCallId) {
+                  taskAssignmentNameByOuterCallRef.current.set(outerToolCallId, assignedName);
+                }
+              }
+              contentBlockIndexRef.current.set(sourceBufferKey, contentBlockIndex + 1);
+              reasoningBlockIndexRef.current.set(sourceBufferKey, reasoningBlockIndex + 1);
               updateToolCard({
                 key,
                 sourceTag,
@@ -3333,17 +3420,17 @@ function IMPageInner() {
               const parsed = parseCustomEventPayload(payload.data);
 
               if (parsed.reasoning) {
-                const reasonSegKey = `${runId}:${seq}:${sourceBufferKey}:custom_reasoning`;
-                appendReasoningFromSource(normalized.sourceTag, parsed.reasoning, outerToolCallId);
+                const reasonSegKey = `${runId}:${seq}:${sourceBufferKey}:custom_reasoning:${reasoningBlockIndex}`;
+                appendReasoningFromSource(effectiveSourceTag, parsed.reasoning, outerToolCallId);
                 const reasonSeq = appendTimelineItem({
                   mergeKey: `${reasonSegKey}`,
                   at: eventAt,
                   lane: "reasoning",
-                  sourceTag: normalized.sourceTag || "[agent]",
-                  agentId: inferAgentIdFromSourceTag(normalized.sourceTag || "[agent]") ?? resolvedAgentId,
+                  sourceTag: effectiveSourceTag || "[agent]",
+                  agentId: inferAgentIdFromSourceTag(effectiveSourceTag || "[agent]") ?? resolvedAgentId,
                   outerToolCallId,
                   eventName: parsed.eventName,
-                  title: normalized.sourceTag || "[agent]",
+                  title: effectiveSourceTag || "[agent]",
                   text: parsed.reasoning,
                   rawEvent: parsed.rawEvent,
                 });
@@ -3352,17 +3439,17 @@ function IMPageInner() {
               }
 
               if (parsed.content) {
-                const contentSegKey = `${runId}:${seq}:${sourceBufferKey}:custom_content`;
-                appendContentFromSource(normalized.sourceTag, parsed.content, outerToolCallId);
+                const contentSegKey = `${runId}:${seq}:${sourceBufferKey}:custom_content:${contentBlockIndex}`;
+                appendContentFromSource(effectiveSourceTag, parsed.content, outerToolCallId);
                 appendTimelineItem({
                   mergeKey: `${contentSegKey}`,
                   at: eventAt,
                   lane: "content",
-                  sourceTag: normalized.sourceTag || "[agent]",
-                  agentId: inferAgentIdFromSourceTag(normalized.sourceTag || "[agent]") ?? resolvedAgentId,
+                  sourceTag: effectiveSourceTag || "[agent]",
+                  agentId: inferAgentIdFromSourceTag(effectiveSourceTag || "[agent]") ?? resolvedAgentId,
                   outerToolCallId,
                   eventName: parsed.eventName,
-                  title: normalized.sourceTag || "[agent]",
+                  title: effectiveSourceTag || "[agent]",
                   text: parsed.content,
                   rawEvent: parsed.rawEvent,
                 });
@@ -3376,8 +3463,18 @@ function IMPageInner() {
 
               if (parsed.toolState) {
                 const toolName = parsed.toolName ?? parsed.toolCallId ?? "tool_call";
-                const sourceTag = normalized.sourceTag || "[agent]";
+                if (toolName === "assign_task") {
+                  const assignedName = extractAssignedSubagentName(parsed.args, parsed.rawEvent);
+                  if (assignedName && outerToolCallId) {
+                    taskAssignmentNameByOuterCallRef.current.set(outerToolCallId, assignedName);
+                  }
+                }
+                const sourceTag = effectiveSourceTag || "[agent]";
                 const sourceBufferKey = makeSourceBufferKey(sourceTag, outerToolCallId);
+                const nextContentBlock = (contentBlockIndexRef.current.get(sourceBufferKey) ?? 0) + 1;
+                const nextReasoningBlock = (reasoningBlockIndexRef.current.get(sourceBufferKey) ?? 0) + 1;
+                contentBlockIndexRef.current.set(sourceBufferKey, nextContentBlock);
+                reasoningBlockIndexRef.current.set(sourceBufferKey, nextReasoningBlock);
                 const sourcePrefix = normalized.sourceTag ? `${normalized.sourceTag} ` : "";
                 const key = `${sourceBufferKey}:${parsed.toolCallId ?? toolName}`;
                 if (parsed.toolState === "started") {
@@ -3453,8 +3550,8 @@ function IMPageInner() {
                 mergeKey: `${segmentKey}:${normalized.kind}`,
                 at: eventAt,
                 lane: "metadata",
-                sourceTag: normalized.sourceTag || "[agent]",
-                agentId: inferAgentIdFromSourceTag(normalized.sourceTag || "[agent]") ?? resolvedAgentId,
+                sourceTag: effectiveSourceTag || "[agent]",
+                agentId: inferAgentIdFromSourceTag(effectiveSourceTag || "[agent]") ?? resolvedAgentId,
                 outerToolCallId,
                 eventName: streamEvent,
                 title: label,
@@ -5305,16 +5402,37 @@ function IMPageInner() {
             >
               <div style={{ overflow: "auto", padding: 12, borderBottom: "1px solid var(--line-soft)", background: "rgba(255,255,255,0.78)" }}>
                 <div style={{ display: "grid", gap: 10 }}>
+                  {selectedTaskFlowState ? (
+                    <div className="card" style={{ borderRadius: 16, boxShadow: "0 10px 30px rgba(15,23,42,0.08)" }}>
+                      <div className="card-body" style={{ display: "grid", gap: 8 }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center" }}>
+                          <div style={{ fontWeight: 700, color: "#0f172a" }}>当前任务：{selectedTaskFlowState.title}</div>
+                          <span className="mono muted" style={{ fontSize: 11 }}>{selectedTaskFlowState.outerToolCallId?.slice(0, 12) ?? "[no-task-id]"}</span>
+                        </div>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                          <span className="pill mono">steps {selectedTaskFlowState.timelineItems.length}</span>
+                          <span className="pill mono">tools {selectedTaskFlowState.toolItems.length}</span>
+                          <span className="pill mono">started {new Date(selectedTaskFlowState.firstAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" })}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
                   {taskFlowStates.length === 0 ? <div className="muted">暂无子任务流。</div> : taskFlowStates.map((state) => {
-                    const latest = state.timelineItems[state.timelineItems.length - 1];
-                    const status = latest?.status === "error" ? "error" : state.content.trim() ? "completed" : state.reasoning.trim() || state.toolItems.length > 0 ? "running" : "pending";
+                    const status = getTaskFlowStatus(state);
+                    const statusTone = getTaskFlowStatusStyles(status);
                     const isActive = selectedTaskFlowState?.sourceKey === state.sourceKey;
                     return (
                       <button
                         key={`task-flow-${state.sourceKey}`}
                         type="button"
                         className="chat-feed-compact"
-                        style={{ width: "100%", textAlign: "left", boxShadow: isActive ? "inset 0 0 0 1px rgba(59,130,246,0.28)" : undefined }}
+                        style={{
+                          width: "100%",
+                          textAlign: "left",
+                          boxShadow: isActive ? "inset 0 0 0 1px rgba(59,130,246,0.4), 0 10px 24px rgba(15,23,42,0.08)" : "0 8px 20px rgba(15,23,42,0.05)",
+                          borderRadius: 16,
+                          background: isActive ? "linear-gradient(180deg, rgba(239,246,255,0.95), rgba(255,255,255,0.98))" : "rgba(255,255,255,0.95)",
+                        }}
                         onClick={() => {
                           setSelectedFeedItemId(`feed-subagent-${state.sourceKey}`);
                           setSelectedWorkflowNodeId(null);
@@ -5323,7 +5441,7 @@ function IMPageInner() {
                       >
                         <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "flex-start" }}>
                           <div style={{ display: "grid", gap: 4 }}>
-                            <span className="chat-feed-compact-title">{state.title}</span>
+                            <span className="chat-feed-compact-title" style={{ fontSize: 14 }}>{state.title}</span>
                             <span className="chat-feed-compact-preview">
                               {state.content.trim()
                                 ? summarizePreview(state.content, 96)
@@ -5333,8 +5451,12 @@ function IMPageInner() {
                                     ? `执行了 ${state.toolItems.length} 个工具步骤`
                                     : "等待任务流事件"}
                             </span>
+                            <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 4 }}>
+                              <span className="pill mono">messages {state.timelineItems.length}</span>
+                              <span className="pill mono">tools {state.toolItems.length}</span>
+                            </div>
                           </div>
-                          <span className="chat-feed-compact-status">{status === "error" ? "失败" : status === "completed" ? "完成" : status === "running" ? "进行中" : "待开始"}</span>
+                          <span className="chat-feed-compact-status" style={{ color: statusTone.color, background: statusTone.bg, border: `1px solid ${statusTone.border}`, padding: "4px 8px", borderRadius: 999 }}>{statusTone.label}</span>
                         </div>
                       </button>
                     );
