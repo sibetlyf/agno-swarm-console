@@ -76,6 +76,8 @@ export async function POST(
         message: body.content,
         senderId: body.senderId,
         groupId,
+      }).catch(() => {
+        // keep message POST successful even if bridge stream bootstrap fails
       });
     }
   }

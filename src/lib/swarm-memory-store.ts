@@ -62,15 +62,19 @@ function groupReadKey(groupId: UUID, agentId: UUID) {
 }
 
 async function listRemoteAgents() {
-  const base = (process.env.AGNO_OS_BASE_URL || "http://127.0.0.1:7777").replace(/\/$/, "");
-  const res = await fetch(`${base}/agents`, { method: "GET" });
-  if (!res.ok) return [] as Array<{ id: string; name?: string }>;
-  const body = (await res.json().catch(() => [])) as unknown;
-  if (Array.isArray(body)) return body as Array<{ id: string; name?: string }>;
-  if (body && typeof body === "object" && Array.isArray((body as { agents?: unknown[] }).agents)) {
-    return (body as { agents: Array<{ id: string; name?: string }> }).agents;
+  const base = (process.env.AGNO_OS_BASE_URL || "http://127.0.0.1:8000").replace(/\/$/, "");
+  try {
+    const res = await fetch(`${base}/agents`, { method: "GET" });
+    if (!res.ok) return [] as Array<{ id: string; name?: string }>;
+    const body = (await res.json().catch(() => [])) as unknown;
+    if (Array.isArray(body)) return body as Array<{ id: string; name?: string }>;
+    if (body && typeof body === "object" && Array.isArray((body as { agents?: unknown[] }).agents)) {
+      return (body as { agents: Array<{ id: string; name?: string }> }).agents;
+    }
+    return [] as Array<{ id: string; name?: string }>;
+  } catch {
+    return [] as Array<{ id: string; name?: string }>;
   }
-  return [] as Array<{ id: string; name?: string }>;
 }
 
 function unreadMessagesForAgent(groupId: UUID, agentId: UUID) {

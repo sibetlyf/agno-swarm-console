@@ -135,7 +135,26 @@ textarea {
 
 .execution-sidebar {
   border-left-width: 1px;
-  min-width: 560px;
+  min-width: 420px;
+}
+
+.execution-fab {
+  position: fixed;
+  right: 14px;
+  bottom: 18px;
+  z-index: 35;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.22);
+}
+
+.execution-fab:hover {
+  background: #ffffff;
 }
 
 .panel {
@@ -1115,6 +1134,10 @@ textarea {
     grid-template-columns: 220px minmax(0, 1fr) 360px;
   }
 
+  .execution-sidebar {
+    min-width: 320px;
+  }
+
   .panel-left,
   .panel-right,
   .panel-mid {
@@ -1152,6 +1175,10 @@ textarea {
     max-height: 38vh;
   }
 
+  .panel-resizer.vertical {
+    display: none;
+  }
+
   .graph-overlay,
   .workflow-overlay {
     width: calc(100vw - 20px) !important;
@@ -1169,9 +1196,16 @@ textarea {
   }
 
   .execution-sidebar {
-    max-height: 42vh;
-    border-left-width: 0;
-    border-top-width: 1px;
+    position: fixed;
+    inset: 10px;
+    z-index: 34;
+    max-height: none;
+    min-width: 0;
+    width: auto;
+    border: 1px solid var(--line-soft);
+    border-radius: 14px;
+    box-shadow: 0 24px 48px rgba(15, 23, 42, 0.24);
+    overflow: hidden;
   }
 }
 
@@ -1232,5 +1266,31 @@ textarea {
   .chat-feed-bubble,
   .chat-feed-compact {
     width: 100%;
+  }
+
+  .execution-fab {
+    right: 10px;
+    bottom: 12px;
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .agent-panel-body {
+    padding: 10px 12px;
+  }
+
+  .chat-feed-bubble {
+    padding: 10px 11px;
+    border-radius: 14px;
+  }
+
+  .chat-feed-meta {
+    gap: 8px;
+    font-size: 11px;
+  }
+
+  .chat-feed-compact {
+    padding: 9px 10px;
+    border-radius: 12px;
   }
 }

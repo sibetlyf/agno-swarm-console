@@ -20,11 +20,11 @@ const code = createCodePlugin({
 const TIMELINE_DB_NAME = "agno-swarm-console-db";
 const TIMELINE_STORE_NAME = "timeline-snapshots";
 const TIMELINE_DB_VERSION = 1;
-const LEFT_PANEL_MIN_WIDTH = 260;
+const LEFT_PANEL_MIN_WIDTH = 240;
 const LEFT_PANEL_MAX_WIDTH = 520;
-const RIGHT_PANEL_MIN_WIDTH = 460;
+const RIGHT_PANEL_MIN_WIDTH = 360;
 const RIGHT_PANEL_MAX_WIDTH = 980;
-const CENTER_PANEL_MIN_WIDTH = 520;
+const CENTER_PANEL_MIN_WIDTH = 420;
 const TASK_FLOW_TOP_MIN_HEIGHT = 120;
 const TASK_FLOW_MIDDLE_MIN_HEIGHT = 220;
 const TASK_FLOW_PREVIEW_MIN_HEIGHT = 180;
@@ -747,22 +747,52 @@ function canonicalizeWorkflowEvent(input: {
 
   // raw_event has highest priority, then rawdata fallback.
   const rawEvent = rawFromMetadata ?? rawFromPayload ?? rawDataNestedEvent ?? {};
-  const rawTool = asObject(rawEvent.tool) ?? asObject(rawDataEnvelope?.tool);
+  const rawTool = asObject(rawEvent.tool) ?? asObject(rawDataNestedEvent?.tool) ?? asObject(rawDataEnvelope?.tool);
   const metaTool = asObject(metadata.tool);
   const explicitSubagent = metadata.source === "subagent";
 
-  const eventName = pickString(data.event, metadata.event, rawEvent.event, (input.rawPayload as Record<string, unknown>).event) ?? "CustomEvent";
-  const source = explicitSubagent ? "subagent" : pickSource(data.source) ?? pickSource(metadata.source) ?? pickSource(rawEvent.source);
-  const runId = pickString(data.run_id, metadata.run_id, rawEvent.run_id, (input.rawPayload as Record<string, unknown>).run_id);
-  const parentRunId = pickString(data.parent_run_id, metadata.parent_run_id, rawEvent.parent_run_id);
-  const agentId = pickString(data.agent_id, metadata.agent_id, rawEvent.agent_id, (input.rawPayload as Record<string, unknown>).agent_id);
-  const agentName = pickString(data.agent_name, metadata.agent_name, rawEvent.agent_name, (input.rawPayload as Record<string, unknown>).agent_name);
-  const subagentName = pickString(data.subagent_name, metadata.subagent_name, rawEvent.subagent_name);
+  const outerEventName = pickString(data.event, (input.rawPayload as Record<string, unknown>).event);
+  const nestedEventName = pickString(rawEvent.event, rawDataNestedEvent?.event, metadata.event);
+  const eventName =
+    outerEventName === "ExternalAgentRunResponseContentEvent"
+      ? nestedEventName ?? outerEventName
+      : nestedEventName ?? outerEventName ?? "CustomEvent";
+
+  const source = explicitSubagent
+    ? "subagent"
+    : pickSource(data.source) ??
+      pickSource(metadata.source) ??
+      pickSource(rawEvent.source) ??
+      pickSource(rawDataNestedEvent?.source);
+  const runId = pickString(
+    data.run_id,
+    metadata.run_id,
+    rawEvent.run_id,
+    rawDataNestedEvent?.run_id,
+    (input.rawPayload as Record<string, unknown>).run_id
+  );
+  const parentRunId = pickString(data.parent_run_id, metadata.parent_run_id, rawEvent.parent_run_id, rawDataNestedEvent?.parent_run_id);
+  const agentId = pickString(
+    data.agent_id,
+    metadata.agent_id,
+    rawEvent.agent_id,
+    rawDataNestedEvent?.agent_id,
+    (input.rawPayload as Record<string, unknown>).agent_id
+  );
+  const agentName = pickString(
+    data.agent_name,
+    metadata.agent_name,
+    rawEvent.agent_name,
+    rawDataNestedEvent?.agent_name,
+    (input.rawPayload as Record<string, unknown>).agent_name
+  );
+  const subagentName = pickString(data.subagent_name, metadata.subagent_name, rawEvent.subagent_name, rawDataNestedEvent?.subagent_name);
 
   const toolCallId = pickString(
     data.tool_call_id,
     metadata.tool_call_id,
     rawEvent.tool_call_id,
+    rawDataNestedEvent?.tool_call_id,
     rawTool?.tool_call_id,
     metaTool?.tool_call_id
   );
@@ -770,28 +800,30 @@ function canonicalizeWorkflowEvent(input: {
     data.tool_call_name,
     metadata.tool_name,
     rawEvent.tool_name,
+    rawDataNestedEvent?.tool_name,
     rawTool?.tool_name,
     metaTool?.tool_name,
     rawTool?.name,
     metaTool?.name
   );
   const content = explicitSubagent
-    ? pickText(rawEvent.content, rawDataEnvelope?.content, data.content, data.delta)
-    : pickText(data.content, data.delta, rawEvent.content, rawDataEnvelope?.content);
+    ? pickText(rawEvent.content, rawDataNestedEvent?.content, rawDataEnvelope?.content, data.content, data.delta)
+    : pickText(data.content, data.delta, rawEvent.content, rawDataNestedEvent?.content, rawDataEnvelope?.content);
   const reasoning = explicitSubagent
-    ? pickText(rawEvent.reasoning_content, rawDataEnvelope?.reasoning_content, data.reasoning_content)
-    : pickText(data.reasoning_content, rawEvent.reasoning_content, rawDataEnvelope?.reasoning_content);
+    ? pickText(rawEvent.reasoning_content, rawDataNestedEvent?.reasoning_content, rawDataEnvelope?.reasoning_content, data.reasoning_content)
+    : pickText(data.reasoning_content, rawEvent.reasoning_content, rawDataNestedEvent?.reasoning_content, rawDataEnvelope?.reasoning_content);
   const toolError = pickText(
     rawTool?.error,
     rawTool?.tool_call_error,
     rawEvent.error,
+    rawDataNestedEvent?.error,
     rawDataEnvelope?.error,
     metadata.error,
     data.error,
     data.message
   );
-  const toolArgs = rawTool?.tool_args ?? metaTool?.tool_args ?? rawEvent.tool_args ?? metadata.tool_args;
-  const toolResult = rawTool?.result ?? metaTool?.result ?? rawEvent.result ?? metadata.result;
+  const toolArgs = rawTool?.tool_args ?? metaTool?.tool_args ?? rawEvent.tool_args ?? rawDataNestedEvent?.tool_args ?? metadata.tool_args;
+  const toolResult = rawTool?.result ?? metaTool?.result ?? rawEvent.result ?? rawDataNestedEvent?.result ?? metadata.result;
 
   return {
     eventName,
@@ -1003,15 +1035,17 @@ function normalizeAgentStreamChunk(raw: Record<string, any>): NormalizedAgentStr
   const eventType = typeof raw.type === "string" ? raw.type : "";
   const metadata = raw.metadata && typeof raw.metadata === "object" ? raw.metadata : {};
   const rawEvent =
-    (metadata as Record<string, unknown>).raw_event &&
+    ((metadata as Record<string, unknown>).raw_event &&
       typeof (metadata as Record<string, unknown>).raw_event === "object"
       ? ((metadata as Record<string, unknown>).raw_event as Record<string, unknown>)
-      : {};
+      : null) ??
+    (raw.raw_event && typeof raw.raw_event === "object" ? (raw.raw_event as Record<string, unknown>) : {}) ;
   const rawData =
-    (metadata as Record<string, unknown>).rawdata &&
+    ((metadata as Record<string, unknown>).rawdata &&
       typeof (metadata as Record<string, unknown>).rawdata === "object"
       ? ((metadata as Record<string, unknown>).rawdata as Record<string, unknown>)
-      : {};
+      : null) ??
+    (raw.rawdata && typeof raw.rawdata === "object" ? (raw.rawdata as Record<string, unknown>) : {});
   const rawDataEvent =
     rawData.raw_event && typeof rawData.raw_event === "object"
       ? (rawData.raw_event as Record<string, unknown>)
@@ -1136,6 +1170,7 @@ function normalizeIncomingAgentSseEvent(raw: RawAgnoEvent): AgentStreamEvent | n
     "ToolCallError",
     "CustomEvent",
     "RunResponseAudio",
+    "ExternalAgentRunResponseContentEvent",
   ]);
 
   if (evt === "RunCompleted") {
@@ -1166,14 +1201,22 @@ function normalizeIncomingAgentSseEvent(raw: RawAgnoEvent): AgentStreamEvent | n
       raw.metadata && typeof raw.metadata === "object"
         ? (raw.metadata as Record<string, unknown>)
         : {};
+    const topLevelRawEvent =
+      raw.raw_event && typeof raw.raw_event === "object"
+        ? (raw.raw_event as Record<string, unknown>)
+        : {};
+    const topLevelRawData =
+      raw.rawdata && typeof raw.rawdata === "object"
+        ? (raw.rawdata as Record<string, unknown>)
+        : {};
     const metadataRawEvent =
       metadata.raw_event && typeof metadata.raw_event === "object"
         ? (metadata.raw_event as Record<string, unknown>)
-        : {};
+        : topLevelRawEvent;
     const metadataRawData =
       metadata.rawdata && typeof metadata.rawdata === "object"
         ? (metadata.rawdata as Record<string, unknown>)
-        : {};
+        : topLevelRawData;
     const metadataRawDataEvent =
       metadataRawData.raw_event && typeof metadataRawData.raw_event === "object"
         ? (metadataRawData.raw_event as Record<string, unknown>)
@@ -1188,7 +1231,7 @@ function normalizeIncomingAgentSseEvent(raw: RawAgnoEvent): AgentStreamEvent | n
         : {};
     const explicitSubagent = metadata.source === "subagent";
     const actualEvent =
-      evt === "CustomEvent"
+      (evt === "CustomEvent" || evt === "ExternalAgentRunResponseContentEvent")
         ? ((typeof metadata.event === "string" && metadata.event) ||
           (typeof metadataRawEvent.event === "string" && metadataRawEvent.event) ||
           (typeof metadataRawDataEvent.event === "string" && metadataRawDataEvent.event) ||
@@ -1211,6 +1254,12 @@ function normalizeIncomingAgentSseEvent(raw: RawAgnoEvent): AgentStreamEvent | n
       typeof metadataRawDataEvent.reasoning_content === "string"
         ? (metadataRawDataEvent.reasoning_content as string)
         : undefined;
+    const rawEventDelta = typeof metadataRawEvent.delta === "string" ? (metadataRawEvent.delta as string) : undefined;
+    const rawDataDelta = typeof metadataRawDataEvent.delta === "string" ? (metadataRawDataEvent.delta as string) : undefined;
+    const rawEventText = typeof metadataRawEvent.text === "string" ? (metadataRawEvent.text as string) : undefined;
+    const rawDataText = typeof metadataRawDataEvent.text === "string" ? (metadataRawDataEvent.text as string) : undefined;
+    const rawEventMessage = typeof metadataRawEvent.message === "string" ? (metadataRawEvent.message as string) : undefined;
+    const rawDataMessage = typeof metadataRawDataEvent.message === "string" ? (metadataRawDataEvent.message as string) : undefined;
     const actualReasoning = explicitSubagent
       ? rawEventReasoning || rawDataReasoning || (typeof raw.reasoning_content === "string" ? raw.reasoning_content : undefined)
       : (typeof raw.reasoning_content === "string" && raw.reasoning_content) ||
@@ -1218,10 +1267,10 @@ function normalizeIncomingAgentSseEvent(raw: RawAgnoEvent): AgentStreamEvent | n
         rawDataReasoning ||
         (actualEvent === "RunContent" && rawEventReasoning !== undefined ? topLevelContent : undefined);
     const actualContent = explicitSubagent
-      ? rawEventContent || rawDataContent || topLevelContent
+      ? rawEventContent || rawDataContent || topLevelContent || rawEventDelta || rawDataDelta || rawEventText || rawDataText || rawEventMessage || rawDataMessage
       : actualEvent === "RunContent" && rawEventReasoning !== undefined && !rawEventContent
         ? undefined
-        : topLevelContent || rawEventContent || rawDataContent;
+        : topLevelContent || rawEventContent || rawDataContent || rawEventDelta || rawDataDelta || rawEventText || rawDataText || rawEventMessage || rawDataMessage;
     const hasReasoning =
       (typeof actualReasoning === "string" && actualReasoning.trim().length > 0);
     const hasContent =
@@ -1290,9 +1339,13 @@ function normalizeIncomingAgentSseEvent(raw: RawAgnoEvent): AgentStreamEvent | n
           explicitSubagent
             ? "subagent"
             : (typeof metadata.source === "string" ? (metadata.source as string) : undefined) ??
+              (typeof metadataRawEvent.source === "string" ? (metadataRawEvent.source as string) : undefined) ??
+              (typeof metadataRawDataEvent.source === "string" ? (metadataRawDataEvent.source as string) : undefined) ??
               (typeof (raw as any).source === "string" ? (raw as any).source : undefined),
         subagent_name:
           (typeof metadata.subagent_name === "string" ? (metadata.subagent_name as string) : undefined) ??
+          (typeof metadataRawEvent.subagent_name === "string" ? (metadataRawEvent.subagent_name as string) : undefined) ??
+          (typeof metadataRawDataEvent.subagent_name === "string" ? (metadataRawDataEvent.subagent_name as string) : undefined) ??
           (typeof (raw as any).subagent_name === "string" ? (raw as any).subagent_name : undefined),
         agent_id:
           (typeof metadata.agent_id === "string" ? (metadata.agent_id as string) : undefined) ??
@@ -1680,6 +1733,7 @@ function IMPageInner() {
   const [vizDebug, setVizDebug] = useState<VizDebugEntry[]>([]);
   const [vizEventsCollapsed, setVizEventsCollapsed] = useState(false);
   const [showExecutionDrawer, setShowExecutionDrawer] = useState(false);
+  const [isCompactLayout, setIsCompactLayout] = useState(false);
   const [selectedFeedItemId, setSelectedFeedItemId] = useState<string | null>(null);
   const [selectedWorkflowNodeId, setSelectedWorkflowNodeId] = useState<string | null>(null);
   const [showTaskDetailCard, setShowTaskDetailCard] = useState(false);
@@ -1725,8 +1779,29 @@ function IMPageInner() {
   const [activeGraphCardAgentId, setActiveGraphCardAgentId] = useState<string | null>(null);
   const [debugSessionId, setDebugSessionId] = useState("session-client");
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const media = window.matchMedia("(max-width: 1080px)");
+    const apply = () => {
+      const compact = media.matches;
+      setIsCompactLayout(compact);
+      if (compact) {
+        setShowTaskDetailCard(false);
+      }
+    };
+    apply();
+    const onChange = () => apply();
+    if (typeof media.addEventListener === "function") {
+      media.addEventListener("change", onChange);
+      return () => media.removeEventListener("change", onChange);
+    }
+    media.addListener(onChange);
+    return () => media.removeListener(onChange);
+  }, []);
+
   const bottomRef = useRef<HTMLDivElement | null>(null);
   const esRef = useRef<EventSource | null>(null);
+  const suppressAutoReconnectAfterReplayRef = useRef(false);
   const activeGroupIdRef = useRef<string | null>(null);
   const streamAgentIdRef = useRef<string | null>(null);
   const streamAgentIdValueRef = useRef<string | null>(null);
@@ -3045,8 +3120,17 @@ function IMPageInner() {
       const matched = taskFlowStates.find((state) => `feed-subagent-${state.sourceKey}` === selectedFeedItemId);
       if (matched) return matched;
     }
+    if (selectedFeedItem) {
+      const linkedIds = new Set(selectedFeedItem.linkedTimelineIds);
+      const byLinkedItem = taskFlowStates.find((state) => state.timelineItems.some((item) => linkedIds.has(item.id)));
+      if (byLinkedItem) return byLinkedItem;
+      if (selectedFeedItem.agentId) {
+        const byAgent = taskFlowStates.find((state) => state.agentId === selectedFeedItem.agentId);
+        if (byAgent) return byAgent;
+      }
+    }
     return taskFlowStates[0] ?? null;
-  }, [selectedFeedItemId, taskFlowStates]);
+  }, [selectedFeedItem, selectedFeedItemId, taskFlowStates]);
 
   const openArtifactPreview = useCallback(async (artifact: ArtifactReference) => {
     setShowExecutionDrawer(true);
@@ -3221,39 +3305,60 @@ function IMPageInner() {
               ? (streamData.metadata as Record<string, unknown>)
               : {};
           const streamRawEvent =
-            streamMeta.raw_event && typeof streamMeta.raw_event === "object"
+            (streamMeta.raw_event && typeof streamMeta.raw_event === "object"
               ? (streamMeta.raw_event as Record<string, unknown>)
-              : {};
+              : null) ??
+            (streamData.raw_event && typeof streamData.raw_event === "object"
+              ? (streamData.raw_event as Record<string, unknown>)
+              : {});
+          const streamRawData =
+            (streamMeta.rawdata && typeof streamMeta.rawdata === "object"
+              ? (streamMeta.rawdata as Record<string, unknown>)
+              : null) ??
+            (streamData.rawdata && typeof streamData.rawdata === "object"
+              ? (streamData.rawdata as Record<string, unknown>)
+              : {});
+          const streamRawDataEvent =
+            streamRawData.raw_event && typeof streamRawData.raw_event === "object"
+              ? (streamRawData.raw_event as Record<string, unknown>)
+              : streamRawData;
           const streamMetaTool =
             streamMeta.tool && typeof streamMeta.tool === "object"
               ? (streamMeta.tool as Record<string, unknown>)
               : {};
           const streamRawTool =
-            streamRawEvent.tool && typeof streamRawEvent.tool === "object"
+            (streamRawEvent.tool && typeof streamRawEvent.tool === "object"
               ? (streamRawEvent.tool as Record<string, unknown>)
-              : {};
+              : null) ??
+            (streamRawDataEvent.tool && typeof streamRawDataEvent.tool === "object"
+              ? (streamRawDataEvent.tool as Record<string, unknown>)
+              : {});
           const eventAt = resolveEventTimestamp(rawPayload, payload);
           const source =
             (typeof streamData.source === "string" ? streamData.source : "") ||
             (typeof streamMeta.source === "string" ? (streamMeta.source as string) : "") ||
-            (typeof streamRawEvent.source === "string" ? (streamRawEvent.source as string) : "");
+            (typeof streamRawEvent.source === "string" ? (streamRawEvent.source as string) : "") ||
+            (typeof streamRawDataEvent.source === "string" ? (streamRawDataEvent.source as string) : "");
           const subagentName =
             (typeof streamData.subagent_name === "string" ? streamData.subagent_name : "") ||
             (typeof streamMeta.subagent_name === "string" ? (streamMeta.subagent_name as string) : "") ||
             (typeof streamRawEvent.subagent_name === "string" ? (streamRawEvent.subagent_name as string) : "") ||
+            (typeof streamRawDataEvent.subagent_name === "string" ? (streamRawDataEvent.subagent_name as string) : "") ||
             (typeof streamData.agent_name === "string" ? streamData.agent_name : "") ||
             (typeof streamMeta.agent_name === "string" ? (streamMeta.agent_name as string) : "");
           const resolvedSource = source || (subagentName ? "subagent" : "");
           const subagentId =
             (typeof streamData.agent_id === "string" ? streamData.agent_id : "") ||
             (typeof streamMeta.agent_id === "string" ? (streamMeta.agent_id as string) : "") ||
-            (typeof streamRawEvent.agent_id === "string" ? (streamRawEvent.agent_id as string) : "");
+            (typeof streamRawEvent.agent_id === "string" ? (streamRawEvent.agent_id as string) : "") ||
+            (typeof streamRawDataEvent.agent_id === "string" ? (streamRawDataEvent.agent_id as string) : "");
           const callId =
             (typeof streamRawTool.tool_call_id === "string" ? (streamRawTool.tool_call_id as string) : "") ||
             (typeof streamMetaTool.tool_call_id === "string" ? (streamMetaTool.tool_call_id as string) : "") ||
             (typeof streamData.tool_call_id === "string" ? streamData.tool_call_id : "") ||
             (typeof streamMeta.tool_call_id === "string" ? (streamMeta.tool_call_id as string) : "") ||
             (typeof streamRawEvent.tool_call_id === "string" ? (streamRawEvent.tool_call_id as string) : "") ||
+            (typeof streamRawDataEvent.tool_call_id === "string" ? (streamRawDataEvent.tool_call_id as string) : "") ||
             "[no-call]";
           const outerToolCallId =
             typeof streamData.tool_call_id === "string" && streamData.tool_call_id
@@ -3701,12 +3806,14 @@ function IMPageInner() {
             text: "—— 对话结束 ——",
           });
           clearCurrentRunBuffers({ preserveTextBuffers: true, preserveRawEvents: true });
-          const groupId = activeGroupIdRef.current;
-          const nextSession = loadSession();
-          if (nextSession && groupId) void refreshMessages(nextSession, groupId, { markRead: false });
-          if (nextSession) void refreshGroups(nextSession);
-          const agentId = streamAgentIdRef.current;
-          if (agentId) void refreshLlmHistory(agentId);
+          if (!isReplayMode) {
+            const groupId = activeGroupIdRef.current;
+            const nextSession = loadSession();
+            if (nextSession && groupId) void refreshMessages(nextSession, groupId, { markRead: false });
+            if (nextSession) void refreshGroups(nextSession);
+            const agentId = streamAgentIdRef.current;
+            if (agentId) void refreshLlmHistory(agentId);
+          }
           return;
         }
         if (payload.event === "agent.error") {
@@ -3736,6 +3843,7 @@ function IMPageInner() {
       pushVizEvent,
       pushRawApiEvent,
       queueDebugEvent,
+      isReplayMode,
       refreshGroups,
       refreshLlmHistory,
       refreshMessages,
@@ -3747,8 +3855,9 @@ function IMPageInner() {
   );
 
   const connectAgentStream = useCallback(
-    (agentId: string) => {
+    (agentId: string, options?: { preserveWorkflow?: boolean }) => {
       if (streamAgentIdRef.current === agentId && esRef.current) return;
+      suppressAutoReconnectAfterReplayRef.current = false;
       streamAgentIdRef.current = agentId;
       replayAbortRef.current = null;
       setIsReplayingTest(false);
@@ -3757,7 +3866,9 @@ function IMPageInner() {
       esRef.current?.close();
       setLlmHistory("");
       clearCurrentRunBuffers();
-      resetTurnWorkflow(null);
+      if (!options?.preserveWorkflow) {
+        resetTurnWorkflow(null);
+      }
       setAgentError(null);
       sourceTagAgentIdRef.current.set("[agent]", agentId);
 
@@ -3853,7 +3964,7 @@ function IMPageInner() {
       if (targetGroup) {
         setActiveGroupId(targetGroup.id);
       }
-      connectAgentStream(agentId);
+      connectAgentStream(agentId, { preserveWorkflow: true });
       await refreshLlmHistory(agentId);
     },
     [connectAgentStream, groupByAgentId, refreshLlmHistory, session]
@@ -4030,10 +4141,20 @@ function IMPageInner() {
         const createdAt = typeof (event as Record<string, unknown>).created_at === "number"
           ? ((event as Record<string, unknown>).created_at as number)
           : null;
-        let delayMs = 12;
+        let delayMs = 32;
         if (createdAt != null && previousCreatedAt != null) {
           const deltaMs = Math.max(0, (createdAt - previousCreatedAt) * 1000);
-          delayMs = Math.min(120, Math.max(8, deltaMs / 10));
+          if (deltaMs < 30) {
+            delayMs = 18;
+          } else if (deltaMs < 120) {
+            delayMs = 28;
+          } else if (deltaMs < 400) {
+            delayMs = 44;
+          } else if (deltaMs < 1200) {
+            delayMs = 72;
+          } else {
+            delayMs = 120;
+          }
         }
         previousCreatedAt = createdAt;
 
@@ -4045,6 +4166,7 @@ function IMPageInner() {
       setAgentError(error instanceof Error ? error.message : String(error));
     } finally {
       setIsReplayingTest(false);
+      suppressAutoReconnectAfterReplayRef.current = true;
       setIsReplayMode(false);
       replayAbortRef.current = null;
     }
@@ -4414,6 +4536,7 @@ function IMPageInner() {
   useEffect(() => {
     if (!streamAgentId) return;
     if (isReplayMode) return;
+    if (suppressAutoReconnectAfterReplayRef.current) return;
     connectAgentStream(streamAgentId);
     setLlmHistory("");
     void refreshLlmHistory(streamAgentId);
@@ -4873,7 +4996,8 @@ function IMPageInner() {
   const workflowFocusedItems = useMemo(() => {
     const selectedTaskItems = selectedTaskFlowState?.timelineItems ?? [];
     if (selectedWorkflowNode) {
-      return selectedTaskItems.filter((item) => isTimelineItemRelatedToSelectedNode(item));
+      const focused = selectedTaskItems.filter((item) => isTimelineItemRelatedToSelectedNode(item));
+      return focused.length > 0 ? focused : selectedTaskItems;
     }
     return selectedTaskItems;
   }, [isTimelineItemRelatedToSelectedNode, selectedTaskFlowState, selectedWorkflowNode]);
@@ -5347,7 +5471,7 @@ function IMPageInner() {
           </div>
 
           <div style={{ padding: "0 18px 14px" }}>
-            <div className="stats-grid" style={{ gridTemplateColumns: "repeat(4, minmax(0, 1fr))" }}>
+            <div className="stats-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))" }}>
               <div className="stat-tile">
                 <div className="stat-label">Graph nodes</div>
                 <div className="stat-value">{graphStats.totalNodes}</div>
@@ -5377,6 +5501,15 @@ function IMPageInner() {
                 <span>Chat Feed</span>
                 <span className="mono" style={{ fontSize: 11, color: "#71717a" }}>{chatFeedItems.length}</span>
                 <div style={{ flex: 1 }} />
+                {isCompactLayout && showExecutionDrawer ? (
+                  <button
+                    className="btn"
+                    style={{ padding: "2px 8px", fontSize: 12 }}
+                    onClick={() => setShowExecutionDrawer(false)}
+                  >
+                    收起任务流
+                  </button>
+                ) : null}
                 <button
                   className="btn"
                   style={{ padding: "2px 8px", fontSize: 12 }}
@@ -5460,6 +5593,17 @@ function IMPageInner() {
           </div>
 
           {error ? <div className="toast">{error}</div> : null}
+
+          {isCompactLayout && !showExecutionDrawer ? (
+            <button
+              type="button"
+              className="execution-fab"
+              onClick={() => setShowExecutionDrawer(true)}
+              title="打开任务流"
+            >
+              任务流
+            </button>
+          ) : null}
 
           <div style={{ display: "flex", flexDirection: "column" }}>
             <ComposerContextBar

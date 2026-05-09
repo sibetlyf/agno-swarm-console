@@ -6,7 +6,29 @@ type UUID = string;
 type AgentLike = { id?: string; name?: string };
 
 function getBaseUrl() {
-  return (process.env.AGNO_OS_BASE_URL || "http://127.0.0.1:7777").replace(/\/$/, "");
+  return (process.env.AGNO_OS_BASE_URL || "http://127.0.0.1:8000").replace(/\/$/, "");
+}
+
+function getBridgeHeaders(): Record<string, string> {
+  const headers: Record<string, string> = {};
+  const auth = (process.env.AUTHORIZATION || "").trim();
+  if (auth) {
+    headers.Authorization = auth.startsWith("Bearer ") ? auth : `Bearer ${auth}`;
+  }
+
+  const userId = (process.env.USER_ID || "").trim();
+  if (userId) headers["X-User-Id"] = userId;
+
+  const recordId = (process.env.RECORD_ID || "").trim();
+  if (recordId) headers["X-Record-Id"] = recordId;
+
+  const workspace = (process.env.WORKSPACE || "").trim();
+  if (workspace) headers["X-Workspace"] = workspace;
+
+  const runspace = (process.env.RUNSPACE || "").trim();
+  if (runspace) headers["X-Runspace"] = runspace;
+
+  return headers;
 }
 
 export function isAgnoBridgeEnabled() {
@@ -18,22 +40,44 @@ async function resolveRemoteAgentId(preferred?: string): Promise<string> {
   const fixed = (process.env.AGNO_AGENT_ID || process.env.AGNO_OS_AGENT_ID || "").trim();
   if (fixed) return fixed;
 
-  const res = await fetch(`${getBaseUrl()}/agents`, { method: "GET" });
-  if (!res.ok) throw new Error(`Failed to list AgentOS agents: ${res.status}`);
-  const body = (await res.json().catch(() => null)) as AgentLike[] | { agents?: AgentLike[] } | null;
-  const agents = Array.isArray(body) ? body : (body?.agents ?? []);
-  if (preferred && !preferred.startsWith("human-") && agents.some((a) => a.id === preferred)) {
-    return preferred;
+  const endpoints = ["/agents", "/api/agents"];
+  for (const endpoint of endpoints) {
+    try {
+      const res = await fetch(`${getBaseUrl()}${endpoint}`, {
+        method: "GET",
+        headers: { accept: "application/json", ...getBridgeHeaders() },
+      });
+      if (!res.ok) continue;
+      const body = (await res.json().catch(() => null)) as AgentLike[] | { agents?: AgentLike[] } | null;
+      const agents = Array.isArray(body) ? body : (body?.agents ?? []);
+      if (preferred && !preferred.startsWith("human-") && agents.some((a) => a.id === preferred)) {
+        return preferred;
+      }
+      const first = agents[0]?.id;
+      if (first) return first;
+    } catch {
+      continue;
+    }
   }
-  const first = agents[0]?.id;
-  if (!first) throw new Error("No AgentOS agents available at /agents");
-  return first;
+
+  if (preferred && !preferred.startsWith("human-")) return preferred;
+  return "assistant-remote";
 }
 
 function mapKind(input: { eventName: string; contentType?: string; hasReasoning?: boolean; type?: string }) {
   const e = input.eventName;
   const t = input.contentType || "";
   const type = input.type || "";
+  if (e === "ExternalAgentRunResponseContentEvent") {
+    if (input.hasReasoning) return "reasoning" as const;
+    if (t === "document" || type === "document") return "document" as const;
+    return "content" as const;
+  }
+  if (e.endsWith("RunResponseContentEvent")) {
+    if (input.hasReasoning) return "reasoning" as const;
+    if (t === "document" || type === "document") return "document" as const;
+    return "content" as const;
+  }
   if (e === "RunStarted" || e === "ModelRequestStarted" || e === "ModelRequestCompleted" || e === "RunContentCompleted") {
     return "agent_status" as const;
   }
@@ -81,21 +125,29 @@ function extractCustomEventMetadata(payload: Record<string, unknown>): {
   const metadata = (payload.metadata && typeof payload.metadata === "object" ? payload.metadata : {}) as Record<string, unknown>;
   const tool = (payload.tool && typeof payload.tool === "object" ? payload.tool : {}) as Record<string, unknown>;
   const rawEvent = (metadata.raw_event && typeof metadata.raw_event === "object" ? metadata.raw_event : {}) as Record<string, unknown>;
+  const rawData = (metadata.rawdata && typeof metadata.rawdata === "object" ? metadata.rawdata : {}) as Record<string, unknown>;
+  const rawDataEvent =
+    (rawData.raw_event && typeof rawData.raw_event === "object" ? rawData.raw_event : rawData) as Record<string, unknown>;
 
   // Extract tool info from metadata.tool or payload.tool
   const toolCallId =
     (typeof payload.tool_call_id === "string" ? payload.tool_call_id : undefined) ||
     (typeof tool.tool_call_id === "string" ? tool.tool_call_id : undefined) ||
-    (typeof metadata.tool_call_id === "string" ? metadata.tool_call_id : undefined);
+    (typeof metadata.tool_call_id === "string" ? metadata.tool_call_id : undefined) ||
+    (typeof rawEvent.tool_call_id === "string" ? rawEvent.tool_call_id : undefined) ||
+    (typeof rawDataEvent.tool_call_id === "string" ? rawDataEvent.tool_call_id : undefined);
   const toolCallName =
     (typeof tool.tool_name === "string" ? tool.tool_name : undefined) ||
     (typeof tool.name === "string" ? tool.name : undefined) ||
-    (typeof metadata.tool_name === "string" ? metadata.tool_name : undefined);
+    (typeof metadata.tool_name === "string" ? metadata.tool_name : undefined) ||
+    (typeof rawEvent.tool_name === "string" ? rawEvent.tool_name : undefined) ||
+    (typeof rawDataEvent.tool_name === "string" ? rawDataEvent.tool_name : undefined);
 
   // Extract parent_run_id from metadata or raw_event
   let parentRunId =
     (typeof metadata.parent_run_id === "string" ? metadata.parent_run_id : undefined) ||
-    (typeof rawEvent.parent_run_id === "string" ? rawEvent.parent_run_id : undefined);
+    (typeof rawEvent.parent_run_id === "string" ? rawEvent.parent_run_id : undefined) ||
+    (typeof rawDataEvent.parent_run_id === "string" ? rawDataEvent.parent_run_id : undefined);
 
   // If parent_run_id exists but no parent_agent_id, infer from parent_run_id format (parent_agent_id:groupId)
   let parentAgentId: string | undefined;
@@ -109,23 +161,43 @@ function extractCustomEventMetadata(payload: Record<string, unknown>): {
   }
 
   return {
-    source: typeof metadata.source === "string" ? metadata.source : undefined,
-    subagent_name: typeof metadata.subagent_name === "string" ? metadata.subagent_name : undefined,
-    agent_id: typeof metadata.agent_id === "string" ? metadata.agent_id : (typeof payload.agent_id === "string" ? payload.agent_id : undefined),
-    agent_name: typeof metadata.agent_name === "string" ? metadata.agent_name : (typeof payload.agent_name === "string" ? payload.agent_name : undefined),
+    source:
+      (typeof metadata.source === "string" ? metadata.source : undefined) ||
+      (typeof rawEvent.source === "string" ? rawEvent.source : undefined) ||
+      (typeof rawDataEvent.source === "string" ? rawDataEvent.source : undefined),
+    subagent_name:
+      (typeof metadata.subagent_name === "string" ? metadata.subagent_name : undefined) ||
+      (typeof rawEvent.subagent_name === "string" ? rawEvent.subagent_name : undefined) ||
+      (typeof rawDataEvent.subagent_name === "string" ? rawDataEvent.subagent_name : undefined),
+    agent_id:
+      (typeof metadata.agent_id === "string" ? metadata.agent_id : undefined) ||
+      (typeof rawEvent.agent_id === "string" ? rawEvent.agent_id : undefined) ||
+      (typeof rawDataEvent.agent_id === "string" ? rawDataEvent.agent_id : undefined) ||
+      (typeof payload.agent_id === "string" ? payload.agent_id : undefined),
+    agent_name:
+      (typeof metadata.agent_name === "string" ? metadata.agent_name : undefined) ||
+      (typeof rawEvent.agent_name === "string" ? rawEvent.agent_name : undefined) ||
+      (typeof rawDataEvent.agent_name === "string" ? rawDataEvent.agent_name : undefined) ||
+      (typeof payload.agent_name === "string" ? payload.agent_name : undefined),
     parent_agent_id: parentAgentId,
-    run_id: typeof metadata.run_id === "string" ? metadata.run_id : (typeof payload.run_id === "string" ? payload.run_id : undefined),
+    run_id:
+      (typeof metadata.run_id === "string" ? metadata.run_id : undefined) ||
+      (typeof rawEvent.run_id === "string" ? rawEvent.run_id : undefined) ||
+      (typeof rawDataEvent.run_id === "string" ? rawDataEvent.run_id : undefined) ||
+      (typeof payload.run_id === "string" ? payload.run_id : undefined),
     parent_run_id: parentRunId,
     tool_call_id: toolCallId,
     tool_call_name: toolCallName,
-    raw_event: rawEvent,
+    raw_event: Object.keys(rawEvent).length > 0 ? rawEvent : rawDataEvent,
     event:
       (typeof metadata.event === "string" ? metadata.event : undefined) ||
-      (typeof rawEvent.event === "string" ? rawEvent.event : undefined),
+      (typeof rawEvent.event === "string" ? rawEvent.event : undefined) ||
+      (typeof rawDataEvent.event === "string" ? rawDataEvent.event : undefined),
     content_type:
       (typeof metadata.content_type === "string" ? metadata.content_type : undefined) ||
       (typeof payload.content_type === "string" ? payload.content_type : undefined) ||
-      (typeof rawEvent.content_type === "string" ? rawEvent.content_type : undefined),
+      (typeof rawEvent.content_type === "string" ? rawEvent.content_type : undefined) ||
+      (typeof rawDataEvent.content_type === "string" ? rawDataEvent.content_type : undefined),
   };
 }
 
@@ -142,21 +214,40 @@ export async function runAgentOsStream(input: {
 
   bus.emit(localAgentId, { event: "agent.wakeup", data: { agentId: localAgentId, reason: "group_message" } });
 
-  const remoteAgentId = await resolveRemoteAgentId(localAgentId);
-  const form = new FormData();
-  form.set("message", input.message);
-  form.set("stream", "true");
-  form.set("session_id", `swarm-${input.groupId}`);
-  form.set("user_id", input.senderId);
-
-  const res = await fetch(`${getBaseUrl()}/agents/${encodeURIComponent(remoteAgentId)}/runs`, {
+  const baseUrl = getBaseUrl();
+  const sharedHeaders = getBridgeHeaders();
+  const orchestratorResponse = await fetch(`${baseUrl}/api/orchestrator/run`, {
     method: "POST",
-    headers: { accept: "text/event-stream" },
-    body: form,
-  });
+    headers: {
+      accept: "text/event-stream",
+      "Content-Type": "application/json",
+      ...sharedHeaders,
+    },
+    body: JSON.stringify({
+      message: input.message,
+      stream: true,
+      session_id: `swarm-${input.groupId}`,
+      user_id: input.senderId,
+    }),
+  }).catch(() => null);
 
-  if (!res.ok || !res.body) {
-    const msg = await res.text().catch(() => `AgentOS stream failed: ${res.status}`);
+  let res = orchestratorResponse;
+  if (!res || !res.ok) {
+    const remoteAgentId = await resolveRemoteAgentId(localAgentId);
+    const form = new FormData();
+    form.set("message", input.message);
+    form.set("stream", "true");
+    form.set("session_id", `swarm-${input.groupId}`);
+    form.set("user_id", input.senderId);
+    res = await fetch(`${baseUrl}/agents/${encodeURIComponent(remoteAgentId)}/runs`, {
+      method: "POST",
+      headers: { accept: "text/event-stream", ...sharedHeaders },
+      body: form,
+    }).catch(() => null);
+  }
+
+  if (!res || !res.ok || !res.body) {
+    const msg = res ? await res.text().catch(() => `AgentOS stream failed: ${res.status}`) : "AgentOS stream request failed";
     bus.emit(localAgentId, { event: "agent.error", data: { message: msg } });
     return;
   }
@@ -190,10 +281,11 @@ export async function runAgentOsStream(input: {
     // Extract CustomEvent metadata for subagent routing and tool correlation
     const meta = extractCustomEventMetadata(payload);
     const isCustomEvent = eventName === "CustomEvent";
-    const actualEvent = isCustomEvent && meta.event ? meta.event : eventName;
+    const isExternalEnvelope = eventName.endsWith("RunResponseContentEvent") || eventName === "ExternalAgentRunResponseContentEvent";
+    const actualEvent = (isCustomEvent || isExternalEnvelope) && meta.event ? meta.event : eventName;
 
     // Determine source: subagent if metadata.source=subagent or parent_run_id exists
-    const source = meta.source || (meta.parent_run_id ? "subagent" : "agent");
+    const source = meta.source || (meta.parent_run_id || meta.tool_call_id ? "subagent" : "agent");
 
     // Extract content and reasoning
     const reasoning =
@@ -204,6 +296,15 @@ export async function runAgentOsStream(input: {
     // For CustomEvent with raw_event, also check raw_event.content
     if (!content && isCustomEvent && meta.raw_event && typeof (meta.raw_event as Record<string, unknown>).content === "string") {
       content = (meta.raw_event as Record<string, unknown>).content as string;
+    }
+
+    if (!content && meta.raw_event) {
+      const rawRecord = meta.raw_event as Record<string, unknown>;
+      content =
+        (typeof rawRecord.content === "string" ? rawRecord.content : "") ||
+        (typeof rawRecord.delta === "string" ? rawRecord.delta : "") ||
+        (typeof rawRecord.text === "string" ? rawRecord.text : "") ||
+        (typeof rawRecord.message === "string" ? rawRecord.message : "");
     }
 
     const kind = mapKind({
@@ -250,7 +351,7 @@ export async function runAgentOsStream(input: {
         delta,
         metadata: payload,
         event: actualEvent,
-        content: payload.content,
+        content,
         reasoning_content: reasoning,
         content_type: meta.content_type,
         type: isCustomEvent ? (payload.type as string) : undefined,
@@ -279,7 +380,6 @@ export async function runAgentOsStream(input: {
     for (const part of parts) {
       const blocks = parseSseBlocks(part + "\n\n");
       for (const b of blocks) {
-        const eventName = b.event || "";
         const payload = (() => {
           try {
             return b.data ? JSON.parse(b.data) : {};
@@ -287,6 +387,7 @@ export async function runAgentOsStream(input: {
             return { raw: b.data };
           }
         })() as Record<string, unknown>;
+        const eventName = b.event || (typeof payload.event === "string" ? payload.event : "");
 
         const processed = processor.ingest(eventName, payload);
         for (const item of processed) {

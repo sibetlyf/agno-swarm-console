@@ -41,6 +41,21 @@ const BACKEND_ORIGIN =
   (process.env.NEXT_PUBLIC_BACKEND_ORIGIN || process.env.BACKEND_ORIGIN || "").trim().replace(/\/$/, "") ||
   null;
 
+function getBackendHeaders(): HeadersInit {
+  const headers: Record<string, string> = { accept: "application/json, text/plain;q=0.9, */*;q=0.8" };
+  const auth = (process.env.AUTHORIZATION || "").trim();
+  if (auth) headers.Authorization = auth.startsWith("Bearer ") ? auth : `Bearer ${auth}`;
+  const userId = (process.env.USER_ID || "").trim();
+  if (userId) headers["X-User-Id"] = userId;
+  const recordId = (process.env.RECORD_ID || "").trim();
+  if (recordId) headers["X-Record-Id"] = recordId;
+  const workspace = (process.env.WORKSPACE || "").trim();
+  if (workspace) headers["X-Workspace"] = workspace;
+  const runspace = (process.env.RUNSPACE || "").trim();
+  if (runspace) headers["X-Runspace"] = runspace;
+  return headers;
+}
+
 type WorkspacePayload = {
   workspace: string;
   runspace: string | null;
@@ -244,7 +259,7 @@ async function resolveWorkspaceFromBackend(): Promise<BackendWorkspaceResolution
   const candidates = ["/workspace", "/api/workspace", "/api/debug/workspace"];
   for (const endpoint of candidates) {
     try {
-      const res = await fetch(`${BACKEND_ORIGIN}${endpoint}`, { cache: "no-store" });
+        const res = await fetch(`${BACKEND_ORIGIN}${endpoint}`, { cache: "no-store", headers: getBackendHeaders() });
       if (!res.ok) continue;
       const contentType = res.headers.get("content-type") || "";
       if (contentType.includes("application/json")) {
